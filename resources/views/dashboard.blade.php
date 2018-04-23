@@ -11,6 +11,12 @@
    <body class="page-home-index fresh-ui" id="body-content">
       <div class="ui-app-frame" data-tg-refresh="ui-app-frame" id="ui-app-frame">
          <header class="ui-app-frame__header">
+		 <?php $avatar_background_color = '#7951B9'; 
+			$myvalue = 'Test me more';
+				$arr = explode(' ',trim($myvalue));
+			$avatar_initials = $arr[0];
+		 ?> 
+		 
             <a href="#AppFrameMain" class="ui-button ui-app-frame__skip-to-content">Skip to content</a>
             <div class="ui-top-bar">
                <div class="ui-top-bar__branding">
@@ -59,12 +65,11 @@
                                  <span class="user-avatar__initials">
 									{{ $avatar_initials }}
                                  </span>
-                                 <img alt="" class="gravatar gravatar--size-thumb" src=" @if( $avatar_url_small != '' ) {{ $avatar_url_small }} @else //proxy.shopifycdn.com/ab2694cdbecd03a84f6fd8f9eaf8d1e099b2c0d0f4e078408e60f0b9a0e4c422/www.gravatar.com/avatar/3fd238bd9cbf0330c770deb30c516e80.jpg?s=60&amp;d=blank @endif ">
                                  </span>
                               </div>
                               <div class="top-bar-profile__summary">
                                  <p class="top-bar-profile__title">
-									{{ $name }}
+									{{ Auth::user()->name }}
                                  </p>
                                  <p class="top-bar-profile__description">
                                     Admin
@@ -191,12 +196,11 @@
                            <span class="user-avatar__initials">
                            {{ $avatar_initials }}
                            </span>
-                           <img alt="" class="gravatar gravatar--size-thumb" src=" @if( $avatar_url_small != '' ) {{ $avatar_url_small }} @else //proxy.shopifycdn.com/ab2694cdbecd03a84f6fd8f9eaf8d1e099b2c0d0f4e078408e60f0b9a0e4c422/www.gravatar.com/avatar/3fd238bd9cbf0330c770deb30c516e80.jpg?s=60&amp;d=blank @endif ">
                            </span>
                         </div>
                         <div class="top-bar-profile__summary">
                            <p class="top-bar-profile__title">
-							{{ $name }}
+							{{ Auth::user()->name }}
                            </p>
                            <p class="top-bar-profile__description">
                               Admin

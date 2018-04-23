@@ -18,6 +18,7 @@
 			foreach ($words as $w) {
 			  $acronym .= $w[0];
 			}
+			$avatar_url_small ="";
 			$avatar_initials = $acronym;
 		 ?> 
 		 

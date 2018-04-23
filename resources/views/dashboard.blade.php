@@ -18,13 +18,13 @@
 			foreach ($words as $w) {
 			  $acronym .= $w[0];
 			}
-			if()
-			
-			$avatar_initials = $acronym;
-						?> 
-			@if( $avatar_url_small  'not-exist' ) {
-				$avatar_url_small = "";
+			if(!isset($avatar_url_small)){
+				$avatar_url_small ="";
 			}
+			$avatar_initials = $acronym;
+
+		 ?> 
+		 
             <a href="#AppFrameMain" class="ui-button ui-app-frame__skip-to-content">Skip to content</a>
             <div class="ui-top-bar">
                <div class="ui-top-bar__branding">

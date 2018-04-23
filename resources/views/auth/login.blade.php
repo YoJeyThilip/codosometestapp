@@ -19,7 +19,7 @@
 												  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-email"></use>
 											   </svg>
 											</span>
-											<input id="email" type="email" class="next-input next-input--invisible form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+											<input id="email" type="email"  placeholder="Email"  class="next-input next-input--invisible form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
 											@if ($errors->has('email'))
 												<span class="invalid-feedback">
@@ -36,7 +36,7 @@
 											  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-locked"></use>
 										   </svg>
 										</span>
-									<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+									<input id="password"  placeholder="Password" type="password" class="next-input next-input--invisible form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 									@if ($errors->has('password'))
 										<span class="invalid-feedback">
 											<strong>{{ $errors->first('password') }}</strong>

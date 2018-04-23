@@ -22,6 +22,7 @@
 											<input id="email" type="email"  placeholder="Email"  class="next-input next-input--invisible form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 										</div>
 									</div>
+
 									<div class="next-input-wrapper">
 									 <label class="next-label helper--visually-hidden" for="Password">Password</label>
 									 <div class="next-input--stylized">
@@ -33,11 +34,11 @@
 									<input id="password"  placeholder="Password" type="password" class="next-input next-input--invisible form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 								</div>
 							</div>
-								@if ($errors->has('password'))
-										<span class="invalid-feedback">
-											<strong>{{ $errors->first('password') }}</strong>
-										</span>
-									@endif
+							@if ($errors->has('email'))
+									<span class="invalid-feedback">
+										<strong>{{ $errors->first('email') }}</strong>
+									</span>
+								@endif
 									<button type="submit" class="ui-button ui-button--primary ui-button--full-width dialog-submit">
 										{{ __('Login') }}
 									</button>

@@ -392,6 +392,7 @@
             </div>
          </aside>
          <main id="AppFrameMain" class="ui-app-frame__main ">
+		 	@yield('dashboard-content')
          </main>
       </div>
       <div class="ui-app-frame__backdrop"></div>

@@ -55,16 +55,16 @@
                         <button name="button" type="button" class="top-bar-button top-bar-button--profile" id="AccountMenuActivator" data-tg-refresh="next-nav__avatar">
                            <div class="top-bar-profile">
                               <div class="top-bar-profile__avatar">
-                                 <span class="user-avatar user-avatar--style-4" style="background-color: #{{ $avatar_background_color }}">
+                                 <span class="user-avatar user-avatar--style-4" style="background-color: #{{ $avatar_background_color  or 'not-exist' }}">
                                  <span class="user-avatar__initials">
-									{{ $avatar_initials }}
+									{{ $avatar_initials  or 'not-exist'  }}
                                  </span>
                                  <img alt="" class="gravatar gravatar--size-thumb" src=" @if( $avatar_url_small != '' ) {{ $avatar_url_small }} @else //proxy.shopifycdn.com/ab2694cdbecd03a84f6fd8f9eaf8d1e099b2c0d0f4e078408e60f0b9a0e4c422/www.gravatar.com/avatar/3fd238bd9cbf0330c770deb30c516e80.jpg?s=60&amp;d=blank @endif ">
                                  </span>
                               </div>
                               <div class="top-bar-profile__summary">
                                  <p class="top-bar-profile__title">
-									{{ $name }}
+									{{ $name  or 'not-exist'  }}
                                  </p>
                                  <p class="top-bar-profile__description">
                                     Admin
@@ -187,16 +187,16 @@
                   <button name="button" type="button" class="top-bar-button top-bar-button--profile" id="AccountMenuActivator" data-tg-refresh="next-nav__avatar">
                      <div class="top-bar-profile">
                         <div class="top-bar-profile__avatar">
-                           <span class="user-avatar user-avatar--style-4" style="background-color: #{{ $avatar_background_color }}">
+                           <span class="user-avatar user-avatar--style-4" style="background-color: #{{ $avatar_background_color  or 'not-exist' }}">
                            <span class="user-avatar__initials">
-                           {{ $avatar_initials }}
+                           {{ $avatar_initials or 'not-exist'  }}
                            </span>
                            <img alt="" class="gravatar gravatar--size-thumb" src=" @if( $avatar_url_small != '' ) {{ $avatar_url_small }} @else //proxy.shopifycdn.com/ab2694cdbecd03a84f6fd8f9eaf8d1e099b2c0d0f4e078408e60f0b9a0e4c422/www.gravatar.com/avatar/3fd238bd9cbf0330c770deb30c516e80.jpg?s=60&amp;d=blank @endif ">
                            </span>
                         </div>
                         <div class="top-bar-profile__summary">
                            <p class="top-bar-profile__title">
-							{{ $name }}
+							{{ $name  or 'not-exist' }}
                            </p>
                            <p class="top-bar-profile__description">
                               Admin

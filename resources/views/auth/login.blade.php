@@ -48,22 +48,17 @@
 									<button type="submit" class="ui-button ui-button--primary ui-button--full-width dialog-submit">
 										{{ __('Login') }}
 									</button>
-							<div class="form-group row">
-								<div class="col-md-6 offset-md-4">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
+								<div id="remember-me" class="remember-me">
+								<div class="next-input-wrapper">
+										<label class="next-checkbox" for="remember_checkbox"> {{ __('Remember Me') }}</label>
+											<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
 										</label>
-									</div>
-									
+									<span class="next-checkbox--styled"><svg class="next-icon next-icon--size-10 checkmark" aria-hidden="true" focusable="false"> <use xlink:href="#next-checkmark-thick"></use> </svg></span>
 								</div>
-								<div class="col-md-6 offset-md-4">
-									<a class="" href="{{ route('password.request') }}">
+									<a class="forgot-password inline" href="{{ route('password.request') }}">
 											{{ __('Forgot Your Password?') }}
 									</a>
 								</div>
-							</div>
-									
 						</form>
 					</div>
 				</div>

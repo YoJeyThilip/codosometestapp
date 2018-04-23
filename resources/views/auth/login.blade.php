@@ -55,8 +55,11 @@
 											<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
 										</label>
 									</div>
-									<a class="btn btn-link" href="{{ route('password.request') }}">
-										{{ __('Forgot Your Password?') }}
+									
+								</div>
+								<div class="col-md-6 offset-md-4">
+									<a class="" href="{{ route('password.request') }}">
+											{{ __('Forgot Your Password?') }}
 									</a>
 								</div>
 							</div>

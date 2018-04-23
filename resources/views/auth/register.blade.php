@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-		<link rel="stylesheet" media="screen" href="{{ secure_asset('css/app.css) }}">
+		<link rel="stylesheet" media="screen" href="{{ secure_asset('css/app.css') }}">
 	</head>
 <body id="app-layout">
 <div class="container">

@@ -53,6 +53,14 @@
   </div>
 </div>
   </div>
-  <button type="button" class="Polaris-Button Polaris-Button--primary"><span class="Polaris-Button__Content"><span>Save</span></span></button>
+  <div class="ui-page-actions">
+	<div class="ui-page-actions__container">
+		<div class="ui-page-actions__actions ui-page-actions__actions--primary">
+			<div class="ui-page-actions__button-group">
+			<button type="button" class="Polaris-Button Polaris-Button--primary"><span class="Polaris-Button__Content"><span>Save</span></span></button>
+			</div>
+		</div>
+	</div>
+</div>
 </div>
 @endsection

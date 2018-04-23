@@ -45,7 +45,7 @@
 								<div id="remember-me" class="remember-me">
 								<div class="next-input-wrapper">
 										<label class="next-label next-label--switch" for="remember_checkbox"> Remember Me</label>
-											<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+											<input type="checkbox"  class="next-checkbox"  id="remember_checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
 										</label>
 									<span class="next-checkbox--styled"><svg class="next-icon next-icon--size-10 checkmark" aria-hidden="true" focusable="false"> <use xlink:href="#next-checkmark-thick"></use> </svg></span>
 								</div>
@@ -53,6 +53,7 @@
 											{{ __('Forgot Your Password?') }}
 									</a>
 								</div>
+								
 						</form>
 					</div>
 				</div>

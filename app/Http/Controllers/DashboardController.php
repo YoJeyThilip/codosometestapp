@@ -34,6 +34,6 @@ class DashboardController extends Controller
 		$dashboardvariables = json_decode( $response->getBody(), true );
 			*/
 			$dashboardvariables ="";
-		return view( 'dashboard' , $dashboardvariables );
+		return view( 'dashboard');
 	}
 }

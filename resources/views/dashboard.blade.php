@@ -12,7 +12,7 @@
       <div class="ui-app-frame" data-tg-refresh="ui-app-frame" id="ui-app-frame">
          <header class="ui-app-frame__header">
 		 <?php $avatar_background_color = '#7951B9'; 
-			$myvalue = 	Auth::user()->name;
+			$myvalue = 'sdfsf asda sdfs';
 			if(preg_match('/\s/',$myvalue)){
 				$acronym ='S';
 			}else{

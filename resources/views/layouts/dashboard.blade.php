@@ -325,7 +325,7 @@
                            </div>
                            <ul class="ui-nav__group ui-nav__group--parent" aria-labelledby="MainNavigationNavHeading">
                               <li class="ui-nav__item ui-nav__item--parent ui-nav__item--selected ui-rollup__item--force-show">
-                                 <a href="/admin" class="ui-nav__link ui-nav__link--parent">
+                                 <a href="/" class="ui-nav__link ui-nav__link--parent">
                                     <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-dashboard"></use>
                                     </svg>

@@ -1,5 +1,19 @@
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
+    <style>
+        body {
+            font-family: 'Lato';
+        }
+
+        .fa-btn {
+            margin-right: 6px;
+        }
+    </style>
+	</head>
+<body id="app-layout">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -73,3 +87,4 @@
         </div>
     </div>
 </div>
+</body>

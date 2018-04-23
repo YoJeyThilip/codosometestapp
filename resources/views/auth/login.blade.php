@@ -22,11 +22,6 @@
 											<input id="email" type="email"  placeholder="Email"  class="next-input next-input--invisible form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 										</div>
 									</div>
-										@if ($errors->has('email'))
-												<span class="invalid-feedback">
-													<strong>{{ $errors->first('email') }}</strong>
-												</span>
-											@endif
 									<div class="next-input-wrapper">
 									 <label class="next-label helper--visually-hidden" for="Password">Password</label>
 									 <div class="next-input--stylized">

@@ -13,8 +13,11 @@
          <header class="ui-app-frame__header">
 		 <?php $avatar_background_color = '#7951B9'; 
 			$myvalue = 	Auth::user()->name;
-				$arr = explode(' ',trim($myvalue));
-			$avatar_initials = $arr[0];
+				$arr = explode(" ", $myvalue);
+				foreach ($words as $w) {
+				  $acronym .= $w[0];
+				}
+			$avatar_initials = $acronym;
 		 ?> 
 		 
             <a href="#AppFrameMain" class="ui-button ui-app-frame__skip-to-content">Skip to content</a>

@@ -52,4 +52,13 @@
 		</div>
 	</div>
 </section>
+<div class="ui-page-actions">
+	<div class="ui-page-actions__container">
+		<div class="ui-page-actions__actions ui-page-actions__actions--primary">
+			<div class="ui-page-actions__button-group">
+				<button class="ui-button ui-button--primary js-btn-primary js-btn-loadable btn-primary has-loading" type="submit" name="commit" disabled="disabled">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection

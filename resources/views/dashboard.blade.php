@@ -11,18 +11,24 @@
    <body class="page-home-index fresh-ui" id="body-content">
       <div class="ui-app-frame" data-tg-refresh="ui-app-frame" id="ui-app-frame">
          <header class="ui-app-frame__header">
-		 <?php $avatar_background_color = '#7951B9'; 
+		 <?php 
+		 if(!isset($avatar_background_color)){
+			$avatar_background_color = '#7951B9'; 
+		 }
+		 if(!isset($avatar_name)){
 			$avatar_name = 	Auth::user()->name;
+		 }
+		  if(!isset($avatar_initials)){
 			$acronym = "";
 			$words = explode(" ", $avatar_name);
 			foreach ($words as $w) {
 			  $acronym .= $w[0];
 			}
+			$avatar_initials = $acronym;
+		  }
 			if(!isset($avatar_url_small)){
 				$avatar_url_small ="";
 			}
-			$avatar_initials = $acronym;
-
 		 ?> 
 		 
             <a href="#AppFrameMain" class="ui-button ui-app-frame__skip-to-content">Skip to content</a>

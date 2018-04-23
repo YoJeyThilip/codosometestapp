@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
+		<link rel="stylesheet" media="screen" href="{{ secure_asset('css/app.css) }}">
     <style>
         body {
             font-family: 'Lato';

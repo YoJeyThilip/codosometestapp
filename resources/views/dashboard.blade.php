@@ -13,7 +13,7 @@
          <header class="ui-app-frame__header">
 		 <?php $avatar_background_color = '#7951B9'; 
 			$myvalue = 	Auth::user()->name;
-				$arr = explode(" ", $myvalue);
+				$words = explode(" ", $myvalue);
 				foreach ($words as $w) {
 				  $acronym .= $w[0];
 				}

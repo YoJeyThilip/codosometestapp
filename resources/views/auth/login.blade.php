@@ -52,6 +52,9 @@
 									<a class="forgot-password inline" href="{{ route('password.request') }}">
 											{{ __('Forgot Your Password?') }}
 									</a>
+									<a class="forgot-password inline" href="{{ route('register') }}">
+											{{ __('Register') }}
+									</a>
 								</div>
 								
 						</form>

@@ -15,7 +15,4 @@
 Auth::routes();
 
 Route::get('/', 'DashboardController@index')->name('dashboard');
-
-Route::get('/admin/settings', function () {
-		return view('settings');
-})->middleware('auth');
+Route::get('/admin/settings', 'SettingsController@index')->name('settings');

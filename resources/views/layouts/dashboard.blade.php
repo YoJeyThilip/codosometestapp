@@ -8,6 +8,7 @@
         <title>Laravel</title>
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/shopify-dashboard.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/campus_ink.css') }}">
+		<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.14.1/polaris.min.css" />
    </head>
    <body class="page-home-index fresh-ui" id="body-content">
       <div class="ui-app-frame" data-tg-refresh="ui-app-frame" id="ui-app-frame">

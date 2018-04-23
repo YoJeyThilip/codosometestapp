@@ -3,15 +3,6 @@
 <head>
 
 		<link rel="stylesheet" media="screen" href="{{ secure_asset('css/app.css) }}">
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
 	</head>
 <body id="app-layout">
 <div class="container">

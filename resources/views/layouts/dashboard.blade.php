@@ -7,6 +7,7 @@
 
         <title>Laravel</title>
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/shopify-dashboard.css') }}">
+		<link rel="stylesheet" media="all" href="{{ secure_asset('css/campus_ink.css') }}">
    </head>
    <body class="page-home-index fresh-ui" id="body-content">
       <div class="ui-app-frame" data-tg-refresh="ui-app-frame" id="ui-app-frame">
@@ -324,15 +325,15 @@
                               </div>
                            </div>
                            <ul class="ui-nav__group ui-nav__group--parent" aria-labelledby="MainNavigationNavHeading">
-                              <li class="ui-nav__item ui-nav__item--parent ui-nav__item--selected ui-rollup__item--force-show">
-                                 <a href="/" class="ui-nav__link ui-nav__link--parent">
+                              <li class="ui-nav__item ui-nav__item--parent {{{ (Request::is('/') ? 'active' : '') }}}">
+                                <a href="/" class="ui-nav__link ui-nav__link--parent">
                                     <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-dashboard"></use>
                                     </svg>
                                     <span class="ui-nav__label ui-nav__label--parent">Home</span>
                                  </a>
                               </li>
-                              <li class="ui-nav__item ui-nav__item--parent">
+                              <li class="ui-nav__item ui-nav__item--parent {{{ (Request::is('/admin/orders') ? 'active' : '') }}}">
                                  <a href="/admin/orders" class="ui-nav__link ui-nav__link--parent" data-rollup-target="Rollup1" aria-controls="Rollup1" aria-disabled="true" role="button">
                                     <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-orders"></use>
@@ -345,16 +346,16 @@
                                     <li class="ui-nav__item ui-nav__item--child"><a href="/admin/checkouts" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">Abandoned checkouts</span></a></li>
                                  </ul>
                               </li>
-                              <li class="ui-nav__item ui-nav__item--parent">
-                                 <a href="/admin/customers" class="ui-nav__link ui-nav__link--parent">
+                              <li class="ui-nav__item ui-nav__item--parent {{{ (Request::is('/admin/customers') ? 'active' : '') }}} ">
+                              <a href="/admin/customers" class="ui-nav__link ui-nav__link--parent">
                                     <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-customers"></use>
                                     </svg>
                                     <span class="ui-nav__label ui-nav__label--parent">User</span>
                                  </a>
                               </li>
-                              <li class="ui-nav__item ui-nav__item--parent">
-                                 <a href="/admin/dashboards" class="ui-nav__link ui-nav__link--parent" data-rollup-target="Rollup3" aria-controls="Rollup3" aria-disabled="true" role="button">
+                              <li class="ui-nav__item ui-nav__item--parent  {{{ (Request::is('/admin/dashboards') ? 'active' : '') }}} ">
+                               <a href="/admin/dashboards" class="ui-nav__link ui-nav__link--parent" data-rollup-target="Rollup3" aria-controls="Rollup3" aria-disabled="true" role="button">
                                     <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-reports"></use>
                                     </svg>
@@ -366,7 +367,7 @@
                                     <li class="ui-nav__item ui-nav__item--child"><a href="/admin/dashboards/live" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">Live View</span></a></li>
                                  </ul>
                               </li>
-                              <li class="ui-nav__item ui-nav__item--parent">
+                              <li class="ui-nav__item ui-nav__item--parent {{{ (Request::is('/admin/settings') ? 'active' : '') }}}">
                                  <a href="/admin/settings" class="ui-nav__link ui-nav__link--parent">
                                     <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-settings"></use>

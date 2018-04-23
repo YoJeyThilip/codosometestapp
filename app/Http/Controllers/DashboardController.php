@@ -22,7 +22,7 @@ class DashboardController extends Controller
     }
 	
 	public function index(){
-	/*
+
 		$client = new Client();
 			
 		$Printavo_token = json_decode( $_COOKIE['Printavo_token'] );
@@ -32,8 +32,7 @@ class DashboardController extends Controller
 		]);
 		
 		$dashboardvariables = json_decode( $response->getBody(), true );
-			*/
-			$dashboardvariables ="";
-		return view( 'dashboard');
+			
+		return view( 'dashboard' , $dashboardvariables );
 	}
 }

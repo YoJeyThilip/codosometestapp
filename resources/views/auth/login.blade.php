@@ -47,7 +47,6 @@
 										<label class="next-checkbox" for="remember_checkbox"> Remember Me</label>
 											<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
 										</label>
-									<span class="next-checkbox--styled"><svg class="next-icon next-icon--size-10 checkmark" aria-hidden="true" focusable="false"> <use xlink:href="#next-checkmark-thick"></use> </svg></span>
 								</div>
 									<a class="forgot-password inline" href="{{ route('password.request') }}">
 											{{ __('Forgot Your Password?') }}

@@ -12,9 +12,9 @@
       <div class="ui-app-frame" data-tg-refresh="ui-app-frame" id="ui-app-frame">
          <header class="ui-app-frame__header">
 		 <?php $avatar_background_color = '#7951B9'; 
-			$myvalue = 	Auth::user()->name;
+			$avatar_name = 	Auth::user()->name;
 			$acronym = "";
-			$words = explode(" ", $myvalue);
+			$words = explode(" ", $avatar_name);
 			foreach ($words as $w) {
 			  $acronym .= $w[0];
 			}
@@ -73,7 +73,7 @@
                               </div>
                               <div class="top-bar-profile__summary">
                                  <p class="top-bar-profile__title">
-									{{ Auth::user()->name }}
+									{{ $avatar_name }}
                                  </p>
                                  <p class="top-bar-profile__description">
                                     Admin
@@ -204,7 +204,7 @@
                         </div>
                         <div class="top-bar-profile__summary">
                            <p class="top-bar-profile__title">
-							{{ Auth::user()->name }}
+							{{ $avatar_name }}
                            </p>
                            <p class="top-bar-profile__description">
                               Admin

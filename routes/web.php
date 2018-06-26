@@ -12,7 +12,33 @@
 */
 
 
+
+Route::any('/logout', 'DashboardController@logout')->name('logout');
+
+
 Auth::routes();
 
-Route::get('/', 'DashboardController@index')->name('dashboard');
-Route::get('/admin/settings', 'SettingsController@index')->name('settings');
+Route::any('/calculator', 'CalculatorController@index')->name('calculator');
+
+Route::resource('/orders', 'OrderController');
+
+/*
+|------------------------------------------------------------------------------------
+| Admin
+|------------------------------------------------------------------------------------
+*/
+
+
+Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
+
+	Route::resource('/students', 'StudentController');
+
+	Route::any('/reports', 'ReportsController@index')->name('reports');
+	
+});
+
+Route::any('/settings', 'SettingsController@index')->name('settings');
+
+Route::any('/ajax', 'ajaxController@ajax')->name('ajax');
+
+Route::any('/', 'DashboardController@index')->name('dashboard');

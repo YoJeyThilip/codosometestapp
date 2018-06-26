@@ -6,8 +6,16 @@ use Illuminate\Routing\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\UserMetaController;
 
-class DashboardController extends Controller
+use Auth;
+
+use DB;
+
+use GuzzleHttp\Client;
+
+
+class SettingsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,9 +29,101 @@ class DashboardController extends Controller
     }
 	
 	public function index(){
-		if(isset($_POST)){
+		
+		$user_id = Auth::id();
+		
+		$notification = "";
+			
+		if(isset($_POST['setting-form']) &&  $_POST['setting-form'] == 'Connect' ){
+			
+			UserMetaController::update_user_meta( $user_id, "printavo-email" , $_POST['email'] );
+			UserMetaController::update_user_meta( $user_id, "printavo-password" , $_POST['password'] );
+			
+			$client = new Client();
+			
+			$response_with_username_password =  $client->request('POST','https://www.printavo.com/api/v1/sessions', [
+				'http_errors' => false,
+				'form_params' => [
+					'email' =>  $_POST['email'] ,
+					'password' => $_POST['password'],
+					'http_errors' => false
+				]
+			]);
+			
+			if( $response_with_username_password->getStatusCode() == 201 ){
+				$api_key_response = json_decode( $response_with_username_password->getBody(), true );
+				UserMetaController::update_user_meta( $user_id, "printavo-api-token" , $api_key_response['token'] );
+				UserMetaController::update_user_meta( $user_id, "printavo_user_id" , $api_key_response['id'] );
+				$response = $client->request('GET', 'https://www.printavo.com/api/v1/users?email='. $_POST['email'] .'&token='. $api_key_response['token'] .'&page=1&per_page=9999', [
+					'http_errors' => false
+				]);
+				
+				if( $response->getStatusCode() == 200 ){
+					$responsearray = json_decode( $response->getBody(), true ); 
+					foreach( $responsearray['data'] as $user ){
+						if( $user['email'] == $_POST['email'] ){
+							
+							DB::update( "UPDATE students SET connected = 'Connected' WHERE student_id = " . $api_key_response['id'] );
+							
+							UserMetaController::update_user_meta( $user_id, "printavo-status" , 'connected' );
+							UserMetaController::update_user_meta( $user_id, "printavo-avatar_background_color" , $user["avatar_background_color"] );
+							UserMetaController::update_user_meta( $user_id, "printavo-avatar_initials" , $user["avatar_initials"] );
+							UserMetaController::update_user_meta( $user_id, "printavo-avatar_url_small" , $user["avatar_url_small"] );
+							UserMetaController::update_user_meta( $user_id, "printavo-name" , $user["name"] );
+							$notification = "Connected";
+						}
+					}
+				}
+				else{
+					$notification = "Incorrect email or api token";
+				}
+			}
+			else{
+				$notification = "Incorrect email or api token";
+			}
 			
 		}
-		return view( 'settings');
+			
+		if(isset($_POST['setting-form']) &&  $_POST['setting-form'] == 'Disconnect' ){
+							
+			$printavo_user_id = UserMetaController::update_user_meta( $user_id, "printavo_user_id" );
+			DB::update( "UPDATE students SET connected = 'Disconnect' WHERE student_id = " . $printavo_user_id  );
+			UserMetaController::update_user_meta( $user_id, "printavo-email" , $_POST['email'] );
+			UserMetaController::update_user_meta( $user_id, "printavo-password" ,  $_POST['password'] );
+			UserMetaController::update_user_meta( $user_id, "printavo-status" , 'Disconnect' );
+			
+		}
+		 
+		$avatar_initials = UserMetaController::get_user_meta( $user_id, "printavo-avatar_initials" );
+		
+		$avatar_url_small = UserMetaController::get_user_meta( $user_id, "printavo-avatar_url_small" );
+		
+		$avatar_name = UserMetaController::get_user_meta( $user_id, "printavo-name" , Auth::user()->name );
+				
+		$users_role = DB::select( "SELECT role FROM users WHERE id=" . $user_id );
+		
+		if( $avatar_initials == ""){
+			$acronym = "";
+			$words = explode(" ", $avatar_name);
+			foreach ($words as $w) {
+				$acronym .= $w[0];
+			}
+			$avatar_initials = $acronym;
+		}
+		
+		$SettingsVariables = array(
+			'printavo_email' => UserMetaController::get_user_meta( $user_id, "printavo-email" ),
+			'printavo_api_token' => UserMetaController::get_user_meta( $user_id, "printavo-api-token" ),
+			'printavo_status' => UserMetaController::get_user_meta( $user_id, "printavo-status" , "disconnected" ),
+			'avatar_password' => UserMetaController::get_user_meta( $user_id, "printavo-password" ),
+			'avatar_name' => $avatar_name,
+			'avatar_background_color' => '#' . UserMetaController::get_user_meta( $user_id, "printavo-avatar_background_color" , "7951B9" ),
+			'avatar_url_small' => $avatar_url_small,
+			'avatar_initials' => $avatar_initials ,
+			'notification' => $notification,
+			'user_role'	=> (int)($users_role[0]->role)
+		);
+		
+		return view( 'settings' , $SettingsVariables );
 	}
 }

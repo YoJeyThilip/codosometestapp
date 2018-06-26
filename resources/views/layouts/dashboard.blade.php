@@ -6,33 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+		<link rel="stylesheet" media="all" href="https://sdks.shopifycdn.com/polaris/1.14.1/polaris.min.css" />
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/shopify-dashboard.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/campus_ink.css') }}">
-		<link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/1.14.1/polaris.min.css" />
+		<link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+		<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
    </head>
    <body class="page-home-index fresh-ui" id="body-content">
       <div class="ui-app-frame" data-tg-refresh="ui-app-frame" id="ui-app-frame">
-         <header class="ui-app-frame__header">
-		 <?php 
-		 if(!isset($avatar_background_color)){
-			$avatar_background_color = '#7951B9'; 
-		 }
-		 if(!isset($avatar_name)){
-			$avatar_name = 	Auth::user()->name;
-		 }
-		  if(!isset($avatar_initials)){
-			$acronym = "";
-			$words = explode(" ", $avatar_name);
-			foreach ($words as $w) {
-			  $acronym .= $w[0];
-			}
-			$avatar_initials = $acronym;
-		  }
-			if(!isset($avatar_url_small)){
-				$avatar_url_small ="";
-			}
-		 ?> 
-		 
+         <header class="ui-app-frame__header">		 
             <a href="#AppFrameMain" class="ui-button ui-app-frame__skip-to-content">Skip to content</a>
             <div class="ui-top-bar">
                <div class="ui-top-bar__branding">
@@ -81,7 +64,9 @@
                                  <span class="user-avatar__initials">
 									{{ $avatar_initials }}
                                  </span>
-								 <img alt="" class="gravatar gravatar--size-thumb" src=" @if( $avatar_url_small != '' ) {{ $avatar_url_small }} @else //proxy.shopifycdn.com/ab2694cdbecd03a84f6fd8f9eaf8d1e099b2c0d0f4e078408e60f0b9a0e4c422/www.gravatar.com/avatar/3fd238bd9cbf0330c770deb30c516e80.jpg?s=60&amp;d=blank @endif ">
+								@if( $avatar_url_small != '' )
+									<img alt="" class="gravatar gravatar--size-thumb" src="{{ $avatar_url_small }}">
+								@endif
                                  </span>
                               </div>
                               <div class="top-bar-profile__summary">
@@ -94,14 +79,14 @@
                               </div>
                            </div>
                         </button>
-                        <div class="ui-popover ui-popover--full-height ui-popover--reduced-spacing" data-popover-preferred-position="top">
+                        <div class="ui-popover ui-popover--full-height ui-popover--reduced-spacing userpop_up" data-popover-preferred-position="top">
                            <div class="ui-popover__tooltip"></div>
                            <div class="ui-popover__content-wrapper">
                               <div class="ui-popover__content">
                                  <div class="ui-popover__pane">
                                     <ul class="ui-action-list">
                                        <li class="ui-action-list__item">
-                                          <a href="/admin/settings/account/8102805549" class="ui-action-list-action" data-bind-event-click="Shopify.Components.rootDispatcher.dispatch({type: 'nav:navigating'})" data-allow-default="1">
+                                          <a href="/" class="ui-action-list-action" data-bind-event-click="Shopify.Components.rootDispatcher.dispatch({type: 'nav:navigating'})" data-allow-default="1">
                                              <span class="ui-action-list-action__text">
                                                 <div class="ui-stack ui-stack--wrap ui-stack--alignment-center ui-stack--spacing-tight">
                                                    <div class="ui-stack-item">
@@ -118,12 +103,12 @@
                                           </a>
                                        </li>
                                        <li class="ui-action-list__item">
-                                          <a href="/admin/auth/logout" class="ui-action-list-action" data-no-turbolink="true" data-method="post" data-shopify-desktop-id="admin-logout-link">
+                                          <a href="{{ route('logout') }}" class="ui-action-list-action">
                                              <span class="ui-action-list-action__text">
                                                 <div class="ui-stack ui-stack--wrap ui-stack--alignment-center ui-stack--spacing-tight">
                                                    <div class="ui-stack-item">
-                                                      <svg role="img" class="next-icon next-icon--size-16" aria-labelledby="minor-log-out-27dc5a96da7d59af68719338a45ffc95-title">
-                                                         <title id="minor-log-out-27dc5a96da7d59af68719338a45ffc95-title">Log out icon</title>
+                                                      <svg role="img" class="next-icon next-icon--size-16">
+                                                         <title>Log out icon</title>
                                                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#minor-log-out"></use>
                                                       </svg>
                                                    </div>
@@ -134,47 +119,6 @@
                                              </span>
                                           </a>
                                        </li>
-                                    </ul>
-                                    <ul class="ui-action-list">
-                                       <li class="ui-action-list__item"><a href="https://help.shopify.com/" class="ui-action-list-action" data-track-click="{action: &quot;Help Center (Manual)&quot;, category: &quot;Need Help&quot;}" target="_blank" rel="noopener noreferrer"><span class="ui-action-list-action__text">Shopify Help Center</span></a></li>
-                                       <li class="ui-action-list__item"><a href="https://ecommerce.shopify.com/forums" class="ui-action-list-action" data-track-click="{action: &quot;Shopify Forums&quot;, category: &quot;Need Help&quot;}" target="_blank" rel="noopener noreferrer"><span class="ui-action-list-action__text">Community forums</span></a></li>
-                                       <li class="ui-action-list__item"><a href="https://partners.shopify.com/services_marketplace?shop=whybuyapp.myshopify.com&amp;utm_campaign=profile" class="ui-action-list-action"><span class="ui-action-list-action__text">Hire a Shopify Expert</span></a></li>
-                                       <li class="ui-action-list__item"><button class="ui-action-list-action" data-bind-event-click="keyboardShortcuts.show()" type="button" name="button"><span class="ui-action-list-action__text">Keyboard shortcuts</span></button></li>
-                                       <script data-define="{keyboardShortcuts: new Shopify.Modal(this, {&quot;size&quot;:&quot;large&quot;})}" type="text/html" class="modal_source">
-                                          <header>
-                                          <h2>Keyboard Shortcuts</h2>
-                                          <button class="btn btn--plain close-modal">×</button>
-                                          </header>
-                                          
-                                          <div class="keyboard-commands__container"
-                                          data-define="{ _init: Shopify.KeyboardShortcuts.buildModal(this) }">
-                                          <div class="next-grid">
-                                            <div class="next-grid__cell next-grid__cell--no-flex">
-                                              <h2 class="heading">General shortcuts</h2>
-                                              <ul class="keyboard-commands ssb js-general-shortcuts">
-                                                <li class="keyboard-command">
-                                                  <kbd class="keyboard-key"></kbd>
-                                                  <span class="keyboard-name"></span>
-                                                </li>
-                                              </ul>
-                                              <h2 class="heading">Adding items to your store</h2>
-                                              <ul class="keyboard-commands js-creation-shortcuts">
-                                                <li class="keyboard-command">
-                                                  <kbd class="keyboard-key"></kbd>
-                                                  <span class="keyboard-name"></span>
-                                                </li>
-                                              </ul>
-                                          </div>    <div class="next-grid__cell">
-                                              <h2 class="heading">Navigating your admin panel</h2>
-                                              <ul class="keyboard-commands js-navigation-shortcuts navigating-commands">
-                                                <li class="keyboard-command">
-                                                  <kbd class="keyboard-key"></kbd>
-                                                  <span class="keyboard-name"></span>
-                                                </li>
-                                              </ul>
-                                          </div></div></div>
-                                          
-                                       </script>
                                     </ul>
                                  </div>
                               </div>
@@ -213,7 +157,7 @@
                            <span class="user-avatar__initials">
                            {{ $avatar_initials }}
                            </span>
-						   <img alt="" class="gravatar gravatar--size-thumb" src=" @if( $avatar_url_small != '' ) {{ $avatar_url_small }} @else //proxy.shopifycdn.com/ab2694cdbecd03a84f6fd8f9eaf8d1e099b2c0d0f4e078408e60f0b9a0e4c422/www.gravatar.com/avatar/3fd238bd9cbf0330c770deb30c516e80.jpg?s=60&amp;d=blank @endif ">
+						   <img alt="" class="gravatar gravatar--size-thumb" src="{{ $avatar_url_small }}">
                            </span>
                         </div>
                         <div class="top-bar-profile__summary">
@@ -235,7 +179,7 @@
                <div class="aside-profile__menu" id="AsideProfileMenu" data-collapsible="accordion" data-collapsible-state="collapsed" aria-hidden="true">
                   <ul class="ui-action-list">
                      <li class="ui-action-list__item">
-                        <a href="/admin/settings/account/8102805549" class="ui-action-list-action" data-bind-event-click="Shopify.Components.rootDispatcher.dispatch({type: 'nav:navigating'})" data-allow-default="1">
+                        <a href="/settings/account/8102805549" class="ui-action-list-action" data-bind-event-click="Shopify.Components.rootDispatcher.dispatch({type: 'nav:navigating'})" data-allow-default="1">
                            <span class="ui-action-list-action__text">
                               <div class="ui-stack ui-stack--wrap ui-stack--alignment-center ui-stack--spacing-tight">
                                  <div class="ui-stack-item">
@@ -252,7 +196,7 @@
                         </a>
                      </li>
                      <li class="ui-action-list__item">
-                        <a href="/admin/auth/logout" class="ui-action-list-action" data-no-turbolink="true" data-method="post" data-shopify-desktop-id="admin-logout-link">
+                        <a href="/auth/logout" class="ui-action-list-action" data-no-turbolink="true" data-method="post" data-shopify-desktop-id="admin-logout-link">
                            <span class="ui-action-list-action__text">
                               <div class="ui-stack ui-stack--wrap ui-stack--alignment-center ui-stack--spacing-tight">
                                  <div class="ui-stack-item">
@@ -326,7 +270,7 @@
                               </div>
                            </div>
                            <ul class="ui-nav__group ui-nav__group--parent" aria-labelledby="MainNavigationNavHeading">
-                              <li class="ui-nav__item ui-nav__item--parent ui-nav__item--selected ui-rollup__item--force-show">
+                              <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('dashboard') ) ui-nav__item--selected ui-rollup__item--force-show @endif ">
                                  <a href="/" class="ui-nav__link ui-nav__link--parent">
                                     <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-dashboard"></use>
@@ -334,46 +278,66 @@
                                     <span class="ui-nav__label ui-nav__label--parent">Home</span>
                                  </a>
                               </li>
-                              <li class="ui-nav__item ui-nav__item--parent">
-                                 <a href="/admin/orders" class="ui-nav__link ui-nav__link--parent" data-rollup-target="Rollup1" aria-controls="Rollup1" aria-disabled="true" role="button">
+                              <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('orders.index') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+                                 <a href="{{ route('orders.index') }}" class="ui-nav__link ui-nav__link--parent" data-rollup-target="Rollup1" aria-controls="Rollup1" aria-disabled="true" role="button">
                                     <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-orders"></use>
                                     </svg>
                                     <span class="ui-nav__label ui-nav__label--parent">Orders</span>
                                  </a>
                                  <ul class="ui-rollup ui-nav__group ui-nav__group--child" data-rollup-mobile-only="true" id="Rollup1">
-                                    <li class="ui-nav__item ui-nav__item--child"><a href="/admin/orders" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">All orders</span></a></li>
-                                    <li class="ui-nav__item ui-nav__item--child"><a href="/admin/draft_orders" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">Drafts</span></a></li>
-                                    <li class="ui-nav__item ui-nav__item--child"><a href="/admin/checkouts" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">Abandoned checkouts</span></a></li>
+                                    <li class="ui-nav__item ui-nav__item--child"><a href="/orders" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">All orders</span></a></li>
+                                    <li class="ui-nav__item ui-nav__item--child"><a href="/draft_orders" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">Drafts</span></a></li>
+                                    <li class="ui-nav__item ui-nav__item--child"><a href="/checkouts" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">Abandoned checkouts</span></a></li>
                                  </ul>
                               </li>
-                              <li class="ui-nav__item ui-nav__item--parent">
-                                 <a href="/admin/customers" class="ui-nav__link ui-nav__link--parent">
+							  @if( intval($user_role) > 3 )
+                              <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('students.index') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+                                 <a href="{{ route('students.index') }}" class="ui-nav__link ui-nav__link--parent">
                                     <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-customers"></use>
                                     </svg>
-                                    <span class="ui-nav__label ui-nav__label--parent">User</span>
+                                    <span class="ui-nav__label ui-nav__label--parent">Students</span>
                                  </a>
                               </li>
+							  @endif
                               <li class="ui-nav__item ui-nav__item--parent">
-                                 <a href="/admin/dashboards" class="ui-nav__link ui-nav__link--parent" data-rollup-target="Rollup3" aria-controls="Rollup3" aria-disabled="true" role="button">
+                                 <a href="/dashboards" class="ui-nav__link ui-nav__link--parent" data-rollup-target="Rollup3" aria-controls="Rollup3" aria-disabled="true" role="button">
                                     <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-reports"></use>
                                     </svg>
                                     <span class="ui-nav__label ui-nav__label--parent">Analytics</span>
                                  </a>
                                  <ul class="ui-rollup ui-nav__group ui-nav__group--child" data-rollup-mobile-only="true" id="Rollup3">
-                                    <li class="ui-nav__item ui-nav__item--child"><a href="/admin/dashboards" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">Dashboards</span></a></li>
-                                    <li class="ui-nav__item ui-nav__item--child"><a href="/admin/reports" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">Reports</span></a></li>
-                                    <li class="ui-nav__item ui-nav__item--child"><a href="/admin/dashboards/live" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">Live View</span></a></li>
+                                    <li class="ui-nav__item ui-nav__item--child"><a href="/dashboards" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">Dashboards</span></a></li>
+                                    <li class="ui-nav__item ui-nav__item--child"><a href="/reports" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">Reports</span></a></li>
+                                    <li class="ui-nav__item ui-nav__item--child"><a href="/dashboards/live" class="ui-nav__link ui-nav__link--child"><span class="ui-nav__label ui-nav__label--child">Live View</span></a></li>
                                  </ul>
                               </li>
-                              <li class="ui-nav__item ui-nav__item--parent">
-                                 <a href="/admin/settings" class="ui-nav__link ui-nav__link--parent">
+							  @if( intval($user_role) > 3 )
+                              <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('reports') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+                                 <a href="{{ route('reports') }}" class="ui-nav__link ui-nav__link--parent">
+                                    <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#online-store"></use>
+                                    </svg>
+                                    <span class="ui-nav__label ui-nav__label--parent">Reports</span>
+                                 </a>
+                              </li>
+							  @endif
+                              <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('settings') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+                                 <a href="{{ route('settings') }}" class="ui-nav__link ui-nav__link--parent">
                                     <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-settings"></use>
                                     </svg>
                                     <span class="ui-nav__label ui-nav__label--parent">Settings</span>
+                                 </a>
+                              </li>
+							  <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('calculator') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+                                 <a href="{{ route('calculator') }}" class="ui-nav__link ui-nav__link--parent">
+									<svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
+                                       <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-calculator"></use>
+                                    </svg>
+                                    <span class="ui-nav__label ui-nav__label--parent">Calculator</span>
                                  </a>
                               </li>
                            </ul>
@@ -400,6 +364,16 @@
       <div class="ui-app-frame__backdrop"></div>
       <div id="global-icon-symbols" data-tg-refresh="global-icon-symbols" data-tg-refresh-always="true" style="display: none;">
          <svg xmlns="http://www.w3.org/2000/svg">
+			<symbol id="next-calculator">
+				<svg class="p_dt" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
+					<path d="M7.742 17.655a2.205 2.205 0 0 0-1.558-.646h-.991a2.202 2.202 0 0 1-2.202-2.202v-.991c0-.584-.233-1.145-.646-1.558l-.7-.7a2.203 2.203 0 0 1 0-3.115l.7-.7c.413-.413.646-.974.646-1.558v-.991c0-1.216.986-2.202 2.202-2.202h.991c.584 0 1.145-.233 1.558-.646l.7-.7c.86-.86 2.255-.86 3.115 0l.7.7c.414.413.974.646 1.558.646h.991c1.216 0 2.202.986 2.202 2.202v.991c0 .584.233 1.145.646 1.558l.7.7c.86.86.86 2.255 0 3.115l-.7.7a2.205 2.205 0 0 0-.646 1.558v.991a2.202 2.202 0 0 1-2.202 2.202h-.991c-.584 0-1.144.233-1.558.646l-.7.7c-.86.86-2.255.86-3.115 0l-.7-.7z" fill="currentColor"></path><path d="M19.06 7.734l-.7-.7a1.217 1.217 0 0 1-.353-.851v-.991a3.206 3.206 0 0 0-3.203-3.202h-.99c-.32 0-.623-.125-.85-.353l-.7-.7a3.207 3.207 0 0 0-4.53 0l-.7.7c-.229.228-.53.353-.852.353h-.99A3.206 3.206 0 0 0 1.99 5.192v.99c0 .317-.129.628-.352.852l-.7.7a3.207 3.207 0 0 0 0 4.529l.7.7c.223.224.352.534.352.85v.992a3.206 3.206 0 0 0 3.203 3.202h.99c.321 0 .623.125.851.353l.7.7a3.192 3.192 0 0 0 2.265.936c.82 0 1.64-.312 2.265-.936l.7-.7c.228-.228.53-.353.851-.353h.99a3.206 3.206 0 0 0 3.203-3.202v-.991c0-.317.13-.627.352-.851l.702-.7a3.208 3.208 0 0 0 0-4.53M12.288 6.29l-6 6a.999.999 0 1 0 1.414 1.414l6-6A.999.999 0 1 0 12.29 6.29M7.496 8.996a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m5 2a1.5 1.5 0 1 0 .001 3.001 1.5 1.5 0 0 0 0-3m5.15-.148l-.702.7a3.181 3.181 0 0 0-.938 2.265v.99c0 .664-.539 1.203-1.203 1.203h-.99a3.18 3.18 0 0 0-2.265.939l-.7.7a1.205 1.205 0 0 1-1.702 0l-.7-.7a3.178 3.178 0 0 0-2.265-.94h-.99a1.203 1.203 0 0 1-1.203-1.201v-.991c0-.856-.333-1.66-.938-2.265l-.7-.7a1.203 1.203 0 0 1 0-1.701l.7-.7c.605-.605.938-1.41.938-2.265v-.991c0-.663.54-1.202 1.203-1.202h.99c.856 0 1.66-.333 2.265-.94l.7-.7a1.205 1.205 0 0 1 1.702 0l.7.7a3.18 3.18 0 0 0 2.265.94h.99c.664 0 1.203.539 1.203 1.202v.99c0 .856.333 1.66.938 2.266l.701.7a1.204 1.204 0 0 1 0 1.7"></path>
+				</svg>
+			</symbol>
+			<symbol id="chevron-left-thinner">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+					<path d="M12 16c-.256 0-.512-.098-.707-.293l-5-5c-.39-.39-.39-1.023 0-1.414l5-5c.39-.39 1.023-.39 1.414 0s.39 1.023 0 1.414L8.414 10l4.293 4.293c.39.39.39 1.023 0 1.414-.195.195-.45.293-.707.293z"></path>
+				</svg>
+			</symbol>
             <symbol id="next-dashboard">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                   <path fill="currentColor" d="M7 13h6v6H7z"></path>
@@ -752,5 +726,16 @@
             </symbol>
          </svg>
       </div>
+		@if( $notification != '' ) 
+		<div class="ui-flash-wrapper" id="UIFlashWrapper">
+		   <div class="ui-flash ui-flash--nav-offset" id="UIFlashMessage" data-tg-refresh-always="true">
+			  <p class="ui-flash__message" tabindex="-1" aria-live="off">{{ $notification }}</p>
+		   </div>
+		</div>
+			<script>
+				$("#UIFlashWrapper").fadeIn(1000).delay(3000).fadeOut(1000);
+			</script>
+		@endif
+		@yield('Script-content')
    </body>
 </html>

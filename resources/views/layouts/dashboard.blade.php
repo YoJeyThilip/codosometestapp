@@ -324,11 +324,6 @@
                                  </a>
                               </li>
 							  @endif
-							   <li class="all_paid_orders_menu ui-nav__item ui-nav__item--parent @if( url()->current() == route('all_paid_orders') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
-                                 <a href="{{ route('all_paid_orders') }}" class="ui-nav__link ui-nav__link--parent">
-                                    <span class="ui-nav__label ui-nav__label--parent">All Paid Orders</span>
-                                 </a>
-                              </li>
                               <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('settings') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
                                  <a href="{{ route('settings') }}" class="ui-nav__link ui-nav__link--parent">
                                     <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">

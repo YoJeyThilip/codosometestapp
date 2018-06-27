@@ -172,8 +172,48 @@ class ReportsController extends Controller
     }
 	
 	public function all_paid_orders(){
+		
+		$user_id = Auth::id();
+		
+		$email = UserMetaController::get_user_meta( $user_id, "printavo-email" );
+		
+		$api_token = UserMetaController::get_user_meta( $user_id, "printavo-api-token" );
+		
+		$printavo_status = UserMetaController::get_user_meta( $user_id, "printavo-status" , "disconnected" );
+		 
+		$avatar_initials = UserMetaController::get_user_meta( $user_id, "printavo-avatar_initials" );
+		
+		$avatar_url_small = UserMetaController::get_user_meta( $user_id, "printavo-avatar_url_small");
+		
+		$avatar_name = UserMetaController::get_user_meta( $user_id, "printavo-name" , Auth::user()->name );
+		
+		$avatar_background_color = UserMetaController::get_user_meta( $user_id, "printavo-avatar_background_color" , "7951B9" );
+				
+		$users_role = DB::select( "SELECT role FROM users WHERE id=" . $user_id );
 			
-		return view( 'Reports.all_paid_orders' );
+		if( $avatar_initials == ""){
+			$acronym = "";
+			$words = explode(" ", $avatar_name);
+			foreach ($words as $w) {
+				$acronym .= $w[0];
+			}
+			$avatar_initials = $acronym;
+		}
+		
+		$ReportsVariables = array(
+			'printavo_email' => $email,
+			'printavo_status' => $printavo_status,
+			'avatar_name' => $avatar_name,
+			'avatar_background_color' => '#' . $avatar_background_color,
+			'avatar_url_small' => $avatar_url_small,
+			'avatar_initials' => $avatar_initials ,
+			'notification' => '',
+			'user_role'	=> (int)($users_role[0]->role)
+		);
+	 
+		
+			
+		return view( 'Reports.all_paid_orders',$ReportsVariables );
 	
     }
 }

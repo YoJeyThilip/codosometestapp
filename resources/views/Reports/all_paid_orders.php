@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('dashboard-content')
+@section('dashboard-content') 
 
 <div class="ui-layout ui-layout--full-width">
    <div class="ui-layout__sections">
@@ -22,7 +22,7 @@
                                        </th>
                                        <th class="is-sortable">
 										<span>
-                                           Manager Name 
+                                           Manager Name  
 										</span>
                                        </th>
                                        <th class="is-sortable">

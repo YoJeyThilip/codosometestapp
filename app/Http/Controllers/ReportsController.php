@@ -172,14 +172,8 @@ class ReportsController extends Controller
     }
 	
 	public function all_paid_orders(){
-	
-		if( isset($_GET['all_paid_orders']) ){
 			
-			echo('test');
-			
-			return view( 'Reports.all_paid_orders' , $ReportsVariables );
-			
-		}
+		return view( 'Reports.all_paid_orders' , $ReportsVariables );
 	
     }
 }

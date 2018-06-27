@@ -6,17 +6,11 @@
    <div class="ui-layout__sections">
       <div class="ui-layout__section">
          <div class="ui-layout__item">
-		 
-		    <div class="prepare_for_payment_page_header">
-				<h1>Prepare For Payment</h1>
-			</div>
             <section class="ui-card">
                <div class="has-bulk-actions">
-                  <div>
-                     <div class="next-tab__container payment_report_title_container">
-						<span class="payment_report_title">Payment Report</span>
-                     </div>
-                  </div>
+				 <div class="next-tab__container payment_report_title_container">
+					<span class="payment_report_title">All Paid Orders</span>
+				 </div>
                   <div>
                      <div class="ui-card__section">
                         <div class="ui-type-container">

@@ -22,6 +22,8 @@ Route::any('/calculator', 'CalculatorController@index')->name('calculator');
 
 Route::resource('/orders', 'OrderController');
 
+Route::any('/all_paid_orders', 'ReportsController@index')->name('all_paid_orders');
+
 /*
 |------------------------------------------------------------------------------------
 | Admin
@@ -34,6 +36,7 @@ Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
 	Route::resource('/students', 'StudentController');
 
 	Route::any('/reports', 'ReportsController@index')->name('reports');
+	
 	
 });
 

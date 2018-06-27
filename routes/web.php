@@ -22,7 +22,7 @@ Route::any('/calculator', 'CalculatorController@index')->name('calculator');
 
 Route::resource('/orders', 'OrderController');
 
-Route::any('/all_paid_orders', 'ReportsController@index')->name('all_paid_orders');
+Route::any('/all_paid_orders', 'ReportsController@all_paid_orders')->name('all_paid_orders');
 
 /*
 |------------------------------------------------------------------------------------

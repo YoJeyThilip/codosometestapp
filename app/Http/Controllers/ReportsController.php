@@ -158,12 +158,6 @@ class ReportsController extends Controller
 			}
 		}
 		
-		if( isset($_GET['all_paid_orders']) ){
-			
-			return view( 'Reports.all_paid_orders' , $ReportsVariables );
-			
-		}
-		
 		if( isset($_POST['selected_student_report_and_orders'])  ) {		
 			
 		
@@ -175,5 +169,15 @@ class ReportsController extends Controller
 			
 		}
 		
+    }
+	
+	public function all_paid_orders(){
+	
+		if( isset($_GET['all_paid_orders']) ){
+			
+			return view( 'Reports.all_paid_orders' , $ReportsVariables );
+			
+		}
+	
     }
 }

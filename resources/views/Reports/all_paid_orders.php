@@ -10,7 +10,7 @@
                <div class="has-bulk-actions">
 				 <div class="next-tab__container payment_report_title_container">
 					<span class="payment_report_title">All Paid Orders</span>
-				 </div>
+				 </div> 
                   <div>
                      <div class="ui-card__section">
                         <div class="ui-type-container">

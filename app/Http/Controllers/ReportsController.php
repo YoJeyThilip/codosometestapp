@@ -173,7 +173,7 @@ class ReportsController extends Controller
 	
 	public function all_paid_orders(){
 			
-		return view( 'Reports.all_paid_orders' );
+		return view( 'Reports.all_paid_orders' , $ReportsVariables );
 	
     }
 }

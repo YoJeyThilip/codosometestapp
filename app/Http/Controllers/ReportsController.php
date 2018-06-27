@@ -175,6 +175,8 @@ class ReportsController extends Controller
 	
 		if( isset($_GET['all_paid_orders']) ){
 			
+			echo('test');
+			
 			return view( 'Reports.all_paid_orders' , $ReportsVariables );
 			
 		}

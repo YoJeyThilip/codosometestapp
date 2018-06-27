@@ -324,8 +324,8 @@
                                  </a>
                               </li>
 							  @endif
-							   <li class="all_paid_orders_menu ui-nav__item ui-nav__item--parent @if( url()->current() == route('reports') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
-                                 <a href="{{ route('reports') }}" class="ui-nav__link ui-nav__link--parent">
+							   <li class="all_paid_orders_menu ui-nav__item ui-nav__item--parent @if( url()->current() == route('all_paid_orders') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+                                 <a href="{{ route('all_paid_orders') }}" class="ui-nav__link ui-nav__link--parent">
                                     <span class="ui-nav__label ui-nav__label--parent">All Paid Orders</span>
                                  </a>
                               </li>

@@ -326,9 +326,6 @@
 							  @endif
 							   <li class="all_paid_orders_menu ui-nav__item ui-nav__item--parent @if( url()->current() == route('reports') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
                                  <a href="{{ route('reports') }}" class="ui-nav__link ui-nav__link--parent">
-                                    <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#online-store"></use>
-                                    </svg>
                                     <span class="ui-nav__label ui-nav__label--parent">All Paid Orders</span>
                                  </a>
                               </li>

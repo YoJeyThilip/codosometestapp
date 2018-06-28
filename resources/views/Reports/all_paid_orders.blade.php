@@ -22,32 +22,26 @@
                                        </th>
                                        <th class="is-sortable">
 										<span>
-                                           Manager Name  
+                                          Report no. 
 										</span>
                                        </th>
                                        <th class="is-sortable">
 										<span>
-                                         Campus Name
+                                         Payment date
 										</span>
                                        </th>
                                        <th class="is-sortable">
 										<span>
-									     Total Orders
+									     Order Amount
 										</span>
                                        </th>
 									   <th class="is-sortable">
 										<span>
-                                           Total Sales
+                                           Paid Amount
 										</span>
                                        </th>
 									   <th class="is-sortable">
 										<span>
-                                          Total Payment 
-										</span>
-                                       </th>
-									   <th class="is-sortable">
-										<span>
-                                           Payment
 										</span>
                                        </th>
                                     </tr>

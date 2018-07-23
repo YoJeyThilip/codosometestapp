@@ -10,6 +10,8 @@ use Auth;
 
 use DB;
 
+use GuzzleHttp\Client;
+
 class StudentController extends Controller
 { 
 	/**
@@ -165,94 +167,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-		$user_id = Auth::id();
-		
-		$email = UserMetaController::get_user_meta( $user_id, "printavo-email" );
-		
-		$api_token = UserMetaController::get_user_meta( $user_id, "printavo-api-token" );
-		
-		$printavo_status = UserMetaController::get_user_meta( $user_id, "printavo-status" , "disconnected" );
-		 
-		$avatar_initials = UserMetaController::get_user_meta( $user_id, "printavo-avatar_initials" );
-		
-		$avatar_url_small = UserMetaController::get_user_meta( $user_id, "printavo-avatar_url_small");
-		
-		$avatar_name = UserMetaController::get_user_meta( $user_id, "printavo-name" , Auth::user()->name );
-		
-		$avatar_background_color = UserMetaController::get_user_meta( $user_id, "printavo-avatar_background_color" , "7951B9" );
-			
-		if( $avatar_initials == ""){
-			$acronym = "";
-			$words = explode(" ", $avatar_name);
-			foreach ($words as $w) {
-				$acronym .= $w[0];
-			}
-			$avatar_initials = $acronym;
-		}
-		
-		$StudentsVariables = array(
-			'printavo_email' => $email,
-			'printavo_status' => $printavo_status,
-			'avatar_name' => $avatar_name,
-			'avatar_background_color' => '#' . $avatar_background_color,
-			'avatar_url_small' => $avatar_url_small,
-			'avatar_initials' => $avatar_initials ,
-			'notification' => '',
-		);
-		
-		if( $printavo_status == "connected"){
-			
-			$client = new Client();
-			
-			$response = $client->request('GET', 'https://www.printavo.com/api/v1/users/'. $id .'?email='. $email .'&token='. $api_token, [
-				'http_errors' => false
-			]);
-			
-			print_r($response->getStatusCode());
-			
-			if( $response->getStatusCode() != 200 ){
-				return false;
-			}
-			
-			$responsearray = json_decode( $response->getBody(), true );
-			
-			$StudentsVariables['students'] = $responsearray;
-			
-			/*
-			$StudentsVariables['total_quantity'] = 0;
-			
-			foreach( $responsearray['lineitems_attributes'] as $item ){
-				$StudentsVariables['total_quantity'] = $StudentsVariables['total_quantity'] + $item['total_quantities'];
-			} 
-			
-			$users_response = $client->request('GET', 'https://www.printavo.com/api/v1/users?email='. $email .'&token='. $api_token .'&page=1&per_page=9999', [
-				'http_errors' => false
-			]);
-			
-			if( $users_response->getStatusCode() == 200 ){
-				$users_responsearray = json_decode( $users_response->getBody(), true );
-				$StudentsVariables['users'] = $users_responsearray['data'];
-			}
-			
-			$StudentsVariables['splitsheet_commision'] = OrdersMetaController::get_order_meta( $id ,"splitsheet_commision" ,"0");
-			$StudentsVariables['user_one_name'] = OrdersMetaController::get_order_meta( $id ,"user_one_name",'null');
-			$StudentsVariables['user_two_name'] = OrdersMetaController::get_order_meta( $id ,"user_two_name",'null');
-			$StudentsVariables['user_one_bonus'] = OrdersMetaController::get_order_meta( $id ,"user_one_bonus",'0');
-			$StudentsVariables['user_two_bonus'] = OrdersMetaController::get_order_meta( $id ,"user_two_bonus",'0');
-			$StudentsVariables['user_one_bonus_and_commision'] = OrdersMetaController::get_order_meta( $id ,"user_one_bonus_and_commision",'0');
-			$StudentsVariables['user_two_bonus_and_commision'] = OrdersMetaController::get_order_meta( $id ,"user_two_bonus_and_commision",'0');
-			$StudentsVariables['total_commision_value'] = OrdersMetaController::get_order_meta( $id ,"total_commision_value",'0');
-			$StudentsVariables['splitsheet_value'] = OrdersMetaController::get_order_meta( $id ,"splitsheet_value",'no');
-			$StudentsVariables['user_one_value'] = OrdersMetaController::get_order_meta( $id ,"user_one_value",'null');
-			$StudentsVariables['user_two_value'] = OrdersMetaController::get_order_meta( $id ,"user_two_value",'null');
-			$StudentsVariables['total_paid_value'] = OrdersMetaController::get_order_meta( $id ,"total_paid_value",'0');
-			$StudentsVariables['user_one_total_paid'] = OrdersMetaController::get_order_meta( $id ,"user_one_total_paid",'0');
-			$StudentsVariables['student_paid'] = OrdersMetaController::get_order_meta( $id ,"student_paid",'0');
-			
-			*/
-		}
-		
-		return view( 'Student.Single' , $StudentsVariables );
+        //
     }
 
     /**

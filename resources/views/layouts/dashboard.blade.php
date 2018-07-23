@@ -9,9 +9,11 @@
 		<link rel="stylesheet" media="all" href="https://sdks.shopifycdn.com/polaris/1.14.1/polaris.min.css" />
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/shopify-dashboard.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/campus_ink.css') }}">
+		<link rel="stylesheet" media="all" href="{{ secure_asset('css/selectize.default.css') }}">
 		<link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 		<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="{{ secure_asset('js/selectize.min.js') }}"></script>
    </head>
    <body class="page-home-index fresh-ui" id="body-content">
       <div class="ui-app-frame" data-tg-refresh="ui-app-frame" id="ui-app-frame">
@@ -165,7 +167,11 @@
 							{{ $avatar_name }}
                            </p>
                            <p class="top-bar-profile__description">
-                              Admin
+							   @if( intval($user_role) > 3 )
+								  Admin
+							   @else
+								   Student
+							   @endif
                            </p>
                         </div>
                      </div>
@@ -301,8 +307,8 @@
                                  </a>
                               </li>
 							  @endif
-                              <li class="ui-nav__item ui-nav__item--parent">
-                                 <a href="/dashboards" class="ui-nav__link ui-nav__link--parent" data-rollup-target="Rollup3" aria-controls="Rollup3" aria-disabled="true" role="button">
+                              <li class="ui-nav__item ui-nav__item--parent  @if( url()->current() == route('analytics') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+                                 <a href="{{ route('analytics') }}" class="ui-nav__link ui-nav__link--parent">
                                     <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-reports"></use>
                                     </svg>
@@ -315,14 +321,25 @@
                                  </ul>
                               </li>
 							  @if( intval($user_role) > 3 )
-                              <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('reports') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
-                                 <a href="{{ route('reports') }}" class="ui-nav__link ui-nav__link--parent">
-                                    <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#online-store"></use>
-                                    </svg>
-                                    <span class="ui-nav__label ui-nav__label--parent">Reports</span>
-                                 </a>
-                              </li>
+								  <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('reports') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+									 <a href="{{ route('reports') }}" class="ui-nav__link ui-nav__link--parent">
+										<svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#online-store"></use>
+										</svg>
+										<span class="ui-nav__label ui-nav__label--parent">Reports</span>
+									 </a>
+									 @if( ( url()->current() == route('reports') ) || ( url()->current() == route('all_reports') ) )
+										<div class="ui-nav_submenu">
+											<ul>
+												<li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('all_reports') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+													<a href="{{ route('all_reports') }}" class="ui-nav__link ui-nav__link--parent">
+														<span class="ui-nav__label ui-nav__label--parent">Paid commision report</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									@endif
+								  </li>
 							  @endif
                               <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('settings') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
                                  <a href="{{ route('settings') }}" class="ui-nav__link ui-nav__link--parent">
@@ -340,6 +357,36 @@
                                     <span class="ui-nav__label ui-nav__label--parent">Calculator</span>
                                  </a>
                               </li>
+							  @if( intval($user_role) > 3 )
+								  <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('resources.edit') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+									 <a href="{{ route('resources.edit') }}" class="ui-nav__link ui-nav__link--parent">
+										<svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
+										   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#resources"></use>
+										</svg>
+										<span class="ui-nav__label ui-nav__label--parent">Resources</span>
+									 </a>
+									 @if( ( url()->current() == route('resources.edit') ) || ( url()->current() == route('resources') ) )
+										<div class="ui-nav_submenu">
+											<ul>
+												<li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('resources') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+													<a href="{{ route('resources') }}" class="ui-nav__link ui-nav__link--parent">
+														<span class="ui-nav__label ui-nav__label--parent">View page</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									@endif
+								  </li>
+							  @else	
+								  <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('resources') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+									<a href="{{ route('resources') }}" class="ui-nav__link ui-nav__link--parent">
+										<svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#resources"></use>
+										</svg>
+										<span class="ui-nav__label ui-nav__label--parent">Resources</span>
+									</a>
+								  </li>
+							  @endif
                            </ul>
                            <div class="ui-nav__align-bottom-shim"></div>
                            <ul class="ui-nav__group ui-nav__group--parent">
@@ -724,6 +771,18 @@
                   <path d="M25.77 18.314l2.04 4.085H14.4v-3.2h6.4c.884 0 1.6-.72 1.6-1.6v-4.8h5.41l-2.04 4.08c-.227.45-.227.98 0 1.43zM4.305 6.4H19.2V16H6.44L4.306 6.4zM28.99 17.6l2.842-5.686c.248-.496.222-1.085-.07-1.557-.29-.472-.806-.758-1.36-.758h-8V4.8c0-.886-.717-1.6-1.6-1.6H3.597l-.434-1.95C2.97.39 2.115-.148 1.253.036.393.228-.15 1.082.04 1.946l6.4 28.8C6.603 31.49 7.268 32 8 32c.115 0 .23-.014.347-.04.862-.19 1.406-1.045 1.216-1.908L7.153 19.2h4.05V24c0 .882.714 1.6 1.6 1.6h17.6c.553 0 1.068-.29 1.36-.76.292-.473.317-1.062.07-1.558L28.99 17.6z"></path>
                </svg>
             </symbol>
+            <symbol id="resources">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+				  <path d="M1 1h7v7H1V1zm0 11h7v7H1v-7zm11 0h7v7h-7v-7z" fill="currentColor">
+				  </path><path d="M19 11h-7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1zM8 11H1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1zM8 0H1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zM2 18h5v-5H2v5zM2 7h5V2H2v5zm11 11v-5h5v5h-5zM12 6a1 1 0 1 1 0-2h2V2a1 1 0 1 1 2 0v2h2a1 1 0 1 1 0 2h-2v2a1 1 0 1 1-2 0V6h-2z"></path>
+			   </svg>
+            </symbol>
+			<symbol id="comments-minor">
+			   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+				  <title>Comments</title>
+				  <path d="M6 11V9h8v2H6zm0 4v-2h8v2H6zm0-8V5h4v2H6zm9.707-1.707l-3-3C12.52 2.105 12.267 2 12 2H5c-.553 0-1 .448-1 1v14c0 .552.447 1 1 1h10c.553 0 1-.448 1-1V6c0-.265-.105-.52-.293-.707z"></path>
+			   </svg>
+			</symbol>
          </svg>
       </div>
 		@if( $notification != '' ) 

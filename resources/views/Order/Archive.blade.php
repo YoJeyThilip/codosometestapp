@@ -49,9 +49,9 @@
                               <table class="table-hover expanded">
                                  <thead>
                                     <tr>
-                                       <th class="is-sortable @if( $sortby == 'order_id' ) @if( $sortway == 'ASC' ) sorted-desc @else sorted-asc @endif @endif">
+                                       <th class="is-sortable @if( $sortby == 'invoice_no' ) @if( $sortway == 'ASC' ) sorted-desc @else sorted-asc @endif @endif">
 										<span>
-                                          <a href="{{ route('orders.index') }}?sortby=order_id&sortway=@if( $sortway == 'ASC' ){{ 'DESC' }}@else{{ 'ASC' }}@endif()@if( isset($query) )&query={{ $query }}@endif">Invoice</a>
+                                          <a href="{{ route('orders.index') }}?sortby=invoice_no&sortway=@if( $sortway == 'ASC' ){{ 'DESC' }}@else{{ 'ASC' }}@endif()@if( isset($query) )&query={{ $query }}@endif">Invoice</a>
 										</span>
                                        </th>
                                        <th class="is-sortable @if( $sortby == 'due_date' ) @if( $sortway == 'ASC' ) sorted-desc @else sorted-asc @endif @endif">
@@ -116,9 +116,19 @@
                                  <tbody>
 									@if(  $printavo_status == "connected" )
 										@foreach( $orders as $order )
-											<tr class="ui-nested-link-container ">
+											<tr class="ui-nested-link-container @if( $order->splitscreen != 'no' ) splitscreen_order @endif ">
 											   <td class="no-wrap">
-												  <a href="{{ route('orders.index') }}/{{ $order->order_id }}">#{{ $order->order_id }}</a>
+											   
+													<a href="{{ route('orders.index') }}/{{ $order->order_id }}">#{{ $order->invoice_no }}</a>
+													
+													@if(  $order->hasorder == "yes" )
+														<a href="{{ route('orders.index') }}/{{ $order->order_id }}" class="status-badge tooltip tooltip-bottom">
+														   <svg aria-hidden="true" focusable="false" class="next-icon next-icon--color-slate-lightest next-icon--size-16">
+															  <use xlink:href="#comments-minor"></use>
+														   </svg>
+														</a>
+													@endif
+													
 											   </td>
 											   <td class="no-wrap next-table__cell--full-width-when-condensed">
 												  <span title="{{ date( 'j/n/Y', strtotime( $order->due_date ) ) }}">{{ date("j/n/Y", strtotime($order->due_date)) }}</span>

@@ -105,21 +105,12 @@ $( document ).ready(function() {
 	}).change();
 });
 </script>
-<style>
-.col-md-6 {
-    width: 49%;
-    display: inline-block;
-}
-.col-md-6 div {
-    padding: 2px;
-}
-</style>
 		
 <div class="ui-layout ui-layout--full-width">
 	<div class="ui-layout__sections">
 		<div class="ui-layout__section">
 			<div class="ui-layout__item">
-				<div class="Polaris-Card">
+				<div class="Polaris-Card campus_cumission_calculator">
 				  <div class="Polaris-Card__Header">
 					<h2 class="Polaris-Heading">Price Calculator</h2>
 				  </div>
@@ -277,7 +268,7 @@ $( document ).ready(function() {
 							  </div>
 							</div>
 						</div>
-						<div class="Polaris-FormLayout__Item">
+						<div class="Polaris-FormLayout__Item clearfix">
 							<div class="col-md-6">
 								<div class="form-group">
 								Shirt Cost

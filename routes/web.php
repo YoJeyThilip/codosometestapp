@@ -22,8 +22,6 @@ Route::any('/calculator', 'CalculatorController@index')->name('calculator');
 
 Route::resource('/orders', 'OrderController');
 
-Route::any('/all_paid_orders', 'ReportsController@all_paid_orders')->name('all_paid_orders');
-
 /*
 |------------------------------------------------------------------------------------
 | Admin
@@ -37,6 +35,11 @@ Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
 
 	Route::any('/reports', 'ReportsController@index')->name('reports');
 	
+	Route::any('/analytics', 'AnalyticsController@index')->name('analytics');
+
+	Route::any('/all_reports', 'ReportsController@all_reports')->name('all_reports');
+
+	Route::any('/resources/edit', 'ResourcesController@edit')->name('resources.edit');
 	
 });
 
@@ -45,3 +48,7 @@ Route::any('/settings', 'SettingsController@index')->name('settings');
 Route::any('/ajax', 'ajaxController@ajax')->name('ajax');
 
 Route::any('/', 'DashboardController@index')->name('dashboard');
+
+Route::any('/resources', 'ResourcesController@index')->name('resources');
+
+\URL::forceScheme('https');

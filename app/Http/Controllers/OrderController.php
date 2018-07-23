@@ -85,7 +85,7 @@ class OrderController extends Controller
 				$sortby = $_GET['sortby'];
 			}
 			else{
-				$sortby = 'order_id';
+				$sortby = 'invoice_no';
 			}
 			
 			if( isset($_GET['sortway']) ){
@@ -132,10 +132,27 @@ class OrderController extends Controller
 				else{
 
 					$printavo_user_id = UserMetaController::get_user_meta( $user_id, "printavo_user_id" );
+				
+					$related_orders_array = DB::select( "SELECT order_id FROM orders_meta WHERE meta_name='other_user_id' and meta_value=".$printavo_user_id );
+					$related_orders = "";
+					
+					foreach( $related_orders_array as $order ){
+						if( $related_orders != '' ){
+							$related_orders .= ',';
+						}
+						$related_orders .= "'".$order->order_id."'";
+					}
+					
+					if( $related_orders != '' ){
+						$students_condition = "student_id=".$printavo_user_id." OR order_id in (".$related_orders.")";
+					}
+					else{
+						$students_condition = "student_id=".$printavo_user_id ;
+					}
 					
 					if( isset($_GET['query']) ){
 				
-						$orders = DB::select( "SELECT * FROM orders WHERE student_id=".$printavo_user_id." AND 
+						$orders = DB::select( "SELECT * FROM orders WHERE ( ". $students_condition ." ) AND 
 															UPPER(order_id) LIKE UPPER('%".$_GET['query']."%') OR
 															UPPER(due_date) LIKE UPPER('%".$_GET['query']."%') OR
 															UPPER(nic_name) LIKE UPPER('%".$_GET['query']."%') OR
@@ -146,7 +163,7 @@ class OrderController extends Controller
 															UPPER(commision) LIKE UPPER('%".$_GET['query']."%') OR
 															UPPER(payed) LIKE UPPER('%".$_GET['query']."%') ) ORDER BY length(". $sortby .") ". $sortway .",". $sortby ." ". $sortway ." LIMIT 25 OFFSET ".$query_offset );
 						
-						$next_page_exist = DB::select("SELECT * FROM orders WHERE student_id=".$printavo_user_id." AND 
+						$next_page_exist = DB::select("SELECT * FROM orders WHERE ( ". $students_condition ." ) AND 
 															UPPER(order_id) LIKE UPPER('%".$_GET['query']."%') OR
 															UPPER(due_date) LIKE UPPER('%".$_GET['query']."%') OR
 															UPPER(nic_name) LIKE UPPER('%".$_GET['query']."%') OR
@@ -160,9 +177,9 @@ class OrderController extends Controller
 					}
 					else{
 				
-						$orders = DB::select( "SELECT * FROM orders WHERE student_id=".$printavo_user_id." ORDER BY length(". $sortby .") ". $sortway .",". $sortby ." ". $sortway ." LIMIT 25 OFFSET ".$query_offset );
+						$orders = DB::select( "SELECT * FROM orders WHERE ( ". $students_condition ." ) ORDER BY length(". $sortby .") ". $sortway .",". $sortby ." ". $sortway ." LIMIT 25 OFFSET ".$query_offset );
 						
-						$next_page_exist = DB::select("SELECT * FROM orders WHERE student_id=".$printavo_user_id." ORDER BY length(". $sortby .") ". $sortway .",". $sortby ." ". $sortway ." LIMIT 1 OFFSET ".( $query_offset + 25 ) );
+						$next_page_exist = DB::select("SELECT * FROM orders WHERE ( ". $students_condition ." ) ORDER BY length(". $sortby .") ". $sortway .",". $sortby ." ". $sortway ." LIMIT 1 OFFSET ".( $query_offset + 25 ) );
 						
 					}
 					
@@ -206,11 +223,28 @@ class OrderController extends Controller
 				else{
 
 					$printavo_user_id = UserMetaController::get_user_meta( $user_id, "printavo_user_id" );
+				
+					$related_orders_array = DB::select( "SELECT order_id FROM orders_meta WHERE meta_name='other_user_id' and meta_value=".$printavo_user_id );
+					$related_orders = "";
+					
+					foreach( $related_orders_array as $order ){
+						if( $related_orders != '' ){
+							$related_orders .= ',';
+						}
+						$related_orders .= "'".$order->order_id."'";
+					}
+					
+					if( $related_orders != '' ){
+						$students_condition = "student_id=".$printavo_user_id." OR order_id in (".$related_orders.")";
+					}
+					else{
+						$students_condition = "student_id=".$printavo_user_id ;
+					}
 					
 					if( isset($_GET['query']) ){
 				
-						$orders = DB::select( "SELECT * FROM orders WHERE student_id=".$printavo_user_id." AND 
-															UPPER(order_id) LIKE UPPER('%".$_GET['query']."%') OR
+						$orders = DB::select( "SELECT * FROM orders WHERE ( ". $students_condition ." ) AND
+															( UPPER(order_id) LIKE UPPER('%".$_GET['query']."%') OR
 															UPPER(due_date) LIKE UPPER('%".$_GET['query']."%') OR
 															UPPER(nic_name) LIKE UPPER('%".$_GET['query']."%') OR
 															UPPER(customer) LIKE UPPER('%".$_GET['query']."%') OR
@@ -220,8 +254,8 @@ class OrderController extends Controller
 															UPPER(commision) LIKE UPPER('%".$_GET['query']."%') OR
 															UPPER(payed) LIKE UPPER('%".$_GET['query']."%') ) ORDER BY ". $sortby ." ". $sortway ." LIMIT 25 OFFSET ".$query_offset );
 						
-						$next_page_exist = DB::select("SELECT * FROM orders WHERE student_id=".$printavo_user_id." AND 
-															UPPER(order_id) LIKE UPPER('%".$_GET['query']."%') OR
+						$next_page_exist = DB::select("SELECT * FROM orders WHERE ( ". $students_condition ." ) AND 
+															( UPPER(order_id) LIKE UPPER('%".$_GET['query']."%') OR
 															UPPER(due_date) LIKE UPPER('%".$_GET['query']."%') OR
 															UPPER(nic_name) LIKE UPPER('%".$_GET['query']."%') OR
 															UPPER(customer) LIKE UPPER('%".$_GET['query']."%') OR
@@ -233,10 +267,10 @@ class OrderController extends Controller
 						
 					}
 					else{
-				
-						$orders = DB::select( "SELECT * FROM orders WHERE student_id=".$printavo_user_id." ORDER BY ". $sortby ." ". $sortway ." LIMIT 25 OFFSET ".$query_offset );
 						
-						$next_page_exist = DB::select("SELECT * FROM orders WHERE student_id=".$printavo_user_id." ORDER BY ". $sortby ." ". $sortway ." LIMIT 1 OFFSET ".( $query_offset + 25 ) );
+						$orders = DB::select( "SELECT * FROM orders WHERE ( ". $students_condition ." ) ORDER BY ". $sortby ." ". $sortway ." LIMIT 25 OFFSET ".$query_offset );
+						
+						$next_page_exist = DB::select("SELECT * FROM orders WHERE ( ". $students_condition ." ) ORDER BY ". $sortby ." ". $sortway ." LIMIT 1 OFFSET ".( $query_offset + 25 ) );
 						
 					}
 					
@@ -249,6 +283,18 @@ class OrderController extends Controller
 			}
 			else{
 				$next_page = 0 ;
+			}
+			
+			foreach( $orders as $order_key => $order ){
+				$orders[$order_key]->splitscreen = OrdersMetaController::get_order_meta( $order->order_id ,"splitsheet_value",'no');
+				
+				$order_comments = DB::select( "SELECT order_id FROM order_comments WHERE order_id=".$order->order_id );
+				
+				if( empty( $order_comments ) ){
+					$orders[$order_key]->hasorder = 'no';
+				}else{
+					$orders[$order_key]->hasorder = 'yes';
+				}
 			}
 			
 			$OrdersVariables['orders'] = $orders;
@@ -341,6 +387,8 @@ class OrderController extends Controller
 			
 			$users_role = DB::select("SELECT role FROM users WHERE id=$user_id");
 			
+			$comments = DB::select("SELECT * FROM order_comments WHERE order_id=" . $id );
+			
 			$OrdersVariables['users_bonus'] = OrdersMetaController::get_order_meta( $id ,"users_bonus",'0');
 			$OrdersVariables['users_bonus_and_commision'] = OrdersMetaController::get_order_meta( $id ,"users_bonus_and_commision",'0');
 			$OrdersVariables['splitsheet_value'] = OrdersMetaController::get_order_meta( $id ,"splitsheet_value",'no');
@@ -352,6 +400,8 @@ class OrderController extends Controller
 			$OrdersVariables['total_paid_value'] = OrdersMetaController::get_order_meta( $id ,"total_paid_value",'0');
 			$OrdersVariables['student_paid'] = OrdersMetaController::get_order_meta( $id ,"student_paid",'1');
 			$OrdersVariables['admin_changed'] = OrdersMetaController::get_order_meta( $id ,'admin_changed' );
+			$OrdersVariables['paid_date'] = OrdersMetaController::get_order_meta( $id ,'paid_date' );
+			$OrdersVariables['comments'] = $comments;
 		}
 		
 		return view( 'Order.Single' , $OrdersVariables );

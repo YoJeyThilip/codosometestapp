@@ -46,7 +46,7 @@
                   <use xlink:href="#next-orders"></use>
                </svg>
             </span>
-            <h1 class="ui-title-bar__title">Order #{{ $order->order_id }}</h1>
+            <h1 class="ui-title-bar__title">Order #{{ $order->invoice_no }}</h1>
             <span class="ui-title-bar__metadata">
 				{{ date("F j, Y \a\\t h:ia", strtotime( $order->created_at )) }}
             </span>
@@ -272,13 +272,40 @@
                      </div>
                      <div class="ui-stack-item">
 						 <p id="student_paid_or_not" class="type--subdued">
-							@if( $student_paid == '1' ) Yes @else No @endif 
+							{{ $order->payed }}
 						 </p>
                      </div>
                   </div>
                </div>
             </section>
          </div>
+		<div class="ui-layout__item">
+			<div class="comment_section">
+			
+				<div class="comment_title">
+					<h1 class="ui-title-bar__title">Comments</h1>
+				</div>
+				
+				<div class="comment_body">
+					@foreach( $comments as $comment )
+					
+						<div class="cmt_items">
+							<span>{{ $comment->user_name }}:</span>{{ $comment->comment }}
+						</div>
+						
+					@endforeach
+				</div>
+			
+				<form method="post" id="new_comment_order">
+					@csrf
+					<textarea name="comment" id="new_comment_order_ta"></textarea>
+					<input type="hidden" name="action" value="new_comment">
+					<input type="hidden" name="order_id" value="{{ $order->order_id }}">
+					<input type="hidden" name="user_name" value="{{ $avatar_name }}">
+					<input type="submit" value="Post">
+				</form>
+			</div>
+		</div>
       </div>
       <div class="ui-layout__section ui-layout__section--secondary" id="order-sidebar" refresh="order-sidebar">
          <div class="ui-layout__item">
@@ -290,7 +317,7 @@
                            <h3 class="ui-subheading">Commision</h3>
 						   <span id="commision_data" class="home-takeover-data__number ui-title-bar__title">{{ $order->commision }}%</span>
                         </div>
-						@if( $admin_changed != 'changed' )
+						@if( $admin_changed != 'changed' ||  $user_role > 3 )
 							<div class="ui-stack-item">
 								<button id="edit-order" class="ui-button btn--link hide-when-printing" type="button" name="button">Edit</button>
 							</div>
@@ -320,24 +347,28 @@
                   <div id="commision_container" class="ui-type-container">
                      <div class="ui-stack ui-stack--wrap ui-stack--alignment-baseline">
                         <div class="ui-stack-item ui-stack-item--fill">
-                           <h3 class="ui-subheading">Total Paid</h3>
-						   <span id="user_total_paid" class="home-takeover-data__number ui-title-bar__title">${{ $total_paid_value }}</span><span> ON: NOV 1,2017</span>
+							<h3 class="ui-subheading">Total Paid</h3>
+							<span id="user_total_paid" class="home-takeover-data__number ui-title-bar__title">${{ $total_paid_value }}</span>
+							@if( $paid_date != '' )
+								<span> ON: {{ date( 'M j,Y', strtotime( str_replace('/', '-', $paid_date) ) ) }}</span>
+							@endif
                         </div>
                      </div>
-						 <div id="user_one_commision_container"  class="ui-stack ui-stack--wrap ui-stack--alignment-baseline">
-							<div class="ui-stack-item ui-stack-item--fill">
-							   <h3 id="users_bonus_and_commision" class="ui-subheading">$@if( ( $other_user_bonus != '' && $splitsheet_value != 'no' ) ){{ number_format( floatval($users_bonus_and_commision),2 ) }} @else {{ number_format( $total_commision_value + $users_bonus,2 ) }} @endif To {{ $order->student_name }}</h3>
-							   <span id="users_bonus">$@if( ( $other_user_bonus != '' && $splitsheet_value != 'no'  ) ){{ number_format( $total_commision_value/2 , 2 ) }}@else{{ number_format( $total_commision_value , 2 ) }} @endif commision + ${{ $users_bonus }} Bonus</span>
-							</div>
-						 </div>
-						@if( $other_user_bonus != '' && $splitsheet_value != 'no' )
-						 <div id="user_two_commision_container" class="ui-stack ui-stack--wrap ui-stack--alignment-baseline">
-							<div class="ui-stack-item ui-stack-item--fill">
-							   <h3 id="other_user_bonus_and_commision" class="ui-subheading">${{ number_format( floatval($other_user_bonus_and_commision),2 )}} to {{ $other_user_name }}</h3>
-							   <span id="other_user_bonus_amount">${{ number_format( ($total_commision_value/2),2 ) }} commision + ${{ $other_user_bonus }} Bonus</span>
-							</div>
-						 </div>
-						@endif
+					 
+					 <div id="user_one_commision_container"  class="ui-stack ui-stack--wrap ui-stack--alignment-baseline">
+						<div class="ui-stack-item ui-stack-item--fill">
+						   <h3 id="users_bonus_and_commision" class="ui-subheading">$@if( ( $other_user_bonus != '' && $splitsheet_value != 'no' ) ){{ number_format( floatval($users_bonus_and_commision),2 ) }} @else {{ number_format( $total_commision_value + $users_bonus,2 ) }} @endif To {{ $order->student_name }}</h3>
+						   <span id="users_bonus">$@if( ( $other_user_bonus != '' && $splitsheet_value != 'no'  ) ){{ number_format( $total_commision_value/2 , 2 ) }}@else{{ number_format( $total_commision_value , 2 ) }} @endif commision + ${{ $users_bonus }} Bonus</span>
+						</div>
+					 </div>
+					@if( $other_user_bonus != '' && $splitsheet_value != 'no' )
+					 <div id="user_two_commision_container" class="ui-stack ui-stack--wrap ui-stack--alignment-baseline">
+						<div class="ui-stack-item ui-stack-item--fill">
+						   <h3 id="other_user_bonus_and_commision" class="ui-subheading">${{ number_format( floatval($other_user_bonus_and_commision),2 )}} to {{ $other_user_name }}</h3>
+						   <span id="other_user_bonus_amount">${{ number_format( ($total_commision_value/2),2 ) }} commision + ${{ $other_user_bonus }} Bonus</span>
+						</div>
+					 </div>
+					@endif
                   </div>
                </div>
             </section>
@@ -346,17 +377,19 @@
    </div>
 </div>
 
-<div id="dialog" title="Create new user">
+<div id="dialog" title="Edit Comission">
 	<form id="order_edit_form" method="post">
 	  @csrf
 	   <div class="body address-editable">
 		  <div class="ui-form__section">
 			<div class="next-input-wrapper">
 				<label class="next-label" for="splitsheet">Splitsheet</label>
-				<select name="splitsheet_value" id="splitsheet" class="next-input">
-					<option  @if(  $splitsheet_value == 'yes' ) selected @endif value="yes" >Yes</option>
-					<option  @if(  $splitsheet_value == 'no' ) selected @endif value="no"  >No</option>
-				</select>
+				<div class="splitsheet_value_cover">
+					<select name="splitsheet_value" id="splitsheet" class="next-input">
+						<option  @if(  $splitsheet_value == 'yes' ) selected @endif value="yes" >Yes</option>
+						<option  @if(  $splitsheet_value == 'no' ) selected @endif value="no"  >No</option>
+					</select>
+				</div>
 			</div>
 			@if ( $user_role > 3 )
 				<div id="users_bonus" class="next-input-wrapper">
@@ -391,7 +424,7 @@
 				<div class="next-input-wrapper">
 				   <label class="next-label next-label--switch" for="student_paid_or_not">Student Paid</label>
 				   <input name="student_paid_or_not" type="hidden" value="0">
-				   <input class="next-checkbox" type="checkbox" value="1"  @if( $student_paid == '1' ) checked="checked" @endif name="student_paid_or_not" id="student_paid_or_not">
+				   <input class="next-checkbox" type="checkbox" value="1"  @if( $order->payed == '1' ) checked="checked" @endif name="student_paid_or_not" id="student_paid_or_not">
 				   <span class="next-checkbox--styled">
 					  <svg class="next-icon next-icon--size-10 checkmark" aria-hidden="true" focusable="false">
 						 <use xlink:href="#next-checkmark-thick"></use>
@@ -410,6 +443,8 @@
 
 @section('Script-content')
 	<script>
+			
+		$('#other_user_name').selectize();
 		
 		function save(){
 			
@@ -463,7 +498,7 @@
 								'value' : total_paid_value
 							},
 							{
-								'name' : 'student_paid',
+								'name' : 'payed',
 								'value' : student_paid
 							},
 							{
@@ -713,6 +748,34 @@
 				$(' #user_two ').css('display','block');
 			} 
 		} );
-
+		
+		$('#new_comment_order').submit( function(event) {
+			event.preventDefault();
+			$.ajax({
+					
+					type: 'POST',
+					
+					url: "{{ route('ajax') }}",
+					
+					data: $(this).serializeArray(),
+					
+					success: function (response) {
+						
+						console.log(response);
+						
+						$('.comment_body').append(
+								'<div class="cmt_items">'+
+									'<span>{{ $avatar_name }}:</span>'+ $('#new_comment_order_ta').val() +
+								'</div>'
+						);
+						
+						$('#new_comment_order_ta').val('');
+						
+						
+					}
+			});
+			
+		});
+		
 	</script>
 @endsection

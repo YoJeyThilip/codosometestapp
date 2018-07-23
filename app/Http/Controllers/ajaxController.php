@@ -42,14 +42,17 @@ class ajaxController extends Controller
 			$order_id = $_POST['order_id'];
 			$response_json = json_encode($_POST);
 			
-			DB::update( "UPDATE orders SET commision = ". $_POST['splitsheet_commision'] ." WHERE order_id = " . $order_id );
+			if( $_POST['payed'] == '' ){
+				$_POST['payed'] = "No";
+			}
+			
+			DB::update( "UPDATE orders SET commision = ". $_POST['splitsheet_commision'] .", payed = '". $_POST['payed'] ."' WHERE order_id = " . $order_id );
 			
 			OrdersMetaController::update_order_meta($order_id ,'users_bonus' , $_POST['users_bonus'] );
 			OrdersMetaController::update_order_meta($order_id ,'users_bonus_and_commision' , $_POST['users_bonus_and_commision'] );
 			OrdersMetaController::update_order_meta($order_id ,'total_commision_value' , $_POST['total_commision_value'] );
 			OrdersMetaController::update_order_meta($order_id ,'splitsheet_value' , $_POST['splitsheet_value'] );
 			OrdersMetaController::update_order_meta($order_id ,'total_paid_value' , $_POST['total_paid_value'] );
-			OrdersMetaController::update_order_meta($order_id ,'student_paid' , $_POST['student_paid'] );
 			OrdersMetaController::update_order_meta($order_id ,'admin_changed' , 'changed' );
 			
 			if( $_POST['splitsheet_value'] == 'yes' ) {
@@ -65,7 +68,7 @@ class ajaxController extends Controller
 			$order_id = $_POST['order_id'];
 			$order = DB::select("SELECT student_id FROM orders WHERE order_id=".$order_id);
 			$admin_changed = OrdersMetaController::get_order_meta( $order_id ,'admin_changed' );
-			if( ( $order[0]->student_id == UserMetaController::get_user_meta( $user_id ,'printavo_user_id' ) ) && $admin_changed == 'changed' ){
+			if( ( $order[0]->student_id == UserMetaController::get_user_meta( $user_id ,'printavo_user_id' ) ) && $admin_changed != 'changed' ){
 					
 				$users_bonus = OrdersMetaController::get_order_meta( $order_id ,"users_bonus",'0');
 				$total_commision_value = OrdersMetaController::get_order_meta( $order_id ,"total_commision_value",'0');
@@ -121,7 +124,7 @@ class ajaxController extends Controller
 		if( $_POST['action'] == 'reports' ) {
 			
 
-			if( isset($_GET['sortby']) ){
+			if( isset($_GET['sortby']) && ( $_GET['sortby'] == 'student_name' && $_GET['sortby'] == 'campus' ) ){
 				$sortby = $_GET['sortby'];
 			}
 			else{
@@ -135,23 +138,49 @@ class ajaxController extends Controller
 				$sortway = 'DESC';
 			}
 			
-			if( isset($_GET['query']) ){
-				
-				$students = DB::select(	"SELECT * FROM students WHERE 
-													UPPER(student_name) LIKE UPPER('%".$_GET['query']."%') OR
-													UPPER(campus) LIKE UPPER('%".$_GET['query']."%') OR
-													UPPER(connected) LIKE UPPER('%".$_GET['query']."%') ORDER BY ". $sortby ." ". $sortway );
-				
+			if( isset($_POST['page']) ){
+				$query_offset = 10 * ($_POST['page'] - 1);
 			}
 			else{
-				
-				$students = DB::select("SELECT * FROM students ORDER BY ". $sortby ." ". $sortway );
+				$query_offset = 10 ;
+			}
+			
+			if( isset($_GET['sortby']) && ( $_GET['sortby'] != 'student_name' && $_GET['sortby'] != 'campus' ) ){
+			
+				if( isset($_GET['query']) ){
+					
+					$students = DB::select(	"SELECT * FROM students WHERE 
+														UPPER(student_name) LIKE UPPER('%".$_GET['query']."%') OR
+														UPPER(campus) LIKE UPPER('%".$_GET['query']."%') ORDER BY ". $sortby ." ". $sortway );
+					
+				}
+				else{
+					
+					$students = DB::select("SELECT * FROM students ORDER BY ". $sortby ." ". $sortway );
+					
+				}
+			
+			}
+			else{
+
+				if( isset($_GET['query']) ){
+					
+					$students = DB::select(	"SELECT * FROM students WHERE 
+														UPPER(student_name) LIKE UPPER('%".$_GET['query']."%') OR
+														UPPER(campus) LIKE UPPER('%".$_GET['query']."%') ORDER BY ". $sortby ." ". $sortway ." LIMIT 10 OFFSET ".$query_offset );
+					
+				}
+				else{
+					
+					$students = DB::select("SELECT * FROM students ORDER BY ". $sortby ." ". $sortway ." LIMIT 10 OFFSET ".$query_offset );
+					
+				}
 				
 			}
 			
 			foreach( $students  as $key => $student ) {
 				
-				$get_order_details_query = DB::select("SELECT * FROM orders WHERE student_id = ".$student->student_id." AND payment_status = 'Unpaid' LIMIT 5 " );
+				$get_order_details_query = DB::select("SELECT * FROM orders WHERE student_id = ".$student->student_id." AND payed = 'No'" );
 				
 				$students[$key]->order_count = sizeof($get_order_details_query);
 				
@@ -171,19 +200,19 @@ class ajaxController extends Controller
 					
 					$get_order_details_query[$sub_key]->splitsheet_value = OrdersMetaController::get_order_meta( $order->order_id ,"splitsheet_value",'0');
 					
-					$students[$key]->total_payment += $order->order_total ;
+					$get_order_details_query[$sub_key]->commision_in_price = number_format( ($order->commision/100) * $order->order_total,2 );
 					
-					$students[$key]->total_sales += $order->order_total + number_format( floatval( $get_order_details_query[$sub_key]->users_bonus_and_commision ),2 );
+					$students[$key]->total_payment += floatval( $order->order_total );
+					
+					$students[$key]->total_sales += floatval( $order->order_total ) + number_format( floatval( $get_order_details_query[$sub_key]->users_bonus_and_commision ),2 );
 					
 					if( $get_order_details_query[$sub_key]->splitsheet_value == 'yes'  ){
-						
-						$students[$key]->total_sales += number_format( floatval( $get_order_details_query[$sub_key]->other_user_bonus_and_commision ),2 );
-						
-						$get_order_details_query[$sub_key]->user_bonus += OrdersMetaController::get_order_meta( $order->order_id ,"other_user_bonus",'0');
+					
+						$get_order_details_query[$sub_key]->commision_in_price = number_format( ( ($order->commision/100) * $order->order_total )/ 2 ,2 );
 						
 					}
 					
-					if( $students[$key]->payment =! 'Unpaid' &&  $order->payment_status == 'Paid' ){
+					if( $students[$key]->payment =! 'Unpaid' &&   $order->payed == 'Yes' ){
 						
 						$students[$key]->payment = 'Paid';
 						
@@ -191,9 +220,29 @@ class ajaxController extends Controller
 					else{
 						$students[$key]->payment = 'Unpaid';
 					}
+					
+					$get_order_details_query[$sub_key]->due_date = date( 'j/n/Y', strtotime( $order->due_date ) );
 				}
 				
 				$students[$key]->orders = $get_order_details_query;  
+			}
+					
+			if( isset($_GET['sortby']) && ( $_GET['sortby'] != 'student_name' && $_GET['sortby'] != 'campus' ) ){
+				$sortby = $_GET['sortby'];
+				$students_sort = [];
+				
+				foreach ($students as $key => $row) {
+					$students_sort[$key]  = $row->{$sortby};
+				}
+				
+				if( $sortway == 'DESC' ){
+					array_multisort($students_sort, SORT_DESC, SORT_REGULAR, $students);
+				}
+				else{
+					array_multisort($students_sort, SORT_ASC, SORT_REGULAR, $students);
+				}
+					
+				$students = array_slice($students, $query_offset, ( $query_offset + 10) );
 			}
 			
 			$ReportsVariables['students'] = $students;
@@ -203,8 +252,20 @@ class ajaxController extends Controller
 			if( isset($_GET['query']) ){
 				$ReportsVariables['query'] = $_GET['query'];
 			}
-			
 			$response_json = json_encode($students);
+		}
+		
+		if( $_POST['action'] == 'new_comment' ) {
+			
+			DB::insert("insert into order_comments (order_id,user_name,comment) values (:order_id,:user_name,:comment)",
+				[
+					'order_id' 		=> $_POST['order_id'] ,
+					'user_name' 	=> $_POST['user_name'] ,
+					'comment' 		=> $_POST['comment'] 
+				]
+			);
+			
+			$response_json = '';
 		}
 		
 		return $response_json;

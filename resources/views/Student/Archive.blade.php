@@ -74,7 +74,6 @@
 										@foreach( $students as $student )
 											<tr class="ui-nested-link-container ">
 											   <td class="no-wrap">
-												  <a href="{{ route('students.index') }}/{{ $student->student_id }}">
 													<span class="printavo_settings_user-avatar user-avatar user-avatar--style-4" style="background-color: #{{ $student->avatar_background_color }}">
 														<span class="user-avatar__initials">
 															{{ $student->avatar_initials }}
@@ -83,7 +82,6 @@
 															<img alt="" class="gravatar gravatar--size-thumb" src="{{ $student->avatar_url_small }}">
 														@endif
 													</span>
-												  </a>
 											   </td>
 											   <td class="no-wrap next-table__cell--full-width-when-condensed">
 												  <span>{{ $student->student_name }}</span>

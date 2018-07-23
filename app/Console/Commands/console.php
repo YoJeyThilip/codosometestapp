@@ -100,6 +100,7 @@ class console extends Command
 				
 				foreach( $orders as $order ) {
 					$order_id = $order['id'];
+					$invoice_no = $order['visual_id'];
 					$due_date = $order['due_date'];
 					$order_nickname = $order['order_nickname'];
 					$customer_name = $order['customer']['full_name'];
@@ -146,23 +147,46 @@ class console extends Command
 						break 2; 
 					}
 					else{
-						DB::insert("insert into orders (order_id,due_date,nic_name,customer,order_status,order_status_color,payment_status,student_id,student_name,order_total,created_at,total_quantity,commision) values (:order_id,:due_date,:nic_name,:customer,:order_status,:order_status_color,:payment_status,:student_id,:student_name,:order_total,:created_at,:total_quantity,:commision)",
-							[
-								'order_id' 			=> $order_id ,
-								'due_date' 			=> $due_date ,
-								'nic_name' 			=> $order_nickname,
-								'customer' 			=> $customer_name,
-								'order_status' 		=> $orderstatus,
-								'order_status_color'=> $order_status_color,
-								'payment_status'	=> $payment_status,
-								'student_id'		=> $student_id,
-								'student_name'		=> $student_name,
-								'order_total'		=> $order_total,
-								'created_at'		=> $created_at,
-								'total_quantity'	=> $total_quantity,
-								'commision'			=> $commision
-							]
-						);
+						if( strtotime($created_at) > strtotime('2018-06-01T02:02:38.156Z') ){
+							DB::insert("insert into orders (order_id,invoice_no,due_date,nic_name,customer,order_status,order_status_color,payment_status,student_id,student_name,order_total,created_at,total_quantity,commision) values (:order_id,:invoice_no,:due_date,:nic_name,:customer,:order_status,:order_status_color,:payment_status,:student_id,:student_name,:order_total,:created_at,:total_quantity,:commision)",
+								[
+									'order_id' 			=> $order_id ,
+									'invoice_no' 		=> $invoice_no ,
+									'due_date' 			=> $due_date ,
+									'nic_name' 			=> $order_nickname,
+									'customer' 			=> $customer_name,
+									'order_status' 		=> $orderstatus,
+									'order_status_color'=> $order_status_color,
+									'payment_status'	=> $payment_status,
+									'student_id'		=> $student_id,
+									'student_name'		=> $student_name,
+									'order_total'		=> $order_total,
+									'created_at'		=> $created_at,
+									'total_quantity'	=> $total_quantity,
+									'commision'			=> $commision
+								]
+							);
+						}else{
+							DB::insert("insert into orders (order_id,invoice_no,due_date,nic_name,customer,order_status,order_status_color,payment_status,student_id,student_name,order_total,created_at,total_quantity,commision,payed) values (:order_id,:invoice_no,:due_date,:nic_name,:customer,:order_status,:order_status_color,:payment_status,:student_id,:student_name,:order_total,:created_at,:total_quantity,:commision,:payed)",
+								[
+									'order_id' 			=> $order_id ,
+									'invoice_no' 		=> $invoice_no ,
+									'due_date' 			=> $due_date ,
+									'nic_name' 			=> $order_nickname,
+									'customer' 			=> $customer_name,
+									'order_status' 		=> $orderstatus,
+									'order_status_color'=> $order_status_color,
+									'payment_status'	=> $payment_status,
+									'student_id'		=> $student_id,
+									'student_name'		=> $student_name,
+									'order_total'		=> $order_total,
+									'created_at'		=> $created_at,
+									'total_quantity'	=> $total_quantity,
+									'commision'			=> $commision,
+									'payed'			=> 'Yes'
+								]
+							);
+						}
 					}
 				}
 				

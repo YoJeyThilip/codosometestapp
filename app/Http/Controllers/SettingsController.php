@@ -31,10 +31,14 @@ class SettingsController extends Controller
 	public function index(){
 		
 		$user_id = Auth::id();
+				
+		$users_role = DB::select( "SELECT role FROM users WHERE id=" . $user_id )[0]->role;
+		
+		$printavo_user_id = UserMetaController::get_user_meta( $user_id, "printavo_user_id" );
 		
 		$notification = "";
 			
-		if(isset($_POST['setting-form']) &&  $_POST['setting-form'] == 'Connect' ){
+		if(isset($_POST['printavo-connect-form']) &&  $_POST['printavo-connect-form'] == 'Connect' ){
 			
 			UserMetaController::update_user_meta( $user_id, "printavo-email" , $_POST['email'] );
 			UserMetaController::update_user_meta( $user_id, "printavo-password" , $_POST['password'] );
@@ -82,16 +86,20 @@ class SettingsController extends Controller
 				$notification = "Incorrect email or api token";
 			}
 			
-		}
-			
-		if(isset($_POST['setting-form']) &&  $_POST['setting-form'] == 'Disconnect' ){
+		}elseif(isset($_POST['printavo-connect-form']) &&  $_POST['printavo-connect-form'] == 'Disconnect' ){
 							
-			$printavo_user_id = UserMetaController::update_user_meta( $user_id, "printavo_user_id" );
 			DB::update( "UPDATE students SET connected = 'Disconnect' WHERE student_id = " . $printavo_user_id  );
-			UserMetaController::update_user_meta( $user_id, "printavo-email" , $_POST['email'] );
-			UserMetaController::update_user_meta( $user_id, "printavo-password" ,  $_POST['password'] );
 			UserMetaController::update_user_meta( $user_id, "printavo-status" , 'Disconnect' );
 			
+		}elseif(isset($_POST['setting-form']) &&  $_POST['setting-form'] == 'save' ){
+			
+			if( $users_role > 3 ){
+				if( ! isset( $_POST['campus_list'] ) ){
+					$_POST['campus_list'] = [];
+				}
+				GeneralSettingsController::update_option( 'campus_list', json_encode($_POST['campus_list']) );
+			}
+			DB::update( "UPDATE students SET campus = '". $_POST['campus'] ."' WHERE student_id = " . $printavo_user_id );
 		}
 		 
 		$avatar_initials = UserMetaController::get_user_meta( $user_id, "printavo-avatar_initials" );
@@ -99,8 +107,6 @@ class SettingsController extends Controller
 		$avatar_url_small = UserMetaController::get_user_meta( $user_id, "printavo-avatar_url_small" );
 		
 		$avatar_name = UserMetaController::get_user_meta( $user_id, "printavo-name" , Auth::user()->name );
-				
-		$users_role = DB::select( "SELECT role FROM users WHERE id=" . $user_id );
 		
 		if( $avatar_initials == ""){
 			$acronym = "";
@@ -121,8 +127,11 @@ class SettingsController extends Controller
 			'avatar_url_small' => $avatar_url_small,
 			'avatar_initials' => $avatar_initials ,
 			'notification' => $notification,
-			'user_role'	=> (int)($users_role[0]->role)
+			'user_role'	=> (int)($users_role)
 		);
+		
+		$SettingsVariables['campus_list'] = json_decode(GeneralSettingsController::get_option( 'campus_list', '[]' ));
+		$SettingsVariables['campus'] = DB::select( "SELECT campus FROM students WHERE student_id=" . $printavo_user_id )[0]->campus;
 		
 		return view( 'settings' , $SettingsVariables );
 	}

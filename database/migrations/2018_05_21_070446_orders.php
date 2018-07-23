@@ -16,6 +16,7 @@ class Orders extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('order_id');
+            $table->integer('invoice_no');
             $table->string('due_date');
             $table->string('nic_name')->nullable();
             $table->string('customer');
@@ -29,7 +30,7 @@ class Orders extends Migration
             $table->string('total_quantity');
             $table->string('campus')->nullable();
             $table->string('commision')->default( 0 );
-            $table->string('payed')->default( 'Yes' );
+            $table->string('payed')->default( 'No' );
         }); 
     }
 

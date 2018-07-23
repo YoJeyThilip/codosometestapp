@@ -12,29 +12,33 @@
                         Hi, {{ $avatar_name }}
                      </p>
                      <p class="fresh-home-greeting__body">
-						Here’s what’s happening with your business&nbsp;today.
+						Here’s what’s happening with your business&nbsp;this&nbsp;month.
                      </p>
                   </div>
                </div>
             </div>
             <section class="home-takeover-stats">
 			   <div class="ui-card__section takeover_meta_table" >
-					<div class="home-takeover-data__wrap">
-					   <figcaption class="home-takeover-data__label">
-						  Orders
-					   </figcaption>
-					   <figure class="home-takeover-data__figure skeleton-today__heading skeleton-today__heading--hidden">
-						  <span class="home-takeover-data__number ui-title-bar__title" data-bind="takeover.humanized.totalSales">{{ $user_orders_num }}</span>
-					   </figure>
-					</div>
-					<div class="home-takeover-data__wrap">
-					   <figcaption class="home-takeover-data__label">
-							order amount
-					   </figcaption>
-					   <figure class="home-takeover-data__figure skeleton-today__heading skeleton-today__heading--hidden">
-						  <span class="home-takeover-data__number ui-title-bar__title" data-bind="takeover.humanized.totalSales">${{ number_format( $user_order_amount ,2 ) }}</span>
-					   </figure>
-					</div>
+					@if( isset($user_orders_num) )
+						<div class="home-takeover-data__wrap">
+						   <figcaption class="home-takeover-data__label">
+								Orders
+						   </figcaption>
+						   <figure class="home-takeover-data__figure skeleton-today__heading skeleton-today__heading--hidden">
+							  <span class="home-takeover-data__number ui-title-bar__title" data-bind="takeover.humanized.totalSales">{{ $user_orders_num }}</span>
+						   </figure>
+						</div>
+					@endif
+					@if( isset($user_order_amount) )
+						<div class="home-takeover-data__wrap">
+						   <figcaption class="home-takeover-data__label">
+								order amount
+						   </figcaption>
+						   <figure class="home-takeover-data__figure skeleton-today__heading skeleton-today__heading--hidden">
+							  <span class="home-takeover-data__number ui-title-bar__title" data-bind="takeover.humanized.totalSales">${{ number_format( $user_order_amount ,2 ) }}</span>
+						   </figure>
+						</div>
+					@endif
 			   </div>
             </section>
          </div>
@@ -83,9 +87,9 @@
                      </div>
                      <div class="home-card-content__wrapper">
                         <div>
-                           <p class="home-card-content__message">Check out te reports.</p>
+                           <p class="home-card-content__message">Check out resources.</p>
                            <div class="home-card-content__button-wrapper">
-                              <a class="btn " role="button" href="{{ route('orders.index') }}" data-polaris-unstyled>Learn more</a>
+                              <a class="btn " role="button" href="{{ route('resources') }}" data-polaris-unstyled>Learn more</a>
                            </div>
                         </div>
                         
@@ -120,6 +124,7 @@
          </div>
       </div>
    </div>
+   <?php /*
    <div class="page__sidebar">
       <div class="page__sidebar-background"></div>
       <div class="page__sidebar-content">
@@ -821,5 +826,6 @@
          </section>
       </div>
    </div>
+   */ ?>
 </div>
 @endsection

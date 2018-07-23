@@ -21,14 +21,14 @@
                   <div>
                      <div class="next-tab__container ">
                         <ul class="next-tab__list" role="tablist" data-has-next-tab-controller="true">
-                           <li role="presentation"><a class="next-tab next-tab--is-active" tabindex="0" aria-controls="NextTabPanel-1-all" aria-selected="true" aria-label="All" href="{{ route('students.index') }}">All students</a></li>
+                           <li role="presentation"><a class="next-tab next-tab--is-active" tabindex="0" aria-controls="NextTabPanel-1-all" aria-selected="true" aria-label="All" href="{{ route('reports') }}">All reports</a></li>
                         </ul>
                      </div>
                      <div class="next-card__section next-card__section--no-bottom-spacing">
                         <div class="obj-filter hide-when-printing table-filter-container">
                            <div class="next-input-wrapper">
 								<label class="next-label"></label>
-								<form  id="query-search-form" action="{{ route('students.index') }}" accept-charset="UTF-8" method="get" >
+								<form  id="query-search-form" action="{{ route('reports') }}" accept-charset="UTF-8" method="get" >
 									<div class="next-field__connected-wrapper">
 									 <div class="next-field--connected--no-flex">
 										<div class="ui-popover__container">
@@ -44,7 +44,7 @@
 												 <use xlink:href="#next-search-reverse"></use>
 											  </svg>
 										   </span>
-										   <input type="text" name="query" id="query" placeholder="Search Students" bind="query" class="next-input next-input--invisible" value="@if( isset($query) ){{ $query }}@endif">
+										   <input type="text" name="query" id="query" placeholder="Search reports" bind="query" class="next-input next-input--invisible" value="@if( isset($query) ){{ $query }}@endif">
 										</div>
 									 </div>
 									</div>
@@ -61,35 +61,33 @@
                                  <thead>
                                     <tr>
                                        <th>
+										<span>
+											<input id="select_all_student_orders" type="checkbox">
+										</span>
                                        </th>
                                        <th class="is-sortable @if( $sortby == 'student_name' ) @if( $sortway == 'ASC' ) sorted-desc @else sorted-asc @endif @endif">
 										<span>
-                                          <a href="{{ route('students.index') }}?sortby=student_name&sortway=@if( $sortway == 'ASC' ){{ 'DESC' }}@else{{ 'ASC' }}@endif()@if( isset($query) )&query={{ $query }}@endif"> Manager Name </a>
+                                          <a href="{{ route('reports') }}?sortby=student_name&sortway=@if( $sortway == 'ASC' ){{ 'DESC' }}@else{{ 'ASC' }}@endif()@if( isset($query) )&query={{ $query }}@endif"> Manager Name </a>
 										<span>
                                        </th>
                                        <th class="is-sortable @if( $sortby == 'campus' ) @if( $sortway == 'ASC' ) sorted-desc @else sorted-asc @endif @endif">
 										<span>
-                                          <a href="{{ route('students.index') }}?sortby=campus&sortway=@if( $sortway == 'ASC' ){{ 'DESC' }}@else{{ 'ASC' }}@endif()@if( isset($query) )&query={{ $query }}@endif"> Campus Name </a>
+                                          <a href="{{ route('reports') }}?sortby=campus&sortway=@if( $sortway == 'ASC' ){{ 'DESC' }}@else{{ 'ASC' }}@endif()@if( isset($query) )&query={{ $query }}@endif"> Campus Name </a>
 										<span>
                                        </th>
                                        <th class="is-sortable @if( $sortby == 'total_orders' ) @if( $sortway == 'ASC' ) sorted-desc @else sorted-asc @endif @endif">
 										<span>
-                                          <a href="{{ route('students.index') }}?sortby=total_orders&sortway=@if( $sortway == 'ASC' ){{ 'DESC' }}@else{{ 'ASC' }}@endif()@if( isset($query) )&query={{ $query }}@endif"> Total Orders </a>
-										<span>
-                                       </th>
-									   <th class="is-sortable @if( $sortby == 'total_sales' ) @if( $sortway == 'ASC' ) sorted-desc @else sorted-asc @endif @endif">
-										<span>
-                                          <a href="{{ route('students.index') }}?sortby=total_sales&sortway=@if( $sortway == 'ASC' ){{ 'DESC' }}@else{{ 'ASC' }}@endif()@if( isset($query) )&query={{ $query }}@endif"> Total Sales </a>
+                                          <a href="{{ route('reports') }}?sortby=total_orders&sortway=@if( $sortway == 'ASC' ){{ 'DESC' }}@else{{ 'ASC' }}@endif()@if( isset($query) )&query={{ $query }}@endif"> Total Orders </a>
 										<span>
                                        </th>
 									   <th class="is-sortable @if( $sortby == 'total_payment' ) @if( $sortway == 'ASC' ) sorted-desc @else sorted-asc @endif @endif">
 										<span>
-                                          <a href="{{ route('students.index') }}?sortby=total_payment&sortway=@if( $sortway == 'ASC' ){{ 'DESC' }}@else{{ 'ASC' }}@endif()@if( isset($query) )&query={{ $query }}@endif"> Total Payment </a>
+                                          <a href="{{ route('reports') }}?sortby=total_payment&sortway=@if( $sortway == 'ASC' ){{ 'DESC' }}@else{{ 'ASC' }}@endif()@if( isset($query) )&query={{ $query }}@endif"> Total to be paid </a>
 										<span>
                                        </th>
 									   <th class="is-sortable @if( $sortby == 'payment' ) @if( $sortway == 'ASC' ) sorted-desc @else sorted-asc @endif @endif">
 										<span>
-                                          <a href="{{ route('students.index') }}?sortby=payment&sortway=@if( $sortway == 'ASC' ){{ 'DESC' }}@else{{ 'ASC' }}@endif()@if( isset($query) )&query={{ $query }}@endif"> Payment </a>
+                                          <a href="{{ route('reports') }}?sortby=payment&sortway=@if( $sortway == 'ASC' ){{ 'DESC' }}@else{{ 'ASC' }}@endif()@if( isset($query) )&query={{ $query }}@endif"> Payment </a>
 										<span>
                                        </th>
                                     </tr>
@@ -97,24 +95,23 @@
                                  <tbody context="bulkOperations">
 									@if(  $printavo_status == "connected" )
 										@foreach( $students as $student )
-								
 											<tr class="ui-nested-link-container ">
 											
-											   <td class="reports_table_contents">
-													<span> <input class="selected_student_report" type="checkbox" name="selected_student_order" value="{{ $student->student_id }}"> </span> 
-											   </td>
-											
 											   <td class="no-wrap reports_table_content_initial">
-												  <a href="{{ route('students.index') }}/{{ $student->student_id }}">
-													<span class="printavo_settings_user-avatar user-avatar user-avatar--style-4" style="background-color: #{{ $student->avatar_background_color }}">
-														<span class="user-avatar__initials">
-															{{ $student->avatar_initials }}
+													<span> 
+														<input class="selected_student_report" type="checkbox" name="selected_student_order" value="{{ $student->student_id }}"> 
+													</span> 
+													
+													<span class="cover_content_initial_round">
+														<span class="printavo_settings_user-avatar user-avatar user-avatar--style-4" style="background-color: #{{ $student->avatar_background_color }}">
+															<span class="user-avatar__initials">
+																{{ $student->avatar_initials }}
+															</span>
+															@if( $student->avatar_url_small != '' )
+																<img alt="" class="gravatar gravatar--size-thumb" src="{{ $student->avatar_url_small }}">
+															@endif
 														</span>
-														@if( $student->avatar_url_small != '' )
-															<img alt="" class="gravatar gravatar--size-thumb" src="{{ $student->avatar_url_small }}">
-														@endif
 													</span>
-												  </a>
 											   </td>
 											   
 											   <td class="no-wrap next-table__cell--full-width-when-condensed reports_table_contents">
@@ -145,40 +142,41 @@
 																		<th>Quantity</th>
 																		<th>Commission</th>
 																		<th>Bonus</th>
-																		<th>Job Amount</th>
+																		<th>To be paid</th>
+																		<th></th>
 																	</tr>
 																</thead>
-																	@foreach( $student->orders as $orders )
+																	@foreach( $student->orders as $order )
 																		<tr>
 																			<td>
-																				<span> <input class="selected_student_order" type="checkbox" name="selected_student_order" value="{{ $orders->order_id }}"> </span> 
+																				<span> <input class="selected_student_order" type="checkbox" name="selected_student_order" value="{{ $order->order_id }}"> </span> 
 																			</td>
 																		
 																			<td>
-																				<span> #{{ $orders->order_id }} </span> 
+																				<a href="{{ route('orders.index') }}/{{ $order->order_id }}"><span> #{{ $order->invoice_no }} </span></a>
 																			</td>
 																			
 																			<td>
-																				<span title="{{ date( 'j/n/Y', strtotime( $orders->due_date ) ) }}">{{ date("j/n/Y", strtotime($orders->due_date)) }}</span>
+																				<span title="{{ date( 'j/n/Y', strtotime( $order->due_date ) ) }}">{{ date("j/n/Y", strtotime($order->due_date)) }}</span>
 																			</td>
 																			
 																			<td>
-																				<span>{{ $orders->total_quantity }}</span>
+																				<span>{{ $order->total_quantity }}</span>
 																			</td>
 																			
 																			<td>
-																				<span>{{ $orders->commision }}</span>
+																				<span>$ {{ $order->commision_in_price }}</span>
 																			</td>
 																			
 																			<td>
-																				<span>{{ $orders->user_bonus }}</span>
+																				<span>$ {{ $order->user_bonus }}</span>
 																			</td>
 																			
 																			<td>
-																				<span>{{ $orders->order_total }}</span>
+																				<span>$ {{ $order->users_bonus_and_commision }}</span>
 																			</td>
 																			<td>
-																				<span class="badge @if( $orders->payment_status == 'Unpaid' ) badge--status-attention @else badge--status-success @endif">{{ $orders->payment_status }}</span>
+																				<span class="badge @if( $order->payed == 'No' ) badge--status-attention @else badge--status-success @endif">@if( $order->payed == 'No' ) Unpaid @else Paid @endif</span>
 																			</td>
 																			
 																		</tr>
@@ -189,11 +187,7 @@
 											   </td>
 											   
 											    <td class="no-wrap reports_table_contents">
-												  <span class=""> {{ $student->total_sales }} </span> 
-											   </td>
-											   
-											    <td class="no-wrap reports_table_contents">
-												  <span class=""> {{ $student->total_payment }} </span>
+												  <span class="">$ {{ $student->total_payment }} </span>
 											   </td>
 											   
 											    <td class="no-wrap reports_table_contents">
@@ -227,7 +221,7 @@
 @section('Script-content')
 	<script>
 	
-	$('.report_table_open').click(function(){
+	$('.ui-layout__section table.students_reports_table>tbody').on('click', '.report_table_open', function(){
 			
 		$(this).parents('.order_archive').toggleClass('orders_table_opened');
 		
@@ -250,7 +244,7 @@
 		
 	});
 	
-	$('.selected_student_report').change( function() {
+	$('.ui-layout__section table.students_reports_table>tbody').on('change', '.selected_student_report', function(){
 		
 		if( $(this).prop("checked") == true ){
 			
@@ -260,6 +254,47 @@
 		else {
 		
 			$(this).parents('.ui-nested-link-container ').find( '.selected_student_order' ).prop( 'checked',false ); 
+			
+		}
+		
+	});
+	
+	$('.ui-layout__section table.students_reports_table>tbody').on('change', '.selected_student_order', function(){
+		
+		var selected = false;
+		var selected_student_order = $(this);
+		selected_student_order.parents('.ui-nested-link-container').find( '.selected_student_order' ).each(function(){
+			if( $(this).prop("checked") == true ){
+				selected = true;
+			}
+		}); 
+		
+		if( selected ){
+			
+			selected_student_order.parents('.ui-nested-link-container').find( '.selected_student_report' ).prop( 'checked',true );
+			
+		}
+		else {
+		
+			selected_student_order.parents('.ui-nested-link-container ').find( '.selected_student_report' ).prop( 'checked',false ); 
+			
+		}
+		
+	});
+	
+	$('.ui-layout__section table.students_reports_table').on('change', '#select_all_student_orders', function(){
+		
+		console.log($(this));
+		console.log($(this).prop("checked"));
+		
+		if( $(this).prop("checked") == true ){
+			
+			$(this).parents('.ui-layout__section table.students_reports_table').find( '.selected_student_report' ).prop( 'checked',true ).change();
+			
+		}
+		else {
+		
+			$(this).parents('.ui-layout__section table.students_reports_table').find( '.selected_student_report' ).prop( 'checked',false ).change(); 
 			
 		}
 		
@@ -313,47 +348,44 @@
 			},
 			
 			success: function (response) {
-				
-				console.log(response);
-				var output;
-				response.forEach( function( student ){
-					output += '<tr class="ui-nested-link-container ">'+
-								  '<td class="reports_table_contents">'+
-										'<span> <input class="selected_student_report" type="checkbox" name="selected_student_order" value="'+ student.id +'"> </span> '+
-								   '</td>'+
+				var objresponse = JSON.parse(response);
+				var output = '';
+				$.each( objresponse, function( key, student ){
+					output += '<tr class="ui-nested-link-container">'+
 								   '<td class="no-wrap reports_table_content_initial">'+
-									  '<a href="{{ route("students.index") }}/'+ student.id +'">'+
-										'<span class="printavo_settings_user-avatar user-avatar user-avatar--style-4" style="background-color: #'+ student.avatar_background_color +'">'+
-											'<span class="user-avatar__initials">'+
-												+ student.avatar_initials +
-											'</span>'+
-											+ student.avatar_url_small != '' ?
-												'<img alt="" class="gravatar gravatar--size-thumb" src="'+ student.avatar_url_small +'">'
-											:''+
+									  '<span> <input class="selected_student_report" type="checkbox" name="selected_student_order" value="'+ student.student_id +'"> </span> '+
+										'<span class="cover_content_initial_round">'+
+											'<span class="printavo_settings_user-avatar user-avatar user-avatar--style-4" style="background-color: #'+ student.avatar_background_color +'">'+
+												'<span class="user-avatar__initials">'+
+													student.avatar_initials +
+												'</span>';
+												if( student.avatar_url_small ){
+													output += '<img alt="" class="gravatar gravatar--size-thumb" src="'+ student.avatar_url_small +'">';
+												}
+											output += '</span>'+
 										'</span>'+
-									  '</a>'+
 								   '</td>'+
 								   
 								   '<td class="no-wrap next-table__cell--full-width-when-condensed reports_table_contents">'+
 									  '<span>'+ student.student_name +'</span>'+
 								   '</td>'+
 								   
-								   '<td class="no-wrap reports_table_contents">'+
-									  '<span>'+ student.campus +'</span>'+
-								   '</td>'+
+								   '<td class="no-wrap reports_table_contents">';
+										if( student.campus ){
+											output += '<span>'+ student.campus +'</span>';
+										}
+								   output += '</td>'+
 								   
 								   '<td class="no-wrap reports_table_contents order_archive">'+
 									  '<span class="report_table_open">'+
-										  '<span class=""> '+ student.order_count + ( student.order_count == 1 )? 'Order' : 'Orders' + '</span> '+
-										  ( ( student.order_count != 0 )?
-											  '<span class="orders_dropdown_option">'+
+										  '<span class=""> '+ student.order_count; if( student.order_count == 1 ){ output += ' Order' }else{ output += ' Orders' } output += '</span> ';
+											if( student.order_count != 0 ){
+											  output += '<span class="orders_dropdown_option">'+
 													'<i class="fa fa-chevron-down" aria-hidden="true"></i> '+
-											  '</span>'
-											  :
-											  ''
-										  )+
-									  '</span>';
-									   if( sizeof( student.orders ) != 0 ){
+											  '</span>';
+											}
+									  output += '</span>';
+									   if( student.orders.length != 0 ){
 										   output += '<table class="orders_list">'+
 												'<tbody>'+
 													'<thead>'+
@@ -364,17 +396,18 @@
 															'<th>Quantity</th>'+
 															'<th>Commission</th>'+
 															'<th>Bonus</th>'+
-															'<th>Job Amount</th>'+
+															'<th>to be paid</th>'+
+															'<th></th>'+
 														'</tr>'+
 													'</thead>';
-														student.orders.forEach( function( order ){
+														$.each( student.orders, function( key, order ){
 															output += '<tr>'+
 																'<td>'+
 																	'<span> <input class="selected_student_order" type="checkbox" name="selected_student_order" value="'+ order.order_id +'"> </span> '+
 																'</td>'+
 															
 																'<td>'+
-																	'<span> #'+ order.order_id +'</span> '+
+																	'<a href="{{ route('orders.index') }}/'+ order.order_id +'"><span> #'+ order.invoice_no +'</span> '+
 																'</td>'+
 																
 																'<td>'+
@@ -386,44 +419,41 @@
 																'</td>'+
 																
 																'<td>'+
-																	'<span>'+ order.commision +'</span>'+
+																	'<span>$ '+ order.commision_in_price +'</span>'+
 																'</td>'+
 																
 																'<td>'+
-																	'<span>'+ order.user_bonus +'</span>'+
+																	'<span>$ '+ order.user_bonus +'</span>'+
 																'</td>'+
 																
 																'<td>'+
-																	'<span>'+ order.order_total +'</span>'+
+																	'<span>$ '+ order.users_bonus_and_commision +'</span>'+
 																'</td>'+
 																'<td>'+
-																	'<span class="badge '+ ( ( order.payment_status == "Unpaid" )? 'badge--status-attention' : 'badge--status-success' ) + '">' + order.payment_status +'</span>'+
+																	'<span class="badge ';  if( order.payed == "No" ){ output += 'badge--status-attention' }else{ output += 'badge--status-success' } output += '">'; 
+																	if( order.payed == "No" ){ output += 'Unpaid' }else{ output += 'Paid' }
+																	output += '</span>'+
 																'</td>'+
 																
 															'</tr>';
 														});
-												'</tbody>'+
+												output += '</tbody>'+
 											'</table>';
 									   }
 								    output += '</td>'+
 								   
-								   '<td class="no-wrap reports_table_contents">'+
-									  '<span class=""> '+ student.total_sales + '</span>'+
+									'<td class="no-wrap reports_table_contents">'+
+									  '<span class="">$ '+ parseFloat( student.total_payment ).toFixed(2) +'</span>'+
 								   '</td>'+
 								   
 									'<td class="no-wrap reports_table_contents">'+
-									  '<span class=""> '+ student.total_payment +'</span>'+
-								   '</td>'+
-								   
-									'<td class="no-wrap reports_table_contents">'+
-									  //'<span class="badge' + ( ( $student->payment == "Unpaid" ) 'badge--status-attention' : 'badge--status-success' ) + '">' + student.payment + '</span>'+
+									  '<span class="badge '; if( student.payment == "Unpaid" ){ output += 'badge--status-attention' }else{ output += 'badge--status-success' } output += '">' + student.payment + '</span>'+
 								   '</td>'+
 								   
 								'</tr>'; 
 				});
 				
-				console.log(output);
-											
+				$('.ui-layout__section table.students_reports_table>tbody').append(output);
 				button.removeClass('loading');
 				next_page++;
 			}

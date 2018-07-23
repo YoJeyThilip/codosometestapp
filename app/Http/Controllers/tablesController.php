@@ -308,7 +308,7 @@ class tablesController extends Controller
 			
 		}
 		
-		return view( 'Order.Archive' , $OrdersVariables );
+		return view( 'tables.Archive' , $OrdersVariables );
 		
     }
 

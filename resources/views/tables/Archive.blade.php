@@ -18,11 +18,12 @@
 														<table id="dt_basic" class="table table-striped table-hover" width="100%" >
 															<thead>
 																<tr>
-																	<th>Name</th>
-																	<th>Control</th>
-																	<th>Style</th>
-																	<th>Product Images</th>
-																	<th>Price</th>
+																	<th>Invoice</th>
+																	<th>Customer Due date</th>
+																	<th>Nice name</th>
+																	<th>Customer</th>
+																	<th>Order status</th>
+																	<th>Payment status</th>
 																	
 																</tr>
 															</thead>

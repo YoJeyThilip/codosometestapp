@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 use DB;
 
-class OrdersMetaController extends Controller
+class tablesController extends Controller
 {
     /**
      * Create a new controller instance.

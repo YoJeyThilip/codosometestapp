@@ -1,4 +1,6 @@
+@extends('layouts.dashboard')
 
+@section('dashboard-content')
 <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				
 							<!-- Widget ID (each widget will need unique ID)-->
@@ -87,6 +89,9 @@
 							</div>
 							<!-- end widget -->
 				</article>
+				
+				
+@endsection
 
 
 <script>

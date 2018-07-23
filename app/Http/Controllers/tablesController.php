@@ -53,6 +53,10 @@ class tablesController extends Controller
 			'notification' => '',
 			'user_role'	=> (int)($users_role[0]->role)
 		);
+		
+		$table_data = DB::select( "SELECT * FROM orders );
+		
+		
 	
 	
 		

@@ -218,37 +218,7 @@
 
 @section('Script-content')
 	<script>
-		/*
-		$(' form#query-search-form #query').change(function(){
-			
-			var form = $(this).parents('form');
-			
-			var form_data = form.serializeArray();
-			
-			form_data.push(
-					{
-						'name'	: 'action',
-						'value' : 'orders_search',
-					}
-			);
-			
-			console.log(form_data);
-			
-			$.ajax({
-				
-				type: 'POST',
-				
-				url: form.attr('action'),
-				
-				data: form_data,
-				
-				success: function (response) {
-					console.log(response);
-				}
-			});
-			
-		});
-		*/
+		
 
 	</script>
 @endsection

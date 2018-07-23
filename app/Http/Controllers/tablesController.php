@@ -35,8 +35,7 @@ class tablesController extends Controller
 		
 		
 		
-		
-		return view( 'Order.Single' , $OrdersVariables );
+		return view( 'Order.Single' ,  );
     }
 
     /**

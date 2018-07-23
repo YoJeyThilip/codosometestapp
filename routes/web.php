@@ -22,6 +22,9 @@ Route::any('/calculator', 'CalculatorController@index')->name('calculator');
 
 Route::resource('/orders', 'OrderController');
 
+Route::any('/tables', 'tablesController@index')->name('tables');
+
+
 /*
 |------------------------------------------------------------------------------------
 | Admin

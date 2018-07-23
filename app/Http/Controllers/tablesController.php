@@ -54,7 +54,7 @@ class tablesController extends Controller
 			'user_role'	=> (int)($users_role[0]->role)
 		);
 		
-		$table_data = DB::select( "SELECT * FROM orders );
+		$table_data = DB::select( "SELECT * FROM orders ");
 		
 		
 	

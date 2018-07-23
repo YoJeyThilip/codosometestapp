@@ -72,7 +72,7 @@ class tablesController extends Controller
 		
 		$table_data = DB::select( "SELECT * FROM orders ");
 		
-		$OrdersVariables['orders'] = $table_data;
+		$OrdersVariables['orders_table_data'] = $table_data;
 		
 		return view( 'tables.Archive',$OrdersVariables );
     }

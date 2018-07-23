@@ -25,7 +25,7 @@
 																</tr>
 															</thead>
 															<tbody>
-																	@foreach( $OrdersVariables['orders'] as $order )
+																	@foreach( $OrdersVariables['orders_table_data'] as $order )
 																		<tr class="ui-nested-link-container @if( $order->splitscreen != 'no' ) splitscreen_order @endif ">
 																		   <td class="no-wrap">
 																		   

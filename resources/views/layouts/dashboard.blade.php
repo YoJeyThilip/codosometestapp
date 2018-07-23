@@ -357,6 +357,14 @@
                                     <span class="ui-nav__label ui-nav__label--parent">Calculator</span>
                                  </a>
                               </li>
+							   <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('calculator') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+                                 <a href="{{ route('calculator') }}" class="ui-nav__link ui-nav__link--parent">
+									<svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
+                                       <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-calculator"></use>
+                                    </svg>
+                                    <span class="ui-nav__label ui-nav__label--parent">Tables</span>
+                                 </a>
+                              </li>
 							  @if( intval($user_role) > 3 )
 								  <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('resources.edit') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
 									 <a href="{{ route('resources.edit') }}" class="ui-nav__link ui-nav__link--parent">

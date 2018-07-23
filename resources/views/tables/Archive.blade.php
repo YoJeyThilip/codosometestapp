@@ -47,13 +47,7 @@
 							</div>
 							<!-- end widget -->
 				</article>
-				
-				<script src="<?php echo(plugins_url( 'js/jquery-ui.min.js', __FILE__ )); ?>"></script>
-				<script src="<?php echo(plugins_url( 'js/datatables/jquery.dataTables.min.js', __FILE__ )); ?>"></script>
-				<script src="<?php echo(plugins_url( 'js/datatables/dataTables.colVis.min.js', __FILE__ )); ?>"></script>
-				<script src="<?php echo(plugins_url( 'js/datatables/dataTables.tableTools.min.js', __FILE__ )); ?>"></script>
-				<script src="<?php echo(plugins_url( 'js/datatables/dataTables.bootstrap.min.js', __FILE__ )); ?>"></script>
-				<script src="<?php echo(plugins_url( 'js/datatables/datatables.responsive.min.js', __FILE__ )); ?>"></script>
+			
 
 
 <script>

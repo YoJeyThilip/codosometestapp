@@ -35,7 +35,7 @@ class tablesController extends Controller
 		
 		
 		
-		return view( 'Order.Single'  );
+		return view( 'tables.Archive' );
     }
 
     /**

@@ -28,7 +28,7 @@
 															</thead>
 															<tbody>
 																	@foreach( $orders_table_data as $order )
-																		<tr class="ui-nested-link-container >
+																		<tr class="ui-nested-link-container" >
 																		   <td class="no-wrap">
 																		   
 																				<a href="{{ route('orders.index') }}/{{ $order->order_id }}">#{{ $order->invoice_no }}</a>

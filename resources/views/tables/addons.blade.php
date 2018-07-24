@@ -81,7 +81,7 @@ jQuery(document).ready(function() {
 	
 		    
 	// custom toolbar
-	$("div.dt-toolbar .create-button-colors-style").html('<a href="<?php echo(admin_url( "admin.php?page=add_style")); ?>" class="button button-primary">Create new</a>');
+	$("div.dt-toolbar .create-button-colors-style").html('<a href="'{{ route('students.add') }}'" class="button button-primary">Create new</a>');
 });
 </script>
 

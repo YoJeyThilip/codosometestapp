@@ -67,14 +67,6 @@ class tablesController extends Controller
 		
 		$calculator_fabric = DB::select("SELECT * FROM calculator_fabric" );
 		
-		//$calculator_fabric = json_encode($calculator_fabric);
-
-		$common_items = json_encode($common_items);
-		
-		$commission_rates = json_encode($commission_rates);
-		
-		//$addons = json_encode($addons);
-		
 		$OrdersVariables = array(
 			'printavo_email' => $email,
 			'printavo_status' => $printavo_status,
@@ -89,8 +81,6 @@ class tablesController extends Controller
 			'addons' => $addons,
 			'calculator_fabric' => $calculator_fabric
 		);
-		
-		//print_r($OrdersVariables['calculator_fabric']);
 		
 		if( $_GET['tab'] == 'common_items' ){ 
 			return view( 'tables.common_items',$OrdersVariables );

@@ -59,6 +59,22 @@ class tablesController extends Controller
 			$avatar_initials = $acronym;
 		}
 		
+		$common_items = DB::select("SELECT * FROM common_items" );
+		
+		$commission_rates = DB::select("SELECT * FROM commission_rates" );
+		
+		$addons = DB::select("SELECT * FROM addons" );
+		
+		$calculator_fabric = DB::select("SELECT * FROM calculator_fabric" );
+		
+		$calculator_fabric = json_encode($calculator_fabric);
+
+		$common_items = json_encode($common_items);
+		
+		$commission_rates = json_encode($commission_rates);
+		
+		$addons = json_encode($addons);
+		
 		$OrdersVariables = array(
 			'printavo_email' => $email,
 			'printavo_status' => $printavo_status,
@@ -67,12 +83,12 @@ class tablesController extends Controller
 			'avatar_url_small' => $avatar_url_small,
 			'avatar_initials' => $avatar_initials ,
 			'notification' => '',
-			'user_role'	=> (int)($users_role[0]->role)
+			'user_role'	=> (int)($users_role[0]->role),
+			'common_items' => $common_items,
+			'commission_rates' => $commission_rates,
+			'addons' => $addons,
+			'calculator_fabric' => $calculator_fabric
 		);
-		
-		$table_data = DB::select( "SELECT * FROM orders ");
-		
-		$OrdersVariables['orders_table_data'] = $table_data;
 		
 		return view( 'tables.Archive',$OrdersVariables );
     }

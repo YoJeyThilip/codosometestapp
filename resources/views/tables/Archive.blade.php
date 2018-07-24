@@ -1,110 +1,16 @@
 @extends('layouts.dashboard')
 
 @section('dashboard-content')
-<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				
-							<!-- Widget ID (each widget will need unique ID)-->
-							<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
-								
-								<!-- widget div-->
-								<div>
-									<div class="widget-body no-padding">
-										<div class="row">
-										
-											
-												<div class="col-xs-12">
-													<div class="table-responsive">
-														
-														<table id="dt_basic" class="table table-striped table-hover" width="100%" >
-															<thead>
-																<tr>
-																	<th>Invoice</th>
-																	<th>Control</th>
-																	<th>Customer Due date</th>
-																	<th>Nice name</th>
-																	<th>Customer</th>
-																	<th>Order status</th>
-																	<th>Payment status</th>
-																	<th>Job Amount</th>
-																	<th>Commision</th>
-																	<th>Student</th>
-																	<th>Campus</th>
-																	<th>Payed</th>
-																	
-																</tr>
-															</thead>
-															<tbody>
-																	@foreach( $orders_table_data as $order )
-																		<tr class="ui-nested-link-container" >
-																		   <td>
-																				<a href="#">#{{ $order->invoice_no }}</a>
-																		   </td>
-																		    <td>
-																		   
-																				<a class="fa fa-pencil" href="#"></a>
-																				
-																				<form method="post" style="display: inline-block;">
-																					<input name="id" type="hidden" id="id" value="1">
-																					<input name="type" type="hidden" id="type" value="delete">
-																					<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
-																				</form>
-																			
-																		   </td>
-																		   <td>
-																			  <span title="{{ date( 'j/n/Y', strtotime( $order->due_date ) ) }}">{{ date("j/n/Y", strtotime($order->due_date)) }}</span>
-																		   </td>
-																		   <td>
-																			  <span>{{ $order->nic_name }}</span>
-																		   </td>
-																		  <td>
-																			  <span>{{ $order->customer }}</span>
-																		   </td>
-																		  <td>
-																			<span class="badge" style="background-color:{{ $order->order_status_color }}; color:@if( $order->order_status_color == '#000000' ) #ffffff @else #000000 @endif ">
-																				{{ $order->order_status }}
-																			</span>
-																		   </td>
-																		   <td>
-																			<span class="badge @if( $order->payment_status == 'Paid' ) badge--status-success @elseif( $order->payment_status == 'Unpaid' ) badge--status-attention @endif ">
-																				{{ $order->payment_status }}
-																			</span>
-																		   </td>
-																		   <td>{{ number_format( floatval($order->order_total ) ,2 ) }}</td>
-																		   
-																		   <td>{{ $order->commision }}%</td>
-																			<td>{{ $order->student_name }}</td>
-																		   <td>{{ $order->campus }}</td>
-																		 
-																		    <td>
-																			  <span class="badge @if( $order->payed == 'Yes' ) badge--status-success @elseif( $order->payed == 'no' ) badge--status-attention @endif ">
-																				{{ $order->payed }} 
-																			  </span>
-																		    </td>
-																		</tr>
-																	@endforeach		
-															
-															</tbody>
-														</table>
-														
-														
-													</div>
-												</div>
-											</div>
-					
-											
-										</div>
-										</table>
+<div class="wrap">
+	<h1>Product Calculator Settings</h1>
 
-									</div>
-									<!-- end widget content -->
-				
-								</div>
-								<!-- end widget div -->
-				
-							</div>
-							<!-- end widget -->
-				</article>
-				
+	<h2 class="nav-tab-wrapper">
+		<a href="?page=product_calculator&tab=product_details" class="nav-tab">Product Details</a>  
+		<a href="?page=product_calculator&tab=colors_details" class="nav-tab">Colors Details</a>
+		<a href="?page=product_calculator&tab=colors_definition" class="nav-tab">Colors Definition</a>
+		<a href="?page=product_calculator&tab=extras" class="nav-tab">Extras</a>
+	</h2>  
+</div>
 				
 @endsection
 

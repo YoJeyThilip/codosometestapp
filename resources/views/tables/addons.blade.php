@@ -14,24 +14,30 @@
 
 <table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 	<thead>
-		<tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Color Name</th><th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Control</th><th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Colour Type</th><th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Color Code: activate to sort column ascending" style="width: 216px;">Color Code</th></tr>
+		<tr role="row">
+			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Id</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Add On</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Colour Type</th>
+		</tr>
 	</thead>
 	<tbody>
 		@foreach( $addons as $addon )	
 		<tr role="row" class="odd">
 					
-					<td class="sorting_1">$addon->id</td>
-					<td><a class="fa fa-pencil" href="http://campusinc.studiorao.nl/wp-admin/admin.php?page=define_colors&amp;id=3"></a>																<form method="post" style="display: inline-block;">
-				<input name="id" type="hidden" id="id" value="3">
-				<input name="type" type="hidden" id="type" value="delete">
-				<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
-			</form>
+			<td class="sorting_1">$addon->id</td>
+			<td>
+				<a class="fa fa-pencil" href="http://campusinc.studiorao.nl/wp-admin/admin.php?page=define_colors&amp;id=3"></a>	
+				<form method="post" style="display: inline-block;">
+					<input name="id" type="hidden" id="id" value="3">
+					<input name="type" type="hidden" id="type" value="delete">
+					<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
+				</form>
 			</td>
-					<td>dark</td>
-					<td>
-						<div class="product_calculator_admin_colorbox" style="background-color:#000000;"></div>
-						#000000
-					</td>
+			<td>dark</td>
+			<td>
+				<div class="product_calculator_admin_colorbox" style="background-color:#000000;"></div>
+				#000000
+			</td>
 					
 		</tr>
 		@endforeach

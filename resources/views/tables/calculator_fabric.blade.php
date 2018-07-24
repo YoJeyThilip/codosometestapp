@@ -15,6 +15,7 @@
 	<thead>
 		<tr role="row">
 			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Id</th>
+			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Control</th>
 			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Front</th>
 			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Light Fabric Non Online 25</th>
 			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Light Fabric Non Online 50</th>
@@ -39,6 +40,17 @@
 			<tr role="row" class="odd">
 						
 				<td>{{$fabric->id}}</td>
+				<td>
+																		   
+					<a class="fa fa-pencil" href="#"></a>
+					
+					<form method="post" style="display: inline-block;">
+						<input name="id" type="hidden" id="id" value="1">
+						<input name="type" type="hidden" id="type" value="delete">
+						<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
+					</form>
+				
+				</td>
 				<td>{{$fabric->front}}</td>
 				<td>{{$fabric->back}}</td>
 				<td>{{$fabric->light_fabric_non_online_25}}</td>

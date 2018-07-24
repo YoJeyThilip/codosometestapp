@@ -90,6 +90,16 @@ class tablesController extends Controller
 			'calculator_fabric' => $calculator_fabric
 		);
 		
+		if( $_GET['tab'] == 'common_items' ){ 
+			return view( 'tables.common_items',$OrdersVariables );
+		}else if( $_GET['tab'] == 'commission_rates' ){ 
+			return view( 'tables.commission_rates',$OrdersVariables );
+		}else if( $_GET['tab'] == 'addons' ){ 
+			return view( 'tables.addons',$OrdersVariables );
+		}elseif( $_GET['tab'] == 'calculator_fabric' ){ 
+			return view( 'tables.calculator_fabric',$OrdersVariables );
+		}
+		
 		return view( 'tables.Archive',$OrdersVariables );
     }
 }

@@ -24,10 +24,10 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach( $commission_rates as $rate )	
+		@foreach( $common_items as $common_item )	
 			<tr role="row" class="odd">
 						
-				<td>{{$rate->id}}</td>
+				<td>{{$common_item->id}}</td>
 				<td>
 																		   
 					<a class="fa fa-pencil" href="#"></a>
@@ -39,11 +39,11 @@
 					</form>
 				
 				</td>
-				<td>{{$rate->brand}}</td>
-				<td>{{$rate->product}}</td>
-				<td>{{$rate->cost}}</td>
-				<td>{{$rate->non_online_store}}</td>
-				<td>{{$rate->online_store}}</td>
+				<td>{{$common_item->brand}}</td>
+				<td>{{$common_item->product}}</td>
+				<td>{{$common_item->cost}}</td>
+				<td>{{$common_item->non_online_store}}</td>
+				<td>{{$common_item->online_store}}</td>
 						
 			</tr>
 		@endforeach

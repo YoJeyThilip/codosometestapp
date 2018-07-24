@@ -45,3 +45,21 @@ jQuery(document).ready(function() {
 	
 });
 </script>
+
+<style>
+	.product_calculator_admin_colorbox{
+		width: 20px;
+		height: 20px;
+		border: 1px solid black;
+		display: inline-block;
+		vertical-align: inherit;
+		margin-right: 10px;
+	 }
+	 
+	.product_type_img{
+		width:50px;
+		height:50px;
+		border: 1px solid #bcbcbc;
+		background-size: cover;
+	}
+</style>

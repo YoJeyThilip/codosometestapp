@@ -26,7 +26,7 @@
 					
 			<td class="sorting_1">{{ $addon->id }}</td>
 			<td>
-				{{ $addon->addon }}
+				{{ $addon->add_on }}
 			</td>
 			<td>{{ $addon->prize }}</td>
 					

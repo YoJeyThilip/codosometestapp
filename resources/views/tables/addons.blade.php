@@ -15,6 +15,7 @@
 <table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 	<thead>
 		<tr role="row">
+			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Control</th>
 			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Id</th>
 			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Add On</th>
 			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Prize</th>
@@ -23,6 +24,18 @@
 	<tbody>
 		@foreach( $addons as $addon )	
 		<tr role="row" class="odd">
+		
+			<td>
+																		   
+				<a class="fa fa-pencil" href="#"></a>
+				
+				<form method="post" style="display: inline-block;">
+					<input name="id" type="hidden" id="id" value="1">
+					<input name="type" type="hidden" id="type" value="delete">
+					<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
+				</form>
+			
+		    </td>
 					
 			<td class="sorting_1">{{ $addon->id }}</td>
 			<td>

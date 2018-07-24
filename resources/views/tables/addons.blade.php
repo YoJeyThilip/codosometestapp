@@ -15,8 +15,8 @@
 <table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 	<thead>
 		<tr role="row">
-			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Control</th>
 			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Id</th>
+			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Control</th>
 			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Add On</th>
 			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Prize</th>
 		</tr>
@@ -24,7 +24,8 @@
 	<tbody>
 		@foreach( $addons as $addon )	
 		<tr role="row" class="odd">
-		
+					
+			<td class="sorting_1">{{ $addon->id }}</td>
 			<td>
 																		   
 				<a class="fa fa-pencil" href="#"></a>
@@ -36,8 +37,6 @@
 				</form>
 			
 		    </td>
-					
-			<td class="sorting_1">{{ $addon->id }}</td>
 			<td>
 				{{ $addon->add_on }}
 			</td>

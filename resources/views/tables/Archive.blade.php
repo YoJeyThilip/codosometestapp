@@ -47,19 +47,23 @@ jQuery(document).ready(function() {
 </script>
 
 <style>
-	.product_calculator_admin_colorbox{
-		width: 20px;
-		height: 20px;
-		border: 1px solid black;
-		display: inline-block;
-		vertical-align: inherit;
-		margin-right: 10px;
-	 }
-	 
-	.product_type_img{
-		width:50px;
-		height:50px;
-		border: 1px solid #bcbcbc;
-		background-size: cover;
+	h2.nav-tab-wrapper {
+		border-bottom: 1px solid #ccc;
+		margin: 0;
+		padding-top: 9px;
+		padding-bottom: 0;
+		line-height: inherit;
+	}
+	
+	h2.nav-tab-wrapper a {
+		float: left;
+		border: 1px solid #ccc;
+		border-bottom: none;
+		margin-left: .5em;
+		padding: 5px 10px;
+		font-size: 14px;
+		line-height: 24px;
+		background: #e5e5e5;
+		color: #555;
 	}
 </style>

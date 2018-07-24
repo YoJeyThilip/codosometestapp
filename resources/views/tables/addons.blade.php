@@ -16,8 +16,7 @@
 	<thead>
 		<tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Color Name</th><th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Control</th><th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Colour Type</th><th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Color Code: activate to sort column ascending" style="width: 216px;">Color Code</th></tr>
 	</thead>
-	<tbody>
-		@foreach( $addons as $addon )		
+	<tbody>	
 		<tr role="row" class="odd">
 					
 					<td class="sorting_1">Black</td>
@@ -34,7 +33,6 @@
 					</td>
 					
 		</tr>
-		@endforeach
 	
 	</tbody>
 </table>

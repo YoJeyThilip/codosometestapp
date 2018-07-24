@@ -5,10 +5,9 @@
 	<h1 class="product_calculator_header">Product Calculator Settings</h1>
 
 	<h2 class="nav-tab-wrapper product_calculator_tables">
-		<a href="?page=product_calculator&tab=common_items" class="nav-tab">Common Items</a>  
-		<a href="?page=product_calculator&tab=commission_rates" class="nav-tab">Commission rates</a>
-		<a href="?page=product_calculator&tab=addons" class="nav-tab">Addons</a>
-		<a href="?page=product_calculator&tab=calculator_fabric" class="nav-tab">Calculator fabric</a>
+		<a href="?page=product_calculator&tab=common_items" class="nav-tab">ID</a>  
+		<a href="?page=product_calculator&tab=commission_rates" class="nav-tab">Add On</a>
+		<a href="?page=product_calculator&tab=addons" class="nav-tab">Prize</a>
 	</h2>  
 </div>
 
@@ -16,10 +15,11 @@
 	<thead>
 		<tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Color Name</th><th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Control</th><th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Colour Type</th><th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Color Code: activate to sort column ascending" style="width: 216px;">Color Code</th></tr>
 	</thead>
-	<tbody>	
+	<tbody>
+		@foreach( $addons as $addon )	
 		<tr role="row" class="odd">
 					
-					<td class="sorting_1">Black</td>
+					<td class="sorting_1">$addon->id</td>
 					<td><a class="fa fa-pencil" href="http://campusinc.studiorao.nl/wp-admin/admin.php?page=define_colors&amp;id=3"></a>																<form method="post" style="display: inline-block;">
 				<input name="id" type="hidden" id="id" value="3">
 				<input name="type" type="hidden" id="type" value="delete">
@@ -33,6 +33,7 @@
 					</td>
 					
 		</tr>
+		@endforeach
 	
 	</tbody>
 </table>

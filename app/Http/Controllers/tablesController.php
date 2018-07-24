@@ -73,7 +73,7 @@ class tablesController extends Controller
 		
 		$commission_rates = json_encode($commission_rates);
 		
-		$addons = json_encode($addons);
+		//$addons = json_encode($addons);
 		
 		$OrdersVariables = array(
 			'printavo_email' => $email,
@@ -89,8 +89,6 @@ class tablesController extends Controller
 			'addons' => $addons,
 			'calculator_fabric' => $calculator_fabric
 		);
-		
-		print_r($OrdersVariables['addons']);
 		
 		if( $_GET['tab'] == 'common_items' ){ 
 			return view( 'tables.common_items',$OrdersVariables );

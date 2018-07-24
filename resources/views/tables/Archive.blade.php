@@ -24,6 +24,11 @@
 																	<th>Customer</th>
 																	<th>Order status</th>
 																	<th>Payment status</th>
+																	<th>Job Amount</th>
+																	<th>Commision</th>
+																	<th>Student</th>
+																	<th>Campus</th>
+																	<th>Payed</th>
 																	
 																</tr>
 															</thead>

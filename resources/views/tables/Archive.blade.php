@@ -5,10 +5,10 @@
 	<h1 class="product_calculator_header">Product Calculator Settings</h1>
 
 	<h2 class="nav-tab-wrapper product_calculator_tables">
-		<a href="?page=product_calculator&tab=product_details" class="nav-tab">Common Items</a>  
-		<a href="?page=product_calculator&tab=colors_details" class="nav-tab">Commission Rates</a>
-		<a href="?page=product_calculator&tab=colors_definition" class="nav-tab">Addons</a>
-		<a href="?page=product_calculator&tab=extras" class="nav-tab">Calculator Fabric</a>
+		<a href="?page=product_calculator&tab=common_items" class="nav-tab">Common Items</a>  
+		<a href="?page=product_calculator&tab=colors_details" class="nav-tab">commission_rates</a>
+		<a href="?page=product_calculator&tab=addons" class="nav-tab">Addons</a>
+		<a href="?page=product_calculator&tab=extras" class="nav-tab">Calculator_fabric</a>
 	</h2>  
 </div>
 				

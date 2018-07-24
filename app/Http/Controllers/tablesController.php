@@ -67,7 +67,7 @@ class tablesController extends Controller
 		
 		$calculator_fabric = DB::select("SELECT * FROM calculator_fabric" );
 		
-		$calculator_fabric = json_encode($calculator_fabric);
+		//$calculator_fabric = json_encode($calculator_fabric);
 
 		$common_items = json_encode($common_items);
 		

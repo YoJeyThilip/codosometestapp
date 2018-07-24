@@ -11,7 +11,6 @@
 		<a href="?page=product_calculator&tab=calculator_fabric" class="nav-tab">Calculator fabric</a>
 	</h2>
 </div>
-<div class="dt-toolbar"><div class="col-xs-12 col-sm-3"><div id="dt_basic_filter" class="dataTables_filter"><label><span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span> <input type="search" class="form-control" placeholder="" aria-controls="dt_basic"></label></div></div><div class="col-xs-12 col-sm-3 create-button-colors-details"><a href="http://campusinc.studiorao.nl/wp-admin/admin.php?page=add_colors" class="button button-primary">Create new</a></div><div class="col-sm-6 col-xs-12 hidden-xs"><div class="dataTables_length" id="dt_basic_length"><label><select name="dt_basic_length" aria-controls="dt_basic" class="form-control"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label></div></div></div>
 <table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 	<thead>
 		<tr role="row">

@@ -38,25 +38,25 @@
 		@foreach( $calculator_fabric as $fabric )	
 			<tr role="row" class="odd">
 						
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>$fabric->id</td>
+				<td>$fabric->front</td>
+				<td>$fabric->back</td>
+				<td>$fabric->light_fabric_non_online_25</td>
+				<td>$fabric->light_fabric_non_online_50</td>
+				<td>$fabric->light_fabric_non_online_100</td>
+				<td>$fabric->light_fabric_non_online_150</td>
+				<td>$fabric->dark_fabric_non_online_25</td>
+				<td>$fabric->dark_fabric_non_online_50</td>
+				<td>$fabric->dark_fabric_non_online_100</td>
+				<td>$fabric->dark_fabric_non_online_150</td>
+				<td>$fabric->light_fabric_online_25</td>
+				<td>$fabric->light_fabric_online_50</td>
+				<td>$fabric->light_fabric_online_100</td>
+				<td>$fabric->light_fabric_online_150</td>
+				<td>$fabric->dark_fabric_online_25</td>
+				<td>$fabric->dark_fabric_online_50</td>
+				<td>$fabric->dark_fabric_online_100</td>
+				<td>$fabric->dark_fabric_online_150</td>
 						
 			</tr>
 		@endforeach

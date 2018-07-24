@@ -55,7 +55,7 @@
 
 
 <script>
-$(document).ready(function() {
+jQuery(document).ready(function() {
 	var responsiveHelper_dt_basic = undefined;
 	
 	var breakpointDefinition = {
@@ -63,7 +63,7 @@ $(document).ready(function() {
 		phone : 480
 	};
 				
-	$('#dt_basic').dataTable({
+	jQuery('#dt_basic').dataTable({
 					"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-3'f><'col-xs-12 col-sm-3 create-button-colors-style'><'col-sm-6 col-xs-12 hidden-xs'l>r>"+
 						"t"+
 						"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
@@ -71,7 +71,7 @@ $(document).ready(function() {
 					"preDrawCallback" : function() {
 						// Initialize the responsive datatables helper once.
 						if (!responsiveHelper_dt_basic) {
-							responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
+							responsiveHelper_dt_basic = new ResponsiveDatatablesHelper(jQuery('#dt_basic'), breakpointDefinition);
 						}
 					},
 					"rowCallback" : function(nRow) {

@@ -90,6 +90,8 @@ class tablesController extends Controller
 			'calculator_fabric' => $calculator_fabric
 		);
 		
+		print_r($OrdersVariables['addons']);
+		
 		if( $_GET['tab'] == 'common_items' ){ 
 			return view( 'tables.common_items',$OrdersVariables );
 		}else if( $_GET['tab'] == 'commission_rates' ){ 

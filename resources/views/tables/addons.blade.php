@@ -24,20 +24,11 @@
 		@foreach( $addons as $addon )	
 		<tr role="row" class="odd">
 					
-			<td class="sorting_1">$addon->id</td>
+			<td class="sorting_1">{{ $addon->id }}</td>
 			<td>
-				<a class="fa fa-pencil" href="http://campusinc.studiorao.nl/wp-admin/admin.php?page=define_colors&amp;id=3"></a>	
-				<form method="post" style="display: inline-block;">
-					<input name="id" type="hidden" id="id" value="3">
-					<input name="type" type="hidden" id="type" value="delete">
-					<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
-				</form>
+				{{ $addon->id }}
 			</td>
-			<td>dark</td>
-			<td>
-				<div class="product_calculator_admin_colorbox" style="background-color:#000000;"></div>
-				#000000
-			</td>
+			<td>{{ $addon->prize }}</td>
 					
 		</tr>
 		@endforeach

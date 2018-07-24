@@ -55,7 +55,7 @@ jQuery(document).ready(function() {
 		line-height: inherit;
 	}
 	
-	h2.nav-tab-wrapper a {
+	h2.product_calculator_tables a {
 		float: left;
 		border: 1px solid #ccc;
 		border-bottom: none;
@@ -68,12 +68,12 @@ jQuery(document).ready(function() {
 		text-decoration: none;
 	}
 	
-	.nav-tab:focus, .nav-tab:hover {
+	h2.product_calculator_tables a:focus, h2.product_calculator_tables a:hover {
 		background-color: #fff;
 		color: #444;
 	}
 	
-	.wrap h1 {
+	.product_calculator_details h1 {
 		padding-top: 20px;
 		padding-left: 20px;
 	}

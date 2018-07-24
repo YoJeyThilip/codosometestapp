@@ -36,10 +36,10 @@
 															<tbody>
 																	@foreach( $orders_table_data as $order )
 																		<tr class="ui-nested-link-container" >
-																		   <td class="no-wrap">
-																				<a href="{{ route('orders.index') }}/{{ $order->order_id }}">#{{ $order->invoice_no }}</a>
+																		   <td>
+																				<a href="#">#{{ $order->invoice_no }}</a>
 																		   </td>
-																		    <td class="no-wrap">
+																		    <td>
 																		   
 																				<a class="fa fa-pencil" href="#"></a>
 																				
@@ -50,36 +50,36 @@
 																				</form>
 																			
 																		   </td>
-																		   <td class="no-wrap next-table__cell--full-width-when-condensed">
+																		   <td>
 																			  <span title="{{ date( 'j/n/Y', strtotime( $order->due_date ) ) }}">{{ date("j/n/Y", strtotime($order->due_date)) }}</span>
 																		   </td>
-																		   <td class="no-wrap next-table__cell--full-width-when-condensed">
+																		   <td>
 																			  <span>{{ $order->nic_name }}</span>
 																		   </td>
-																		   <td class="no-wrap">
+																		  <td>
 																			  <span>{{ $order->customer }}</span>
 																		   </td>
-																		   <td class="no-wrap">
+																		  <td>
 																			<span class="badge" style="background-color:{{ $order->order_status_color }}; color:@if( $order->order_status_color == '#000000' ) #ffffff @else #000000 @endif ">
 																				{{ $order->order_status }}
 																			</span>
 																		   </td>
-																		   <td class="no-wrap">
+																		   <td>
 																			<span class="badge @if( $order->payment_status == 'Paid' ) badge--status-success @elseif( $order->payment_status == 'Unpaid' ) badge--status-attention @endif ">
 																				{{ $order->payment_status }}
 																			</span>
 																		   </td>
-																		   <td class="type--right total next-table__cell--top-right-when-condensed">{{ number_format( floatval($order->order_total ) ,2 ) }}</td>
+																		   <td>{{ number_format( floatval($order->order_total ) ,2 ) }}</td>
 																		   
-																		   <td class="type--right total next-table__cell--top-right-when-condensed">{{ $order->commision }}%</td>
-																			<td class="type--right total next-table__cell--top-right-when-condensed">{{ $order->student_name }}</td>
-																		   <td class="type--right total next-table__cell--top-right-when-condensed">{{ $order->campus }}</td>
+																		   <td>{{ $order->commision }}%</td>
+																			<td>{{ $order->student_name }}</td>
+																		   <td>{{ $order->campus }}</td>
 																		 
-																		   <td class="no-wrap">
+																		    <td>
 																			  <span class="badge @if( $order->payed == 'Yes' ) badge--status-success @elseif( $order->payed == 'no' ) badge--status-attention @endif ">
 																				{{ $order->payed }} 
 																			  </span>
-																		   </td>
+																		    </td>
 																		</tr>
 																	@endforeach		
 															

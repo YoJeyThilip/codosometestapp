@@ -71,4 +71,10 @@ jQuery(document).ready(function() {
 		background-color: #fff;
 		color: #444;
 	}
+	
+	.wrap h1 {
+		padding-top: 20px;
+		padding-left: 20px;
+	}
+		
 </style>

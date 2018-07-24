@@ -66,4 +66,9 @@ jQuery(document).ready(function() {
 		background: #e5e5e5;
 		color: #555;
 	}
+	
+	.nav-tab:focus, .nav-tab:hover {
+		background-color: #fff;
+		color: #444;
+	}
 </style>

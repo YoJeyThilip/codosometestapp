@@ -1,10 +1,10 @@
 @extends('layouts.dashboard')
 
 @section('dashboard-content')
-<div class="wrap">
-	<h1>Product Calculator Settings</h1>
+<div class="wrap product_calculator_details">
+	<h1 class="product_calculator_header">Product Calculator Settings</h1>
 
-	<h2 class="nav-tab-wrapper">
+	<h2 class="nav-tab-wrapper product_calculator_tables">
 		<a href="?page=product_calculator&tab=product_details" class="nav-tab">Product Details</a>  
 		<a href="?page=product_calculator&tab=colors_details" class="nav-tab">Colors Details</a>
 		<a href="?page=product_calculator&tab=colors_definition" class="nav-tab">Colors Definition</a>
@@ -65,6 +65,7 @@ jQuery(document).ready(function() {
 		line-height: 24px;
 		background: #e5e5e5;
 		color: #555;
+		text-decoration: none;
 	}
 	
 	.nav-tab:focus, .nav-tab:hover {

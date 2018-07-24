@@ -19,6 +19,7 @@
 															<thead>
 																<tr>
 																	<th>Invoice</th>
+																	<th>Control</th>
 																	<th>Customer Due date</th>
 																	<th>Nice name</th>
 																	<th>Customer</th>
@@ -36,9 +37,17 @@
 																	@foreach( $orders_table_data as $order )
 																		<tr class="ui-nested-link-container" >
 																		   <td class="no-wrap">
-																		   
 																				<a href="{{ route('orders.index') }}/{{ $order->order_id }}">#{{ $order->invoice_no }}</a>
+																		   </td>
+																		    <td class="no-wrap">
+																		   
+																				<a class="fa fa-pencil" href="#"></a>
 																				
+																				<form method="post" style="display: inline-block;">
+																					<input name="id" type="hidden" id="id" value="1">
+																					<input name="type" type="hidden" id="type" value="delete">
+																					<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
+																				</form>
 																			
 																		   </td>
 																		   <td class="no-wrap next-table__cell--full-width-when-condensed">

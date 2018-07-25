@@ -17,7 +17,7 @@
 	<tbody>
 			@foreach( $common_items as $common_item )	
 			
-				@if( $common_items_edit_id == {{$common_item->id}} )
+				@if( $common_items_edit_id == $common_item->id )
 					
 					<tr role="row" class="odd" id="{{$common_item->id}}">
 								

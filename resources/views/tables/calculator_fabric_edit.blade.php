@@ -22,6 +22,7 @@
 					<tr>
 						<td>ID</td>
 						<td><input type="text"  name="id" value="{{$fabric->id}}"></td>
+							<td><input type="hidden"  name="table_name" value="calculator_fabric"></td>
 					</tr>
 					<tr>
 						<td>front</td>

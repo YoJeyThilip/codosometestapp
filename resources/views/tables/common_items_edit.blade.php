@@ -23,6 +23,7 @@
 						<tr>
 							<td>ID</td>
 							<td><input type="text"  name="id" value="{{$common_item->id}}"></td>
+							<td><input type="hidden"  name="table_name" value="common_items"></td>
 						</tr>
 						<tr>
 							<td>Brand</td>

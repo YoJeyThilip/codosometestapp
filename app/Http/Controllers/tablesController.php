@@ -70,7 +70,7 @@ class tablesController extends Controller
 			'user_role'	=> (int)($users_role[0]->role)
 		);
 		
-		print_r($_POST);
+		
 		
 		
 		

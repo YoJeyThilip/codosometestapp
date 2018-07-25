@@ -22,6 +22,7 @@
 					<tr>
 						<td>ID</td>
 						<td><input type="text" name="id" value="{{$addon->id}}"></td>
+							<td><input type="hidden"  name="table_name" value="addons"></td>
 					</tr>
 					<tr>
 						<td>Add on</td>

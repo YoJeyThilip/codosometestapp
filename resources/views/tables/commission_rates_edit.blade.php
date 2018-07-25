@@ -20,6 +20,7 @@
 					<tr>
 						<td>ID</td>
 						<td><input type="text"  name="id" value="{{$rate->id}}"></td>
+						<td><input type="hidden"  name="table_name" value="commission_rates"></td>
 					</tr>
 					<tr>
 						<td>Shirts</td>

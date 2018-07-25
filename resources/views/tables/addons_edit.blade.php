@@ -26,25 +26,17 @@
 	<tbody>
 		@foreach( $addons as $addon )	
 			@if( $addons_edit_id == $addon->id )
-				<tr role="row" class="odd">
-					
-					<td class="sorting_1">{{ $addon->id }}</td>
-					<td>
-																				   
-						<a class="fa fa-pencil" href="?edit=addons&id={{$addon->id}}"></a>
-						
-						<form method="post" style="display: inline-block;">
-							<input name="id" type="hidden" id="id" value="1">
-							<input name="type" type="hidden" id="type" value="delete">
-							<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
-						</form>
-					
-					</td>
-					<td>
-						{{ $addon->add_on }}
-					</td>
+				<tr>
+					<td>ID</td>
+					<td>{{$addon->id}}</td>
+				</tr>
+				<tr>
+					<td>Add on</td>
+					<td>{{ $addon->add_on }}</td>
+				</tr>
+				<tr>
+					<td>Prize</td>
 					<td>{{ $addon->prize }}</td>
-							
 				</tr>
 			@endif
 		@endforeach

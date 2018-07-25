@@ -11,7 +11,8 @@
 		<a href="?tab=calculator_fabric" class="nav-tab">Calculator fabric</a>
 	</h2>  
 </div>
-<div class="common_items_table edit_tables">
+<div class="common_items_table">
+<form action="#" method="post">
 	<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 		<thead>
 		</thead>
@@ -42,11 +43,15 @@
 							<td>Online Store</td>
 							<td><input type="text" value="{{ $common_item->online_store }}"></td>
 						</tr>
+						<tr>
+							<td></td>
+							<td><input type="submit" name="update"></td>
+						</tr>
 					@endif
 				@endforeach
 		</tbody>
 	</table>
-
+</form>
 </div>
 				
 @endsection

@@ -527,6 +527,10 @@ table#dt_basic td {
 	padding: 15px 10px;
 }
 
+table#dt_basic {
+	overflow-x: scroll;
+}
+
 .edit_tables {
     width: 50%;
     margin: 50px 0 0 20px;

@@ -82,16 +82,42 @@ class tablesController extends Controller
 			'calculator_fabric' => $calculator_fabric
 		);
 		
-		if( !isset($_GET['tab']) || $_GET['tab'] == 'common_items' ){ 
+		if( !isset($_GET['tab']) || $_GET['tab'] == 'common_items' ){
+			
 			return view( 'tables.common_items',$OrdersVariables );
+			
+		}else if( $_GET['common_items'] == 'edit' ){ 
+		
+			return view( 'tables.common_items_edit',$OrdersVariables );
+			
 		}else if( $_GET['tab'] == 'commission_rates' ){ 
+		
 			return view( 'tables.commission_rates',$OrdersVariables );
+			
+		}else if( $_GET['commission_rates'] == 'edit' ){ 
+		
+			return view( 'tables.commission_rates_edit',$OrdersVariables );
+			
 		}else if( $_GET['tab'] == 'addons' ){ 
+		
 			return view( 'tables.addons',$OrdersVariables );
-		}elseif( $_GET['tab'] == 'calculator_fabric' ){ 
+			
+		}else if( $_GET['addons'] == 'edit' ){ 
+		
+			return view( 'tables.addons_edit',$OrdersVariables );
+			
+		}else if( $_GET['tab'] == 'calculator_fabric' ){ 
+		
 			return view( 'tables.calculator_fabric',$OrdersVariables );
+			
+		}else if( $_GET['calculator_fabric'] == 'edit' ){ 
+		
+			return view( 'tables.calculator_fabric_edit',$OrdersVariables );
+			
 		}else {		
+		
 			return view( 'tables.Archive',$OrdersVariables );
+			
 		}
     }
 }

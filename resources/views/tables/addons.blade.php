@@ -81,7 +81,7 @@ jQuery(document).ready(function() {
 	
 		    
 	// custom toolbar
-	$("div.dt-toolbar .create-button-colors-style").html('<a href="'{{ route('tables') }}'?page=addons" class="button button-primary">Create new</a>'); 
+	//$("div.dt-toolbar .create-button-colors-style").html('<a href="'{{ route('tables') }}'?page=addons" class="button button-primary">Create new</a>'); 
 });
 </script>
 

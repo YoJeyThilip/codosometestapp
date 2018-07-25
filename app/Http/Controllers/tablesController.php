@@ -88,6 +88,8 @@ class tablesController extends Controller
 			
 		}else if( isset($_GET['common_items']) && $_GET['common_items'] == 'edit' ){ 
 		
+			$OrdersVariables['common_items_edit_id'] = $_GET['id'];
+		
 			return view( 'tables.common_items_edit',$OrdersVariables );
 			
 		}else if( $_GET['tab'] == 'commission_rates' ){ 

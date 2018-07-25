@@ -13,41 +13,35 @@
 </div>
 <table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 	<thead>
-		<tr role="row">
-			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Id</th>
-			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Control</th>
-			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Brand</th>
-			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Product</th>
-			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Cost</th>
-			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Non Online Store</th>
-			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Online Store</th>
-		</tr>
 	</thead>
 	<tbody>
-		@foreach( $common_items as $common_item )	
-			<tr role="row" class="odd">
-						
-				<td>{{$common_item->id}}</td>
-				<td>
-																		   
-					<a class="fa fa-pencil" href="#"></a>
+			@foreach( $common_items as $common_item )	
+			
+				@if( $common_items_edit_id == {{$common_item->id}} )
 					
-					<form method="post" style="display: inline-block;">
-						<input name="id" type="hidden" id="id" value="1">
-						<input name="type" type="hidden" id="type" value="delete">
-						<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
-					</form>
+					<tr role="row" class="odd" id="{{$common_item->id}}">
+								
+						<td>{{$common_item->id}}</td>
+						<td>													   
+							<a class="fa fa-pencil" href="?common_items=edit"></a>
+							
+							<form method="post" style="display: inline-block;">
+								<input name="id" type="hidden" id="id" value="1">
+								<input name="type" type="hidden" id="type" value="delete">
+								<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
+							</form>
+						</td>
+						<td>{{$common_item->brand}}</td>
+						<td>{{$common_item->product}}</td>
+						<td>{{$common_item->cost}}</td>
+						<td>{{$common_item->non_online_store}}</td>
+						<td>{{$common_item->online_store}}</td>
+								
+					</tr>
 				
-				</td>
-				<td>{{$common_item->brand}}</td>
-				<td>{{$common_item->product}}</td>
-				<td>{{$common_item->cost}}</td>
-				<td>{{$common_item->non_online_store}}</td>
-				<td>{{$common_item->online_store}}</td>
-						
-			</tr>
-		@endforeach
-	
+				@endif
+			
+			@endforeach
 	</tbody>
 </table>
 				

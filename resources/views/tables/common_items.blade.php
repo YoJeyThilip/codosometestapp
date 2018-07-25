@@ -25,12 +25,12 @@
 	</thead>
 	<tbody>
 		@foreach( $common_items as $common_item )	
-			<tr role="row" class="odd">
+			<tr role="row" class="odd" id="{{$common_item->id}}">
 						
 				<td>{{$common_item->id}}</td>
 				<td>
 																		   
-					<a class="fa fa-pencil" href="?common_items=edit"></a>
+					<a class="fa fa-pencil" href="?common_items=edit&id={{$common_item->id}}"></a>
 					
 					<form method="post" style="display: inline-block;">
 						<input name="id" type="hidden" id="id" value="1">

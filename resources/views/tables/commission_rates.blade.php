@@ -27,7 +27,7 @@
 				<td>{{$rate->id}}</td>
 				<td>
 																		   
-					<a class="fa fa-pencil" href="#"></a>
+					<a class="fa fa-pencil" href="?commission_rates=edit"></a>
 					
 					<form method="post" style="display: inline-block;">
 						<input name="id" type="hidden" id="id" value="1">

@@ -88,7 +88,7 @@ class tablesController extends Controller
 			
 		}else if( isset($_GET['common_items']) && $_GET['common_items'] == 'edit' ){ 
 		
-			print_r($_GET['id']);
+			print_r($_GET);
 		
 			$OrdersVariables['common_items_edit_id'] = $_GET['id'];
 		

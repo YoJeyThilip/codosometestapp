@@ -11,38 +11,101 @@
 		<a href="?page=product_calculator&tab=calculator_fabric" class="nav-tab">Calculator fabric</a>
 	</h2>  
 </div>
-<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
-	<thead>
-		<tr role="row">
-			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Id</th>
+
+	<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Id</th>
 			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Control</th>
-			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Brand</th>
-			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Product</th>
-			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Cost</th>
-			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Non Online Store</th>
-			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Online Store</th>
-		</tr>
-	</thead>
+			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Front</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Light Fabric Non Online 25</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Light Fabric Non Online 50</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Light Fabric Non Online 100</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Light Fabric Non Online 150</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Dark Fabric Non Online 25</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Dark Fabric Non Online 50</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Dark Fabric Non Online 100</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Dark Fabric Non Online 150</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">light Fabric Online 25</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">light Fabric Online 50</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">light Fabric Online 100</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">light Fabric Online 150</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Dark Fabric Online 25</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Dark Fabric Online 50</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Dark Fabric Online 100</th>
+			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Colour Type: activate to sort column ascending" style="width: 210px;">Dark Fabric Online 150</th>
+<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 	<tbody>
 		@foreach( $commission_rates as $rate )	
 			@if( $calculator_fabric_edit_id == $fabric->id )
-				<tr role="row" class="odd">
-							
-					<td>{{$rate->id}}</td>
-					<td>
-																			   
-						<a class="fa fa-pencil" href="?edit=commission_rates&id={{$rate->id}}"></a>
-						
-						<form method="post" style="display: inline-block;">
-							<input name="id" type="hidden" id="id" value="1">
-							<input name="type" type="hidden" id="type" value="delete">
-							<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
-						</form>
-					
-					</td>
-					<td>{{$rate->shirts}}</td>
-					<td>{{$rate->rate}}</td>
-							
+				<tr>
+					<td>ID</td>
+					<td>{{$fabric->id}}</td>
+				</tr>
+				<tr>
+					<td>front</td>
+					<td>{{$fabric->front}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Non Online 25</td>
+					<td>{{$fabric->light_fabric_non_online_25}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Non Online 50</td>
+					<td>{{$fabric->light_fabric_non_online_50}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Non Online 100</td>
+					<td>{{$fabric->light_fabric_non_online_100}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Non Online 150</td>
+					<td>{{$fabric->light_fabric_non_online_150}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Non Online 25</td>
+					<td>{{$fabric->dark_fabric_non_online_25}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Non Online 50</td>
+					<td>{{$fabric->dark_fabric_non_online_50}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Non Online 100</td>
+					<td>{{$fabric->dark_fabric_non_online_100}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Non Online 150</td>
+					<td>{{$fabric->dark_fabric_non_online_150}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Online 25</td>
+					<td>{{$fabric->light_fabric_online_25}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Online 50</td>
+					<td>{{$fabric->light_fabric_online_50}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Online 100</td>
+					<td>{{$fabric->light_fabric_online_100}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Online 150</td>
+					<td>{{$fabric->light_fabric_online_150}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Online 25</td>
+					<td>{{$fabric->dark_fabric_online_25}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Online 50</td>
+					<td>{{$fabric->dark_fabric_online_50}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Online 100</td>
+					<td>{{$fabric->dark_fabric_online_100}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Online 150</td>		
+					<td>{{$fabric->dark_fabric_online_150}}</td>
 				</tr>
 			@endif
 		@endforeach

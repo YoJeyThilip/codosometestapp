@@ -24,41 +24,79 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach( $calculator_fabric as $fabric )	
-			@if( $calculator_fabric_edit_id == $fabric->id )
-				<tr role="row" class="odd">
-							
+		@foreach( $commission_rates as $rate )	
+			@if( $commission_rates_edit_id == $rate->id )
+				<tr>
+					<td>ID</td>
 					<td>{{$fabric->id}}</td>
-					<td>
-																			   
-						<a class="fa fa-pencil" href="?edit=calculator_fabric&id={{$fabric->id}}"></a>
-						
-						<form method="post" style="display: inline-block;">
-							<input name="id" type="hidden" id="id" value="1">
-							<input name="type" type="hidden" id="type" value="delete">
-							<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
-						</form>
-					
-					</td>
+				</tr>
+				<tr>
+					<td>front</td>
 					<td>{{$fabric->front}}</td>
-					<td>{{$fabric->back}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Non Online 25</td>
 					<td>{{$fabric->light_fabric_non_online_25}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Non Online 50</td>
 					<td>{{$fabric->light_fabric_non_online_50}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Non Online 100</td>
 					<td>{{$fabric->light_fabric_non_online_100}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Non Online 150</td>
 					<td>{{$fabric->light_fabric_non_online_150}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Non Online 25</td>
 					<td>{{$fabric->dark_fabric_non_online_25}}</td>
-					<td>{{$fabric->dark_fabric_non_online_50}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Non Online 50</td>
+					<td>{{$fabric->dark_fabric_non_online_50}}</td> 
+				</tr>
+				<tr>
+					<td>Dark Fabric Non Online 100</td>
 					<td>{{$fabric->dark_fabric_non_online_100}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Non Online 150</td>
 					<td>{{$fabric->dark_fabric_non_online_150}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Online 25</td>
 					<td>{{$fabric->light_fabric_online_25}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Online 50</td>
 					<td>{{$fabric->light_fabric_online_50}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Online 100</td>
 					<td>{{$fabric->light_fabric_online_100}}</td>
+				</tr>
+				<tr>
+					<td>Light Fabric Online 150</td>
 					<td>{{$fabric->light_fabric_online_150}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Online 25</td>
 					<td>{{$fabric->dark_fabric_online_25}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Online 50</td>
 					<td>{{$fabric->dark_fabric_online_50}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Online 100</td>
 					<td>{{$fabric->dark_fabric_online_100}}</td>
+				</tr>
+				<tr>
+					<td>Dark Fabric Online 150</td>		
 					<td>{{$fabric->dark_fabric_online_150}}</td>
-							
 				</tr>
 			@endif
 		@endforeach

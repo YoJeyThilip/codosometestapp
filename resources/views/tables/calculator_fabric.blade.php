@@ -42,7 +42,7 @@
 				<td>{{$fabric->id}}</td>
 				<td>
 																		   
-					<a class="fa fa-pencil" href="?edit=calculator_fabric"></a>
+					<a class="fa fa-pencil" href="?edit=calculator_fabric&id={{$fabric->id}}"></a>
 					
 					<form method="post" style="display: inline-block;">
 						<input name="id" type="hidden" id="id" value="1">

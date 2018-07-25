@@ -16,76 +16,17 @@
 			@if( $commission_rates_edit_id == $rate->id )
 				<tr>
 					<td>ID</td>
-					<td>{{$fabric->id}}</td>
+					<td>{{$rate->id}}</td>
 				</tr>
 				<tr>
-					<td>front</td>
-					<td>{{$fabric->front}}</td>
+					<td>Shirts</td>
+					<td>{{$rate->shirts}}</td>
 				</tr>
 				<tr>
-					<td>Light Fabric Non Online 25</td>
-					<td>{{$fabric->light_fabric_non_online_25}}</td>
+					<td>Fabric</td>
+					<td>{{$rate->rate}}</td>
 				</tr>
-				<tr>
-					<td>Light Fabric Non Online 50</td>
-					<td>{{$fabric->light_fabric_non_online_50}}</td>
-				</tr>
-				<tr>
-					<td>Light Fabric Non Online 100</td>
-					<td>{{$fabric->light_fabric_non_online_100}}</td>
-				</tr>
-				<tr>
-					<td>Light Fabric Non Online 150</td>
-					<td>{{$fabric->light_fabric_non_online_150}}</td>
-				</tr>
-				<tr>
-					<td>Dark Fabric Non Online 25</td>
-					<td>{{$fabric->dark_fabric_non_online_25}}</td>
-				</tr>
-				<tr>
-					<td>Dark Fabric Non Online 50</td>
-					<td>{{$fabric->dark_fabric_non_online_50}}</td> 
-				</tr>
-				<tr>
-					<td>Dark Fabric Non Online 100</td>
-					<td>{{$fabric->dark_fabric_non_online_100}}</td>
-				</tr>
-				<tr>
-					<td>Dark Fabric Non Online 150</td>
-					<td>{{$fabric->dark_fabric_non_online_150}}</td>
-				</tr>
-				<tr>
-					<td>Light Fabric Online 25</td>
-					<td>{{$fabric->light_fabric_online_25}}</td>
-				</tr>
-				<tr>
-					<td>Light Fabric Online 50</td>
-					<td>{{$fabric->light_fabric_online_50}}</td>
-				</tr>
-				<tr>
-					<td>Light Fabric Online 100</td>
-					<td>{{$fabric->light_fabric_online_100}}</td>
-				</tr>
-				<tr>
-					<td>Light Fabric Online 150</td>
-					<td>{{$fabric->light_fabric_online_150}}</td>
-				</tr>
-				<tr>
-					<td>Dark Fabric Online 25</td>
-					<td>{{$fabric->dark_fabric_online_25}}</td>
-				</tr>
-				<tr>
-					<td>Dark Fabric Online 50</td>
-					<td>{{$fabric->dark_fabric_online_50}}</td>
-				</tr>
-				<tr>
-					<td>Dark Fabric Online 100</td>
-					<td>{{$fabric->dark_fabric_online_100}}</td>
-				</tr>
-				<tr>
-					<td>Dark Fabric Online 150</td>		
-					<td>{{$fabric->dark_fabric_online_150}}</td>
-				</tr>
+				
 			@endif
 		@endforeach
 </table>

@@ -11,25 +11,27 @@
 		<a href="?tab=calculator_fabric" class="nav-tab">Calculator fabric</a>
 	</h2>  
 </div>
-<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
-		@foreach( $commission_rates as $rate )	
-			@if( $commission_rates_edit_id == $rate->id )
-				<tr>
-					<td>ID</td>
-					<td>{{$rate->id}}</td>
-				</tr>
-				<tr>
-					<td>Shirts</td>
-					<td>{{$rate->shirts}}</td>
-				</tr>
-				<tr>
-					<td>Fabric</td>
-					<td>{{$rate->rate}}</td>
-				</tr>
-				
-			@endif
-		@endforeach
-</table>
+<div class="commission_rates_table">
+	<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
+			@foreach( $commission_rates as $rate )	
+				@if( $commission_rates_edit_id == $rate->id )
+					<tr>
+						<td>ID</td>
+						<td>{{$rate->id}}</td>
+					</tr>
+					<tr>
+						<td>Shirts</td>
+						<td>{{$rate->shirts}}</td>
+					</tr>
+					<tr>
+						<td>Fabric</td>
+						<td>{{$rate->rate}}</td>
+					</tr>
+					
+				@endif
+			@endforeach
+	</table>
+</div>
 				
 @endsection
 

@@ -11,28 +11,30 @@
 		<a href="?tab=calculator_fabric" class="nav-tab">Calculator fabric</a>
 	</h2>  
 </div>
-<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
-	
-	<tbody>
-		@foreach( $addons as $addon )	
-			@if( $addons_edit_id == $addon->id )
-				<tr>
-					<td>ID</td>
-					<td><input type="text" value="{{$addon->id}}"></td>
-				</tr>
-				<tr>
-					<td>Add on</td>
-					<td><input type="text" value="{{ $addon->add_on }}"></td>
-				</tr>
-				<tr>
-					<td>Prize</td>
-					<td><input type="text" value="{{ $addon->prize }}"></td>
-				</tr>
-			@endif
-		@endforeach
-	
-	</tbody>
-</table>
+<div class="addons_table">
+	<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
+		
+		<tbody>
+			@foreach( $addons as $addon )	
+				@if( $addons_edit_id == $addon->id )
+					<tr>
+						<td>ID</td>
+						<td><input type="text" value="{{$addon->id}}"></td>
+					</tr>
+					<tr>
+						<td>Add on</td>
+						<td><input type="text" value="{{ $addon->add_on }}"></td>
+					</tr>
+					<tr>
+						<td>Prize</td>
+						<td><input type="text" value="{{ $addon->prize }}"></td>
+					</tr>
+				@endif
+			@endforeach
+		
+		</tbody>
+	</table>
+</div>
 				
 @endsection
 

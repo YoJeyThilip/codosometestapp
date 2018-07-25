@@ -11,40 +11,43 @@
 		<a href="?tab=calculator_fabric" class="nav-tab">Calculator fabric</a>
 	</h2>  
 </div>
-<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
-	<thead>
-	</thead>
-	<tbody>
-			@foreach( $common_items as $common_item )	
-				@if( $common_items_edit_id == $common_item->id )
-					<tr>
-						<td>ID</td>
-						<td><input type="text" value="{{$common_item->id}}"></td>
-					</tr>
-					<tr>
-						<td>Brand</td>
-						<td><input type="text" value="{{ $common_item->brand }}"></td>
-					</tr>
-					<tr>
-						<td>Product</td>
-						<td><input type="text" value="{{ $common_item->product }}"></td>
-					</tr>
-					<tr>
-						<td>Cost</td>
-						<td><input type="text" value="{{ $common_item->cost }}"></td>
-					</tr>
-					<tr>
-						<td>Non online Store</td>
-						<td><input type="text" value="{{ $common_item->non_online_store }}"></td>
-					</tr>
-					<tr>
-						<td>Online Store</td>
-						<td><input type="text" value="{{ $common_item->online_store }}"></td>
-					</tr>
-				@endif
-			@endforeach
-	</tbody>
-</table>
+<div class="common_items_table">
+	<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
+		<thead>
+		</thead>
+		<tbody>
+				@foreach( $common_items as $common_item )	
+					@if( $common_items_edit_id == $common_item->id )
+						<tr>
+							<td>ID</td>
+							<td><input type="text" value="{{$common_item->id}}"></td>
+						</tr>
+						<tr>
+							<td>Brand</td>
+							<td><input type="text" value="{{ $common_item->brand }}"></td>
+						</tr>
+						<tr>
+							<td>Product</td>
+							<td><input type="text" value="{{ $common_item->product }}"></td>
+						</tr>
+						<tr>
+							<td>Cost</td>
+							<td><input type="text" value="{{ $common_item->cost }}"></td>
+						</tr>
+						<tr>
+							<td>Non online Store</td>
+							<td><input type="text" value="{{ $common_item->non_online_store }}"></td>
+						</tr>
+						<tr>
+							<td>Online Store</td>
+							<td><input type="text" value="{{ $common_item->online_store }}"></td>
+						</tr>
+					@endif
+				@endforeach
+		</tbody>
+	</table>
+
+</div>
 				
 @endsection
 

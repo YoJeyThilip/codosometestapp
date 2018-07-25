@@ -519,3 +519,46 @@ tr.splitscreen_order>td:first-child:before {
 .campus_cumission_calculator .col-md-6 div {
     padding: 2px;
 }
+
+/* Tables */
+
+.common_items_table table td {
+	border:none;
+	padding: 15px 10px;
+}
+
+.common_items_table {
+    width: 50%;
+    margin: 50px 0 0 20px;
+}
+
+h2.nav-tab-wrapper {
+	border-bottom: 1px solid #ccc;
+	margin: 0;
+	padding-top: 9px;
+	padding-bottom: 0;
+	line-height: inherit;
+}
+
+h2.product_calculator_tables a {
+	float: left;
+	border: 1px solid #ccc;
+	border-bottom: none;
+	margin-left: .5em;
+	padding: 5px 10px;
+	font-size: 14px;
+	line-height: 24px;
+	background: #e5e5e5;
+	color: #555;
+	text-decoration: none;
+}
+
+h2.product_calculator_tables a:focus, h2.product_calculator_tables a:hover {
+	background-color: #fff;
+	color: #444;
+}
+
+.product_calculator_details h1 {
+	padding-top: 20px;
+	padding-left: 20px;
+}

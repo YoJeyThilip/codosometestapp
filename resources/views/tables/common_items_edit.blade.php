@@ -19,27 +19,27 @@
 				@if( $common_items_edit_id == $common_item->id )
 					<tr>
 						<td>ID</td>
-						<td>{{$addon->id}}</td>
+						<td>{{$common_item->id}}</td>
 					</tr>
 					<tr>
 						<td>Brand</td>
-						<td>{{ $addon->add_on }}</td>
+						<td>{{ $common_item->brand }}</td>
 					</tr>
 					<tr>
 						<td>Product</td>
-						<td>{{ $addon->prize }}</td>
+						<td>{{ $common_item->product }}</td>
 					</tr>
 					<tr>
 						<td>Cost</td>
-						<td>{{ $addon->prize }}</td>
+						<td>{{ $common_item->cost }}</td>
 					</tr>
 					<tr>
 						<td>Non online Store</td>
-						<td>{{ $addon->prize }}</td>
+						<td>{{ $common_item->non_online_store }}</td>
 					</tr>
 					<tr>
 						<td>Online Store</td>
-						<td>{{ $addon->prize }}</td>
+						<td>{{ $common_item->online_store }}</td>
 					</tr>
 				@endif
 			@endforeach

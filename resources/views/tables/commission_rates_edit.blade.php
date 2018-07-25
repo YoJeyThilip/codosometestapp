@@ -12,25 +12,28 @@
 	</h2>  
 </div>
 <div class="commission_rates_table edit_tables">
+<form action="" method="post">
+	@csrf
 	<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 			@foreach( $commission_rates as $rate )	
 				@if( $commission_rates_edit_id == $rate->id )
 					<tr>
 						<td>ID</td>
-						<td><input type="text" value="{{$rate->id}}"></td>
+						<td><input type="text"  name="id" value="{{$rate->id}}"></td>
 					</tr>
 					<tr>
 						<td>Shirts</td>
-						<td><input type="text" value="{{$rate->shirts}}"></td>
+						<td><input type="text"  name="shirts" value="{{$rate->shirts}}"></td>
 					</tr>
 					<tr>
 						<td>Fabric</td>
-						<td><input type="text" value="{{$rate->rate}}"></td>
+						<td><input type="text"  name="rate" value="{{$rate->rate}}"></td>
 					</tr>
 					
 				@endif
 			@endforeach
 	</table>
+</form>
 </div>
 				
 @endsection

@@ -12,6 +12,8 @@
 	</h2>  
 </div>
 <div class="addons_table edit_tables">
+<form action="" method="post">
+	@csrf
 	<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 		
 		<tbody>
@@ -19,21 +21,22 @@
 				@if( $addons_edit_id == $addon->id )
 					<tr>
 						<td>ID</td>
-						<td><input type="text" value="{{$addon->id}}"></td>
+						<td><input type="text" name="id" value="{{$addon->id}}"></td>
 					</tr>
 					<tr>
 						<td>Add on</td>
-						<td><input type="text" value="{{ $addon->add_on }}"></td>
+						<td><input type="text" name="add_on"  value="{{ $addon->add_on }}"></td>
 					</tr>
 					<tr>
 						<td>Prize</td>
-						<td><input type="text" value="{{ $addon->prize }}"></td>
+						<td><input type="text" name="prize" value="{{ $addon->prize }}"></td>
 					</tr>
 				@endif
 			@endforeach
 		
 		</tbody>
 	</table>
+</form>
 </div>
 				
 @endsection

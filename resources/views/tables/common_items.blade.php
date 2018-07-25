@@ -30,7 +30,7 @@
 				<td>{{$common_item->id}}</td>
 				<td>
 																		   
-					<a class="fa fa-pencil" href="?common_items=edit&id={{$common_item->id}}"></a>
+					<a class="fa fa-pencil" href="?edit=common_items&id={{$common_item->id}}"></a>
 					
 					<form method="post" style="display: inline-block;">
 						<input name="id" type="hidden" id="id" value="1">

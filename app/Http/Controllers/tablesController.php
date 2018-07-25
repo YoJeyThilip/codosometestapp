@@ -86,7 +86,7 @@ class tablesController extends Controller
 			
 			return view( 'tables.common_items',$OrdersVariables );
 			
-		}else if( $_GET['common_items'] == 'edit' ){ 
+		}else if( isset($_GET['common_items']) || $_GET['common_items'] == 'edit' ){ 
 		
 			return view( 'tables.common_items_edit',$OrdersVariables );
 			

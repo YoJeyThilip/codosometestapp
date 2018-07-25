@@ -5,11 +5,11 @@
 	<h1 class="product_calculator_header">Product Calculator Settings</h1>
 
 	<h2 class="nav-tab-wrapper product_calculator_tables">
-		<a href="?page=product_calculator&tab=common_items" class="nav-tab">Common Items</a>  
-		<a href="?page=product_calculator&tab=commission_rates" class="nav-tab">Commission rates</a>
-		<a href="?page=product_calculator&tab=addons" class="nav-tab">Addons</a>
-		<a href="?page=product_calculator&tab=calculator_fabric" class="nav-tab">Calculator fabric</a>
-	</h2>
+		<a href="?tab=common_items" class="nav-tab">Common Items</a>  
+		<a href="?tab=commission_rates" class="nav-tab">Commission rates</a>
+		<a href="?tab=addons" class="nav-tab">Addons</a>
+		<a href="?tab=calculator_fabric" class="nav-tab">Calculator fabric</a>
+	</h2>  
 </div>
 <table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 	<thead>

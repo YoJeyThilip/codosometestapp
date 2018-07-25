@@ -5,46 +5,14 @@
 	<h1 class="product_calculator_header">Product Calculator Settings</h1>
 
 	<h2 class="nav-tab-wrapper product_calculator_tables">
-		<a href="?page=product_calculator&tab=common_items" class="nav-tab">Common Items</a>  
-		<a href="?page=product_calculator&tab=commission_rates" class="nav-tab">Commission rates</a>
-		<a href="?page=product_calculator&tab=addons" class="nav-tab">Addons</a>
-		<a href="?page=product_calculator&tab=calculator_fabric" class="nav-tab">Calculator fabric</a>
+		<a href="?tab=common_items" class="nav-tab">Common Items</a>  
+		<a href="?tab=commission_rates" class="nav-tab">Commission rates</a>
+		<a href="?tab=addons" class="nav-tab">Addons</a>
+		<a href="?tab=calculator_fabric" class="nav-tab">Calculator fabric</a>
 	</h2>  
 </div>
 				
 @endsection
-
-
-<script>
-jQuery(document).ready(function() {
-	var responsiveHelper_dt_basic = undefined;
-	
-	var breakpointDefinition = {
-		tablet : 1024,
-		phone : 480
-	};
-				
-	jQuery('#dt_basic').dataTable({
-					"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-3'f><'col-xs-12 col-sm-3 create-button-colors-style'><'col-sm-6 col-xs-12 hidden-xs'l>r>"+
-						"t"+
-						"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-					"autoWidth" : true,
-					"preDrawCallback" : function() {
-						// Initialize the responsive datatables helper once.
-						if (!responsiveHelper_dt_basic) {
-							responsiveHelper_dt_basic = new ResponsiveDatatablesHelper(jQuery('#dt_basic'), breakpointDefinition);
-						}
-					},
-					"rowCallback" : function(nRow) {
-						responsiveHelper_dt_basic.createExpandIcon(nRow);
-					},
-					"drawCallback" : function(oSettings) {
-						responsiveHelper_dt_basic.respond();
-					}
-				});
-	
-});
-</script>
 
 <style>
 	h2.nav-tab-wrapper {

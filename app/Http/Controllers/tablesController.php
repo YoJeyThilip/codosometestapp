@@ -94,7 +94,7 @@ class tablesController extends Controller
 		
 			return view( 'tables.commission_rates',$OrdersVariables );
 			
-		}else if( $_GET['commission_rates'] == 'edit' ){ 
+		}else if( isset($_GET['commission_rates']) && $_GET['commission_rates'] == 'edit' ){ 
 		
 			return view( 'tables.commission_rates_edit',$OrdersVariables );
 			
@@ -102,7 +102,7 @@ class tablesController extends Controller
 		
 			return view( 'tables.addons',$OrdersVariables );
 			
-		}else if( $_GET['addons'] == 'edit' ){ 
+		}else if( isset($_GET['addons']) && $_GET['addons'] == 'edit' ){ 
 		
 			return view( 'tables.addons_edit',$OrdersVariables );
 			
@@ -110,7 +110,7 @@ class tablesController extends Controller
 		
 			return view( 'tables.calculator_fabric',$OrdersVariables );
 			
-		}else if( $_GET['calculator_fabric'] == 'edit' ){ 
+		}else if( isset($_GET['calculator_fabric']) && $_GET['calculator_fabric'] == 'edit' ){ 
 		
 			return view( 'tables.calculator_fabric_edit',$OrdersVariables );
 			

@@ -70,6 +70,11 @@ class tablesController extends Controller
 			'user_role'	=> (int)($users_role[0]->role)
 		);
 		
+		print_r($_POST);
+		
+		
+		
+		
 		if( !isset($_GET['tab']) && !isset($_GET['edit']) || ( isset($_GET['tab'])  && $_GET['tab'] == 'common_items') ){
 			
 			$OrdersVariables['common_items'] = DB::select("SELECT * FROM common_items" );

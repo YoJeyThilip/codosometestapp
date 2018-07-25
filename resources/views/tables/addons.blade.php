@@ -28,7 +28,7 @@
 			<td class="sorting_1">{{ $addon->id }}</td>
 			<td>
 																		   
-				<a class="fa fa-pencil" href="/addons_edit"></a>
+				<a class="fa fa-pencil" href="/?addons=edit"></a>
 				
 				<form method="post" style="display: inline-block;">
 					<input name="id" type="hidden" id="id" value="1">

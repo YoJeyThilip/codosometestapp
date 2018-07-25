@@ -91,6 +91,10 @@
 						<td>Dark Fabric Online 150</td>		
 						<td><input type="text" name="dark_fabric_online_150"  value="{{$fabric->dark_fabric_online_150}}"></td>
 					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" name="update"></td>
+					</tr>
 				@endif
 			@endforeach
 		

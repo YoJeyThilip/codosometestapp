@@ -31,6 +31,10 @@
 						<td>Prize</td>
 						<td><input type="text" name="prize" value="{{ $addon->prize }}"></td>
 					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" name="update"></td>
+					</tr>
 				@endif
 			@endforeach
 		

@@ -29,6 +29,10 @@
 						<td>Fabric</td>
 						<td><input type="text"  name="rate" value="{{$rate->rate}}"></td>
 					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" name="update"></td>
+					</tr>
 					
 				@endif
 			@endforeach

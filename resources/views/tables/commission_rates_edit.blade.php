@@ -17,15 +17,15 @@
 				@if( $commission_rates_edit_id == $rate->id )
 					<tr>
 						<td>ID</td>
-						<td>{{$rate->id}}</td>
+						<td><input type="text" value="{{$rate->id}}"></td>
 					</tr>
 					<tr>
 						<td>Shirts</td>
-						<td>{{$rate->shirts}}</td>
+						<td><input type="text" value="{{$rate->shirts}}"></td>
 					</tr>
 					<tr>
 						<td>Fabric</td>
-						<td>{{$rate->rate}}</td>
+						<td><input type="text" value="{{$rate->rate}}"></td>
 					</tr>
 					
 				@endif

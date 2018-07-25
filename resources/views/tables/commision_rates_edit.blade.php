@@ -12,9 +12,8 @@
 	</h2>  
 </div>
 <table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
-	<tbody>
 		@foreach( $commission_rates as $rate )	
-			@if( $calculator_fabric_edit_id == $fabric->id )
+			@if( $commission_rates_edit_id == $rate->id )
 				<tr>
 					<td>ID</td>
 					<td>{{$fabric->id}}</td>
@@ -89,8 +88,6 @@
 				</tr>
 			@endif
 		@endforeach
-	
-	</tbody>
 </table>
 				
 @endsection

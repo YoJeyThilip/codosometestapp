@@ -24,28 +24,43 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach( $common_items as $common_item )	
-			<tr role="row" class="odd">
+		@foreach( $calculator_fabric as $fabric )	
+			@if( $calculator_fabric_edit_id == $fabric->id )
+				<tr role="row" class="odd">
+							
+					<td>{{$fabric->id}}</td>
+					<td>
+																			   
+						<a class="fa fa-pencil" href="?edit=calculator_fabric&id={{$fabric->id}}"></a>
 						
-				<td>{{$common_item->id}}</td>
-				<td>
-																		   
-					<a class="fa fa-pencil" href="#"></a>
+						<form method="post" style="display: inline-block;">
+							<input name="id" type="hidden" id="id" value="1">
+							<input name="type" type="hidden" id="type" value="delete">
+							<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
+						</form>
 					
-					<form method="post" style="display: inline-block;">
-						<input name="id" type="hidden" id="id" value="1">
-						<input name="type" type="hidden" id="type" value="delete">
-						<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
-					</form>
-				
-				</td>
-				<td>{{$common_item->brand}}</td>
-				<td>{{$common_item->product}}</td>
-				<td>{{$common_item->cost}}</td>
-				<td>{{$common_item->non_online_store}}</td>
-				<td>{{$common_item->online_store}}</td>
-						
-			</tr>
+					</td>
+					<td>{{$fabric->front}}</td>
+					<td>{{$fabric->back}}</td>
+					<td>{{$fabric->light_fabric_non_online_25}}</td>
+					<td>{{$fabric->light_fabric_non_online_50}}</td>
+					<td>{{$fabric->light_fabric_non_online_100}}</td>
+					<td>{{$fabric->light_fabric_non_online_150}}</td>
+					<td>{{$fabric->dark_fabric_non_online_25}}</td>
+					<td>{{$fabric->dark_fabric_non_online_50}}</td>
+					<td>{{$fabric->dark_fabric_non_online_100}}</td>
+					<td>{{$fabric->dark_fabric_non_online_150}}</td>
+					<td>{{$fabric->light_fabric_online_25}}</td>
+					<td>{{$fabric->light_fabric_online_50}}</td>
+					<td>{{$fabric->light_fabric_online_100}}</td>
+					<td>{{$fabric->light_fabric_online_150}}</td>
+					<td>{{$fabric->dark_fabric_online_25}}</td>
+					<td>{{$fabric->dark_fabric_online_50}}</td>
+					<td>{{$fabric->dark_fabric_online_100}}</td>
+					<td>{{$fabric->dark_fabric_online_150}}</td>
+							
+				</tr>
+			@endif
 		@endforeach
 	
 	</tbody>

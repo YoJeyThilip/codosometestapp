@@ -24,28 +24,29 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach( $common_items as $common_item )	
-			<tr role="row" class="odd">
-						
-				<td>{{$common_item->id}}</td>
-				<td>
-																		   
-					<a class="fa fa-pencil" href="#"></a>
+		@foreach( $addons as $addon )	
+			@if( $addons_edit_id == $addon->id )
+				<tr role="row" class="odd">
 					
-					<form method="post" style="display: inline-block;">
-						<input name="id" type="hidden" id="id" value="1">
-						<input name="type" type="hidden" id="type" value="delete">
-						<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
-					</form>
-				
-				</td>
-				<td>{{$common_item->brand}}</td>
-				<td>{{$common_item->product}}</td>
-				<td>{{$common_item->cost}}</td>
-				<td>{{$common_item->non_online_store}}</td>
-				<td>{{$common_item->online_store}}</td>
+					<td class="sorting_1">{{ $addon->id }}</td>
+					<td>
+																				   
+						<a class="fa fa-pencil" href="?edit=addons&id={{$addon->id}}"></a>
 						
-			</tr>
+						<form method="post" style="display: inline-block;">
+							<input name="id" type="hidden" id="id" value="1">
+							<input name="type" type="hidden" id="type" value="delete">
+							<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
+						</form>
+					
+					</td>
+					<td>
+						{{ $addon->add_on }}
+					</td>
+					<td>{{ $addon->prize }}</td>
+							
+				</tr>
+			@endif
 		@endforeach
 	
 	</tbody>

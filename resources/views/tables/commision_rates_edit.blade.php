@@ -24,28 +24,27 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach( $common_items as $common_item )	
-			<tr role="row" class="odd">
+		@foreach( $commission_rates as $rate )	
+			@if( $calculator_fabric_edit_id == $fabric->id )
+				<tr role="row" class="odd">
+							
+					<td>{{$rate->id}}</td>
+					<td>
+																			   
+						<a class="fa fa-pencil" href="?edit=commission_rates&id={{$rate->id}}"></a>
 						
-				<td>{{$common_item->id}}</td>
-				<td>
-																		   
-					<a class="fa fa-pencil" href="#"></a>
+						<form method="post" style="display: inline-block;">
+							<input name="id" type="hidden" id="id" value="1">
+							<input name="type" type="hidden" id="type" value="delete">
+							<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
+						</form>
 					
-					<form method="post" style="display: inline-block;">
-						<input name="id" type="hidden" id="id" value="1">
-						<input name="type" type="hidden" id="type" value="delete">
-						<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
-					</form>
-				
-				</td>
-				<td>{{$common_item->brand}}</td>
-				<td>{{$common_item->product}}</td>
-				<td>{{$common_item->cost}}</td>
-				<td>{{$common_item->non_online_store}}</td>
-				<td>{{$common_item->online_store}}</td>
-						
-			</tr>
+					</td>
+					<td>{{$rate->shirts}}</td>
+					<td>{{$rate->rate}}</td>
+							
+				</tr>
+			@endif
 		@endforeach
 	
 	</tbody>

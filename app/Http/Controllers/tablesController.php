@@ -92,6 +92,8 @@ class tablesController extends Controller
 			
 		}else if( isset($_GET['edit']) && $_GET['edit'] == 'commission_rates' ){ 
 		
+			$OrdersVariables['commission_rates_edit_id'] = $_GET['id'];
+		
 			$OrdersVariables['commission_rates'] = DB::select("SELECT * FROM commission_rates" );
 		
 			return view( 'tables.commission_rates_edit',$OrdersVariables );
@@ -104,6 +106,8 @@ class tablesController extends Controller
 			
 		}else if( isset($_GET['edit']) && $_GET['edit'] == 'addons' ){ 
 		
+			$OrdersVariables['addons_edit_id'] = $_GET['id'];
+		
 			$OrdersVariables['addons'] = DB::select("SELECT * FROM addons" );
 		
 			return view( 'tables.addons_edit',$OrdersVariables );
@@ -114,7 +118,9 @@ class tablesController extends Controller
 		
 			return view( 'tables.calculator_fabric',$OrdersVariables );
 			
-		}else if( isset($_GET['edit']) && $_GET['edit'] == 'calculator_fabric' ){ 
+		}else if( isset($_GET['edit']) && $_GET['edit'] == 'calculator_fabric' ){  
+		
+			$OrdersVariables['calculator_fabric_edit_id'] = $_GET['id'];
 		
 			$OrdersVariables['calculator_fabric'] = DB::select("SELECT * FROM calculator_fabric" );
 		

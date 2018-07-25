@@ -16,20 +16,20 @@
 	</thead>
 	<tbody>
 			@foreach( $common_items as $common_item )	
-			
 				@if( $common_items_edit_id == $common_item->id )
-					
-					<tr role="row" class="odd" id="{{$common_item->id}}">
+					<tr role="row" class="odd">
 								
 						<td>{{$common_item->id}}</td>
-						<td>													   
-							<a class="fa fa-pencil" href="?common_items=edit"></a>
+						<td>
+																				   
+							<a class="fa fa-pencil" href="#"></a>
 							
 							<form method="post" style="display: inline-block;">
 								<input name="id" type="hidden" id="id" value="1">
 								<input name="type" type="hidden" id="type" value="delete">
 								<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
 							</form>
+						
 						</td>
 						<td>{{$common_item->brand}}</td>
 						<td>{{$common_item->product}}</td>
@@ -38,9 +38,7 @@
 						<td>{{$common_item->online_store}}</td>
 								
 					</tr>
-				
 				@endif
-			
 			@endforeach
 	</tbody>
 </table>

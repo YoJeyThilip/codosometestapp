@@ -90,8 +90,8 @@ class tablesController extends Controller
 			return view( 'tables.addons',$OrdersVariables );
 		}elseif( $_GET['tab'] == 'calculator_fabric' ){ 
 			return view( 'tables.calculator_fabric',$OrdersVariables );
+		}else {		
+			return view( 'tables.Archive',$OrdersVariables );
 		}
-		
-		return view( 'tables.Archive',$OrdersVariables );
     }
 }

@@ -24,8 +24,8 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach( $commission_rates as $rate )	
-			@if( $commission_rates_edit_id == $rate->id )
+		@foreach( $calculator_fabric as $fabric )	
+			@if( $calculator_fabric_edit_id == $fabric->id )
 				<tr>
 					<td>ID</td>
 					<td>{{$fabric->id}}</td>

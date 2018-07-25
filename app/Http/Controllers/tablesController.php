@@ -82,7 +82,7 @@ class tablesController extends Controller
 			'calculator_fabric' => $calculator_fabric
 		);
 		
-		if( !isset($_GET['tab']) && $_GET['tab'] == 'common_items' ){
+		if( !isset($_GET['tab']) || $_GET['tab'] == 'common_items' ){
 			print_r('test common_items');
 			
 			return view( 'tables.common_items',$OrdersVariables );

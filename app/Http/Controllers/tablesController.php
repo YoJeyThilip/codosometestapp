@@ -82,16 +82,11 @@ class tablesController extends Controller
 			'calculator_fabric' => $calculator_fabric
 		);
 		
-		if( !isset($_GET['tab']) || $_GET['tab'] == 'common_items' ){
-			print_r('test common_items');
+		if( !isset($_GET['tab']) && !isset($_GET['edit']) || $_GET['tab'] == 'common_items' ){
 			
 			return view( 'tables.common_items',$OrdersVariables );
 			
-		}else if( isset($_GET['common_items']) && $_GET['common_items'] == 'edit' ){ 
-			print_r('test common_items1');
-		
-			print_r($_GET);
-			//print_r('test common_items');
+		}else if( isset($_GET['edit']) && $_GET['edit'] == 'common_items' ){ 
 		
 			$OrdersVariables['common_items_edit_id'] = $_GET['id'];
 		
@@ -101,7 +96,7 @@ class tablesController extends Controller
 		
 			return view( 'tables.commission_rates',$OrdersVariables );
 			
-		}else if( isset($_GET['commission_rates']) && $_GET['commission_rates'] == 'edit' ){ 
+		}else if( isset($_GET['edit']) && $_GET['edit'] == 'commission_rates' ){ 
 		
 			return view( 'tables.commission_rates_edit',$OrdersVariables );
 			
@@ -109,7 +104,7 @@ class tablesController extends Controller
 		
 			return view( 'tables.addons',$OrdersVariables );
 			
-		}else if( isset($_GET['addons']) && $_GET['addons'] == 'edit' ){ 
+		}else if( isset($_GET['edit']) && $_GET['edit'] == 'addons' ){ 
 		
 			return view( 'tables.addons_edit',$OrdersVariables );
 			
@@ -117,7 +112,7 @@ class tablesController extends Controller
 		
 			return view( 'tables.calculator_fabric',$OrdersVariables );
 			
-		}else if( isset($_GET['calculator_fabric']) && $_GET['calculator_fabric'] == 'edit' ){ 
+		}else if( isset($_GET['edit']) && $_GET['edit'] == 'calculator_fabric' ){ 
 		
 			return view( 'tables.calculator_fabric_edit',$OrdersVariables );
 			

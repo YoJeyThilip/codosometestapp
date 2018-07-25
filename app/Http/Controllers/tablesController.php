@@ -72,7 +72,7 @@ class tablesController extends Controller
 		
 		
 		if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'common_items' ) {
-			DB::update('update into common_items SET( id = :id,brand = :brand,product =  :product,cost = :cost,non_online_store = :non_online_store,online_store = :online_store) WHERE ( id = :id )',['id' => $_POST['id'] , 'brand' =>  $_POST['brand'], 'product' =>  $_POST['product'] , 'cost' =>  $_POST['cost'], 'non_online_store' =>  $_POST['non_online_store'], 'online_store' =>  $_POST['online_store']  ]);
+			DB::update('update into common_items SET brand = :brand,product =  :product,cost = :cost,non_online_store = :non_online_store,online_store = :online_store WHERE ( id = :id )',['id' => $_POST['id'] , 'brand' =>  $_POST['brand'], 'product' =>  $_POST['product'] , 'cost' =>  $_POST['cost'], 'non_online_store' =>  $_POST['non_online_store'], 'online_store' =>  $_POST['online_store']  ]);
 		}
 		
 		

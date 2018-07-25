@@ -71,7 +71,7 @@ class tablesController extends Controller
 		);
 		
 		
-		if( isset( $_POST['table_name'] == 'common_items' ) ) {
+		if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'common_items' ) {
 			DB::insert('insert into common_items () values(?)',$_POST['id']);
 			DB::insert('insert into common_items (id,brand,product,cost,non_online_store,online_store) values ( :id, :brand, :product, :cost, :non_online_store, :online_store)',['id' => $_POST['id'] , 'brand' =>  $_POST['brand'], 'product' =>  $_POST['product'] , 'cost' =>  $_POST['cost'], 'non_online_store' =>  $_POST['non_online_store'], 'online_store' =>  $_POST['online_store']  ]);
 		}

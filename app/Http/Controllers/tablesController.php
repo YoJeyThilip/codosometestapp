@@ -59,14 +59,6 @@ class tablesController extends Controller
 			$avatar_initials = $acronym;
 		}
 		
-		$common_items = DB::select("SELECT * FROM common_items" );
-		
-		$commission_rates = DB::select("SELECT * FROM commission_rates" );
-		
-		$addons = DB::select("SELECT * FROM addons" );
-		
-		$calculator_fabric = DB::select("SELECT * FROM calculator_fabric" );
-		
 		$OrdersVariables = array(
 			'printavo_email' => $email,
 			'printavo_status' => $printavo_status,
@@ -75,14 +67,12 @@ class tablesController extends Controller
 			'avatar_url_small' => $avatar_url_small,
 			'avatar_initials' => $avatar_initials ,
 			'notification' => '',
-			'user_role'	=> (int)($users_role[0]->role),
-			'common_items' => $common_items,
-			'commission_rates' => $commission_rates,
-			'addons' => $addons,
-			'calculator_fabric' => $calculator_fabric
+			'user_role'	=> (int)($users_role[0]->role)
 		);
 		
 		if( !isset($_GET['tab']) && !isset($_GET['edit']) || ( isset($_GET['tab'])  && $_GET['tab'] == 'common_items') ){
+			
+			$OrdersVariables['common_items'] = DB::select("SELECT * FROM common_items" );
 			
 			return view( 'tables.common_items',$OrdersVariables );
 			
@@ -94,6 +84,8 @@ class tablesController extends Controller
 			
 		}else if( isset($_GET['tab']) && $_GET['tab'] == 'commission_rates' ){ 
 		
+			$OrdersVariables['commission_rates'] = DB::select("SELECT * FROM commission_rates" );
+		
 			return view( 'tables.commission_rates',$OrdersVariables );
 			
 		}else if( isset($_GET['edit']) && $_GET['edit'] == 'commission_rates' ){ 
@@ -102,6 +94,8 @@ class tablesController extends Controller
 			
 		}else if( isset($_GET['tab']) && $_GET['tab'] == 'addons' ){ 
 		
+			$OrdersVariables['addons'] = DB::select("SELECT * FROM addons" );
+		
 			return view( 'tables.addons',$OrdersVariables );
 			
 		}else if( isset($_GET['edit']) && $_GET['edit'] == 'addons' ){ 
@@ -109,6 +103,8 @@ class tablesController extends Controller
 			return view( 'tables.addons_edit',$OrdersVariables );
 			
 		}else if( isset($_GET['tab']) && $_GET['tab'] == 'calculator_fabric' ){ 
+		
+			$OrdersVariables['calculator_fabric'] = DB::select("SELECT * FROM calculator_fabric" );
 		
 			return view( 'tables.calculator_fabric',$OrdersVariables );
 			

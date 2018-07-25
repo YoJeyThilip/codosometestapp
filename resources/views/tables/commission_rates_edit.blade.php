@@ -11,7 +11,7 @@
 		<a href="?tab=calculator_fabric" class="nav-tab">Calculator fabric</a>
 	</h2>  
 </div>
-<div class="commission_rates_table">
+<div class="commission_rates_table edit_tables">
 	<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 			@foreach( $commission_rates as $rate )	
 				@if( $commission_rates_edit_id == $rate->id )

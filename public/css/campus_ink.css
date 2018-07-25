@@ -522,12 +522,12 @@ tr.splitscreen_order>td:first-child:before {
 
 /* Tables */
 
-.common_items_table table td {
+table#dt_basic td {
 	border:none;
 	padding: 15px 10px;
 }
 
-.common_items_table {
+.edit_tables {
     width: 50%;
     margin: 50px 0 0 20px;
 }

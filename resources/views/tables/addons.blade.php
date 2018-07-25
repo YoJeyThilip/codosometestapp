@@ -50,7 +50,7 @@
 				
 @endsection
 
-
+@section('Script-content')
 <script>
 $(document).ready(function() {
 	var responsiveHelper_dt_basic = undefined;
@@ -84,6 +84,8 @@ $(document).ready(function() {
 	//$("div.dt-toolbar .create-button-colors-style").html('<a href="'{{ route('tables') }}'?page=addons" class="button button-primary">Create new</a>'); 
 });
 </script>
+
+@endsection
 
 <style>
 	h2.nav-tab-wrapper {

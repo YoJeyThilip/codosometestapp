@@ -47,7 +47,7 @@
 				
 @endsection
 
-
+@section('Script-content')
 <script>
 $(document).ready(function() {
 	var responsiveHelper_dt_basic = undefined;
@@ -78,6 +78,7 @@ $(document).ready(function() {
 	
 });
 </script>
+@endsection
 
 <style>
 	h2.nav-tab-wrapper {

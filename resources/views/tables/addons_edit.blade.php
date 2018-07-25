@@ -12,31 +12,21 @@
 	</h2>  
 </div>
 <table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
-	<thead>
-		<tr role="row">
-			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Id</th>
-			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Control</th>
-			<th class="sorting_asc" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Color Name: activate to sort column ascending" style="width: 207px;">Brand</th>
-			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Product</th>
-			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Cost</th>
-			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Non Online Store</th>
-			<th class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Control: activate to sort column ascending" style="width: 144px;">Online Store</th>
-		</tr>
-	</thead>
+	
 	<tbody>
 		@foreach( $addons as $addon )	
 			@if( $addons_edit_id == $addon->id )
 				<tr>
 					<td>ID</td>
-					<td>{{$addon->id}}</td>
+					<td><input type="text" value="{{$addon->id}}"></td>
 				</tr>
 				<tr>
 					<td>Add on</td>
-					<td>{{ $addon->add_on }}</td>
+					<td><input type="text" value="{{ $addon->add_on }}"></td>
 				</tr>
 				<tr>
 					<td>Prize</td>
-					<td>{{ $addon->prize }}</td>
+					<td><input type="text" value="{{ $addon->prize }}"></td>
 				</tr>
 			@endif
 		@endforeach

@@ -19,27 +19,27 @@
 				@if( $common_items_edit_id == $common_item->id )
 					<tr>
 						<td>ID</td>
-						<td>{{$common_item->id}}</td>
+						<td><input type="text" value="{{$common_item->id}}"></td>
 					</tr>
 					<tr>
 						<td>Brand</td>
-						<td>{{ $common_item->brand }}</td>
+						<td><input type="text" value="{{ $common_item->brand }}"></td>
 					</tr>
 					<tr>
 						<td>Product</td>
-						<td>{{ $common_item->product }}</td>
+						<td><input type="text" value="{{ $common_item->product }}"></td>
 					</tr>
 					<tr>
 						<td>Cost</td>
-						<td>{{ $common_item->cost }}</td>
+						<td><input type="text" value="{{ $common_item->cost }}"></td>
 					</tr>
 					<tr>
 						<td>Non online Store</td>
-						<td>{{ $common_item->non_online_store }}</td>
+						<td><input type="text" value="{{ $common_item->non_online_store }}"></td>
 					</tr>
 					<tr>
 						<td>Online Store</td>
-						<td>{{ $common_item->online_store }}</td>
+						<td><input type="text" value="{{ $common_item->online_store }}"></td>
 					</tr>
 				@endif
 			@endforeach

@@ -72,7 +72,32 @@ class tablesController extends Controller
 		
 		
 		if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'common_items' ) { 
+		
 			DB::update('update common_items SET brand = :brand,product =  :product,cost = :cost,non_online_store = :non_online_store,online_store = :online_store WHERE ( id = :id )',['id' => $_POST['id'] , 'brand' =>  $_POST['brand'], 'product' =>  $_POST['product'] , 'cost' =>  $_POST['cost'], 'non_online_store' =>  $_POST['non_online_store'], 'online_store' =>  $_POST['online_store']  ]);
+		
+		}else if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'addons' ) { 
+		
+			DB::update('update addons SET addon = :addon,prize =  :prize WHERE ( id = :id )',['id' => $_POST['id'] , 'addon' =>  $_POST['addon'], 'prize' =>  $_POST['prize'] ] );
+		
+		}else if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'calculator_fabric' ) { 
+		
+			DB::update('update addons SET front = :front,light_fabric_non_online_25 =  :light_fabric_non_online_25,light_fabric_non_online_50 =  :light_fabric_non_online_50,light_fabric_non_online_100 =  :light_fabric_non_online_100,light_fabric_non_online_150 =  :light_fabric_non_online_150,dark_fabric_non_online_25 =  :dark_fabric_non_online_25,dark_fabric_non_online_50 =  :dark_fabric_non_online_50,dark_fabric_non_online_100 =  :dark_fabric_non_online_100,dark_fabric_non_online_150 = 
+			:dark_fabric_non_online_150,light_fabric_online_25 =  :light_fabric_online_25,light_fabric_online_50 =  :light_fabric_online_50,light_fabric_online_100 = 
+			:light_fabric_online_100,light_fabric_online_150 =  :light_fabric_online_150,dark_fabric_online_25 =  :dark_fabric_online_25,dark_fabric_online_50 =  
+			:dark_fabric_online_50,dark_fabric_online_100 =  :dark_fabric_online_100,dark_fabric_online_150 =  :dark_fabric_non_online_150 
+			WHERE ( id = :id )',['id' => $_POST['id'] , 'front' =>  $_POST['front'], 'light_fabric_non_online_25' =>  $_POST['light_fabric_non_online_25'], 
+			'light_fabric_non_online_50' =>  $_POST['light_fabric_non_online_50'], 'light_fabric_non_online_100' =>  $_POST['light_fabric_non_online_100'] , 
+			'light_fabric_non_online_150' =>  $_POST['light_fabric_non_online_150'], 'dark_fabric_non_online_25' =>  $_POST['dark_fabric_non_online_25'],
+			'dark_fabric_non_online_50' =>  $_POST['dark_fabric_non_online_50'] , 'dark_fabric_non_online_100' =>  $_POST['dark_fabric_non_online_100'] , 
+			'dark_fabric_non_online_150' =>  $_POST['dark_fabric_non_online_150']  , 'light_fabric_online_25' =>  $_POST['light_fabric_online_25']  ,
+			'light_fabric_online_50' =>  $_POST['light_fabric_online_50'],'light_fabric_online_100' =>  $_POST['light_fabric_online_100'],'light_fabric_online_150' =>  $_POST['light_fabric_online_150']
+			,'dark_fabric_online_25' =>  $_POST['dark_fabric_online_25'],'dark_fabric_online_50' =>  $_POST['dark_fabric_online_50'],'dark_fabric_online_100' =>  $_POST['dark_fabric_online_100'],'dark_fabric_online_150' =>  $_POST['dark_fabric_online_150']
+			] );
+		
+		}else if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'commission_rates' ) { 
+		
+			DB::update('update commission_rates SET shirts = :shirts,rate =  :rate WHERE ( id = :id )',['id' => $_POST['id'] , 'shirts' =>  $_POST['shirts'], 'rate' =>  $_POST['rate'] ] );
+		
 		}
 		
 		

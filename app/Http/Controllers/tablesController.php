@@ -126,26 +126,26 @@ class tablesController extends Controller
 		// data insert --> start
 		if( isset( $_POST['insert_table'] ) && $_POST['insert_table'] == 'common_items' ){
 			
-			DB::table('common_items')->insert( ['id' => $_POST['id'] , 'brand' =>  $_POST['brand'], 'product' =>  $_POST['product'] , 'cost' =>  $_POST['cost'], 'non_online_store' =>  $_POST['non_online_store'], 'online_store' =>  $_POST['online_store']  ] );
+			//DB::table('common_items')->insert( ['id' => $_POST['id'] , 'brand' =>  $_POST['brand'], 'product' =>  $_POST['product'] , 'cost' =>  $_POST['cost'], 'non_online_store' =>  $_POST['non_online_store'], 'online_store' =>  $_POST['online_store']  ] );
 			
 		}else if(  isset( $_POST['insert_table'] ) && $_POST['insert_table'] == 'commission_rates'  ) { 
 		
-			DB::table('commission_rates')->insert(['id' => $_POST['id'] , 'shirts' =>  $_POST['shirts'], 'rate' =>  $_POST['rate'] ]);
+			//DB::table('commission_rates')->insert(['id' => $_POST['id'] , 'shirts' =>  $_POST['shirts'], 'rate' =>  $_POST['rate'] ]);
 			
 		}else if( isset( $_POST['insert_table'] ) && $_POST['insert_table'] == 'addons'  ) { 
 		
-			DB::table('addons')->insert(['id' => $_POST['id'] , 'add_on' =>  $_POST['add_on'], 'prize' =>  $_POST['prize'] ]);
+			//DB::table('addons')->insert(['id' => $_POST['id'] , 'add_on' =>  $_POST['add_on'], 'prize' =>  $_POST['prize'] ]);
 			
 		}else if( isset( $_POST['insert_table'] ) && $_POST['insert_table'] == 'calculator_fabric' ) { 
 		
-			DB::table('calculator_fabric')->insert(['id' => $_POST['id'] , 'front' =>  $_POST['front'], 'light_fabric_non_online_25' =>  $_POST['light_fabric_non_online_25'], 
+			/*DB::table('calculator_fabric')->insert(['id' => $_POST['id'] , 'front' =>  $_POST['front'], 'light_fabric_non_online_25' =>  $_POST['light_fabric_non_online_25'], 
 														'light_fabric_non_online_50' =>  $_POST['light_fabric_non_online_50'], 'light_fabric_non_online_100' =>  $_POST['light_fabric_non_online_100'] , 
 														'light_fabric_non_online_150' =>  $_POST['light_fabric_non_online_150'], 'dark_fabric_non_online_25' =>  $_POST['dark_fabric_non_online_25'],
 														'dark_fabric_non_online_50' =>  $_POST['dark_fabric_non_online_50'] , 'dark_fabric_non_online_100' =>  $_POST['dark_fabric_non_online_100'] , 
 														'dark_fabric_non_online_150' =>  $_POST['dark_fabric_non_online_150']  , 'light_fabric_online_25' =>  $_POST['light_fabric_online_25']  ,
 														'light_fabric_online_50' =>  $_POST['light_fabric_online_50'],'light_fabric_online_100' =>  $_POST['light_fabric_online_100'],'light_fabric_online_150' =>  $_POST['light_fabric_online_150']
 														,'dark_fabric_online_25' =>  $_POST['dark_fabric_online_25'],'dark_fabric_online_50' =>  $_POST['dark_fabric_online_50'],'dark_fabric_online_100' =>  $_POST['dark_fabric_online_100'],'dark_fabric_online_150' =>  $_POST['dark_fabric_online_150']
-												   ]);
+												   ]);*/
 			
 		}
 		// data insert --> end

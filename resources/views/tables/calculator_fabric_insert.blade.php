@@ -1,16 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('dashboard-content')
-<div class="wrap product_calculator_details">
-	<h1 class="product_calculator_header">Product Calculator Settings</h1>
 
-	<h2 class="nav-tab-wrapper product_calculator_tables">
-		<a href="?tab=common_items" class="nav-tab">Common Items</a>  
-		<a href="?tab=commission_rates" class="nav-tab">Commission rates</a>
-		<a href="?tab=addons" class="nav-tab">Addons</a>
-		<a href="?tab=calculator_fabric" class="nav-tab">Calculator fabric</a>
-	</h2>  
-</div>
 <div class="calculator_fabric_table edit_tables">
 <form action="{{ route('tables') }}?tab=calculator_fabric" method="post">
 	@csrf

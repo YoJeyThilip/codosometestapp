@@ -109,6 +109,18 @@ class tablesController extends Controller
 			
 			DB::table('commission_rates')->where('id', $_POST['delete'] )->delete();
 			
+		}else if( ( isset( $_POST['delete'] ) && $_POST['delete_id'] == 'common_items') ) { 
+		
+			DB::table('common_items')->where('id', $_POST['delete'] )->delete();
+		
+		}else if( ( isset( $_POST['delete'] ) && $_POST['delete_id'] == 'addons') ) { 
+		
+			DB::table('addons')->where('id', $_POST['delete'] )->delete();
+		
+		}else if( ( isset( $_POST['delete'] ) && $_POST['delete_id'] == 'calculator_fabric') ) { 
+		
+			DB::table('calculator_fabric')->where('id', $_POST['delete'] )->delete();
+		
 		}
 		
 		// delete data --> end

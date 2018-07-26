@@ -17,27 +17,23 @@
 	<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 		
 		<tbody>
-			@foreach( $addons as $addon )	
-				@if( $addons_insert_id == $addon->id )
-					<tr>
-						<td>ID</td>
-						<td><input type="text" name="id" value=""></td>
-							<td><input type="hidden"  name="table_name" value="addons"></td>
-					</tr>
-					<tr>
-						<td>Add on</td>
-						<td><input type="text" name="add_on"  value=""></td>
-					</tr>
-					<tr>
-						<td>Prize</td>
-						<td><input type="text" name="prize" value=""></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="submit" name="update"></td>
-					</tr>
-				@endif
-			@endforeach
+			<tr>
+				<td>ID</td>
+				<td><input type="text" name="id" value=""></td>
+					<td><input type="hidden"  name="table_name" value="addons"></td>
+			</tr>
+			<tr>
+				<td>Add on</td>
+				<td><input type="text" name="add_on"  value=""></td>
+			</tr>
+			<tr>
+				<td>Prize</td>
+				<td><input type="text" name="prize" value=""></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" name="update"></td>
+			</tr>
 		
 		</tbody>
 	</table>

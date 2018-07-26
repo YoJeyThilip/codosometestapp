@@ -18,39 +18,35 @@
 		<thead>
 		</thead>
 		<tbody>
-				@foreach( $common_items as $common_item )	
-					@if( $common_items_insert_id == $common_item->id )
-						<tr>
-							<td>ID</td>
-							<td><input type="text"  name="id" value=""></td>
-							<td><input type="hidden"  name="table_name" value="common_items"></td>
-						</tr>
-						<tr>
-							<td>Brand</td>
-							<td><input type="text"  name="brand" value=""></td>
-						</tr>
-						<tr>
-							<td>Product</td>
-							<td><input type="text"  name="product" value=""></td>
-						</tr>
-						<tr>
-							<td>Cost</td>
-							<td><input type="text" name="cost"  value=""></td>
-						</tr>
-						<tr>
-							<td>Non online Store</td>
-							<td><input type="text"  name="non_online_store" value=""></td>
-						</tr>
-						<tr>
-							<td>Online Store</td>
-							<td><input type="text" name="online_store" value=""></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><input type="submit" name="update"></td>
-						</tr>
-					@endif
-				@endforeach
+			<tr>
+				<td>ID</td>
+				<td><input type="text"  name="id" value=""></td>
+				<td><input type="hidden"  name="table_name" value="common_items"></td>
+			</tr>
+			<tr>
+				<td>Brand</td>
+				<td><input type="text"  name="brand" value=""></td>
+			</tr>
+			<tr>
+				<td>Product</td>
+				<td><input type="text"  name="product" value=""></td>
+			</tr>
+			<tr>
+				<td>Cost</td>
+				<td><input type="text" name="cost"  value=""></td>
+			</tr>
+			<tr>
+				<td>Non online Store</td>
+				<td><input type="text"  name="non_online_store" value=""></td>
+			</tr>
+			<tr>
+				<td>Online Store</td>
+				<td><input type="text" name="online_store" value=""></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" name="update"></td>
+			</tr>
 		</tbody>
 	</table>
 </form>

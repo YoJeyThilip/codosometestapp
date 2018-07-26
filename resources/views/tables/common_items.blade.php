@@ -33,8 +33,8 @@
 					<a class="fa fa-pencil" href="?edit=common_items&id={{$common_item->id}}"></a>
 					
 					<form method="post" style="display: inline-block;">
-						<input name="id" type="hidden" id="id" value="1">
-						<input name="type" type="hidden" id="type" value="delete">
+						<input name="delete" type="hidden" id="id" value="{{$common_item->id}}">
+						<input name="delete_id" type="hidden" id="id" value="common_items">
 						<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
 					</form>
 				

@@ -45,8 +45,8 @@
 					<a class="fa fa-pencil" href="?edit=calculator_fabric&id={{$fabric->id}}"></a>
 					
 					<form method="post" style="display: inline-block;">
-						<input name="id" type="hidden" id="id" value="1">
-						<input name="type" type="hidden" id="type" value="delete">
+						<input name="delete" type="hidden" id="id" value="{{$fabric->id}}">
+						<input name="delete_id" type="hidden" id="id" value="calculator_fabric">
 						<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>
 					</form>
 				

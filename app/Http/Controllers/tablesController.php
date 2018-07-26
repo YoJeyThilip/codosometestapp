@@ -70,6 +70,7 @@ class tablesController extends Controller
 			'user_role'	=> (int)($users_role[0]->role)
 		);
 		
+		//update data --> start
 		
 		if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'common_items' ) { 
 		
@@ -99,8 +100,23 @@ class tablesController extends Controller
 			DB::update('update commission_rates SET shirts = :shirts,rate =  :rate WHERE ( id = :id )',['id' => $_POST['id'] , 'shirts' =>  $_POST['shirts'], 'rate' =>  $_POST['rate'] ] );
 		
 		}
+		//update data --> end
 		
 		
+		// delete date --> start
+		
+		if( ( isset( $_POST['delete'] ) && $_POST['delete_id'] == 'commission_rates') ){
+			
+			DB::table('commission_rates')->where('id', $_POST['delete'] )->delete();
+			
+			return view( 'tables.common_items',$OrdersVariables );
+			
+		}
+		
+		// delete data --> end
+		
+		
+		// Edit page --> start
 		
 		if( !isset($_GET['tab']) && !isset($_GET['edit']) || ( isset($_GET['tab'])  && $_GET['tab'] == 'common_items') ){
 			
@@ -157,6 +173,8 @@ class tablesController extends Controller
 			$OrdersVariables['calculator_fabric'] = DB::select("SELECT * FROM calculator_fabric" );
 		
 			return view( 'tables.calculator_fabric_edit',$OrdersVariables );
+			
+			// Edit page --> end
 			
 		}else {		
 		

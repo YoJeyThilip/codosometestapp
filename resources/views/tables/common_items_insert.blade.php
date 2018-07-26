@@ -12,29 +12,29 @@
 			<tr>
 				<td>ID</td>
 				<td>
-					<input type="text" name="id" value="">
+					<input type="text" name="id" value="" required>
 					<input name="insert_table" type="hidden" id="id" value="common_items">
 				</td>
 			</tr>
 			<tr>
 				<td>Brand</td>
-				<td><input type="text"  name="brand" value=""></td>
+				<td><input type="text"  name="brand" value="" required></td>
 			</tr>
 			<tr>
 				<td>Product</td>
-				<td><input type="text"  name="product" value=""></td>
+				<td><input type="text"  name="product" value="" required></td>
 			</tr>
 			<tr>
 				<td>Cost</td>
-				<td><input type="text" name="cost"  value=""></td>
+				<td><input type="text" name="cost"  value="" required></td>
 			</tr>
 			<tr>
 				<td>Non online Store</td>
-				<td><input type="text"  name="non_online_store" value=""></td>
+				<td><input type="text"  name="non_online_store" value="" required></td>
 			</tr>
 			<tr>
 				<td>Online Store</td>
-				<td><input type="text" name="online_store" value=""></td>
+				<td><input type="text" name="online_store" value="" required></td>
 			</tr>
 			<tr>
 				<td></td>

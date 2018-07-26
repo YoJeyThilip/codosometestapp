@@ -11,21 +11,21 @@
 			<tr>
 				<td>ID</td>
 				<td>
-					<input type="text" name="id" value="">
+					<input type="text" name="id" value="" required>
 					<input name="insert_table" type="hidden" id="id" value="addons">
 				</td>
 			</tr>
 			<tr>
 				<td>Add on</td>
-				<td><input type="text" name="add_on"  value=""></td>
+				<td><input type="text" name="add_on"  value="" required></td>
 			</tr>
 			<tr>
 				<td>Prize</td>
-				<td><input type="text" name="prize" value=""></td>
+				<td><input type="text" name="prize" value="" required></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" name="update"></td>
+				<td><input type="submit" name="update" required></td>
 			</tr>
 		
 		</tbody>

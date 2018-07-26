@@ -9,21 +9,21 @@
 		<tr>
 			<td>ID</td>
 			<td>
-				<input type="text" name="id" value="">
+				<input type="text" name="id" value="" required>
 				<input name="insert_table" type="hidden" id="id" value="commission_rates">
 			</td>
 		</tr>
 		<tr>
 			<td>Shirts</td>
-			<td><input type="text"  name="shirts" value=""></td>
+			<td><input type="text"  name="shirts" value="" required></td>
 		</tr>
 		<tr>
 			<td>Fabric</td>
-			<td><input type="text"  name="rate" value=""></td>
+			<td><input type="text"  name="rate" value="" required></td>
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="submit" name="update"></td>
+			<td><input type="submit" name="update" required></td>
 		</tr>
 	</table>
 </form>

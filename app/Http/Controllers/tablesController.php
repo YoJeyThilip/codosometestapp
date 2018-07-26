@@ -209,7 +209,23 @@ class tablesController extends Controller
 			
 			// Edit page --> end
 			
-		}else {		
+		}else if( isset($_GET['insert']) && $_GET['insert'] == 'calculator_fabric' ){
+		
+			return view( 'tables.calculator_fabric_insert',$OrdersVariables );
+			
+		}else if( isset($_GET['insert']) && $_GET['insert'] == 'addons' ){  
+		
+			return view( 'tables.addons_insert',$OrdersVariables );
+			
+		}else if( isset($_GET['insert']) && $_GET['insert'] == 'commission_rates' ){  
+		
+			return view( 'tables.commission_rates_insert',$OrdersVariables );
+			
+		}else if( isset($_GET['insert']) && $_GET['insert'] == 'common_items' ){  
+		
+			return view( 'tables.common_items_insert',$OrdersVariables );
+			
+		}else{		
 		
 			return view( 'tables.Archive',$OrdersVariables );
 			

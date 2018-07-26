@@ -151,7 +151,7 @@ class tablesController extends Controller
 		
 		
 		// Edit page --> start
-		if( !isset($_GET['tab']) && !isset($_GET['edit']) || ( isset($_GET['tab'])  && $_GET['tab'] == 'common_items') ){
+		if( !isset($_GET['tab']) && !isset($_GET['edit']) && !isset($_GET['insert']) || ( isset($_GET['tab'])  && $_GET['tab'] == 'common_items') ){
 			
 			$OrdersVariables['common_items'] = DB::select("SELECT * FROM common_items" );
 			

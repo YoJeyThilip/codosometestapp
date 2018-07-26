@@ -122,6 +122,7 @@ class tablesController extends Controller
 		}
 		// delete data --> end
 		
+		
 		// data insert --> start
 		if( isset( $_POST['insert_table'] ) && $_POST['insert_table'] == 'common_items' ){
 			
@@ -230,5 +231,8 @@ class tablesController extends Controller
 			return view( 'tables.Archive',$OrdersVariables );
 			
 		}
+		
+		
+		
     }
 }

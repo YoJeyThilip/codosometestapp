@@ -123,7 +123,7 @@ class tablesController extends Controller
 		// delete data --> end
 		
 		// data insert --> start
-		if( ( isset($_GET['insert']) && $_GET['insert'] == 'common_items') ){
+		if( ( isset($_GET['insert']) && $_GET['insert'] == 'common_items' && isset( $_POST )) ){
 			
 			DB::table('common_items')->insert( ['id' => $_POST['id'] , 'brand' =>  $_POST['brand'], 'product' =>  $_POST['product'] , 'cost' =>  $_POST['cost'], 'non_online_store' =>  $_POST['non_online_store'], 'online_store' =>  $_POST['online_store']  ] );
 			

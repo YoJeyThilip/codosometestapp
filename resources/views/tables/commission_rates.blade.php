@@ -78,7 +78,7 @@ $(document).ready(function() {
 				});
 				
 				// custom toolbar
-				$("div.dt-toolbar .create-button-colors-style").html('<form action="{{ route("tables") }}?insert=commission_rates" method="post"><input type="hidden" name="insert_table" value="commission_rates"><input type="submit" name="submit" value="Insert"></form>');  
+				$("div.dt-toolbar .create-button-colors-style").html('<form action="{{ route("tables") }}?insert=commission_rates" method="post"><input type="hidden" name="insert_table" value="commission_rates"><input type="submit" value="Insert"></form>');  
 	
 });
 </script>

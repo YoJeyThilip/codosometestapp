@@ -127,21 +127,21 @@ class tablesController extends Controller
 		
 		// data insert --> start
 		
-		if( ( isset( $_POST['delete'] ) && $_POST['delete_id'] == 'commission_rates') ){
+		if( ( isset($_GET['insert'])  && $_GET['insert'] == 'common_items') ){
 			
-			DB::table('commission_rates')->where('id', $_POST['delete'] )->delete();
+			return view( 'tables.common_items_insert',$OrdersVariables );
 			
-		}else if( ( isset( $_POST['delete'] ) && $_POST['delete_id'] == 'common_items') ) { 
+		}else if( ( isset( $_POST['insert'] ) && $_POST['insert'] == 'commission_rates') ) { 
 		
-			DB::table('common_items')->where('id', $_POST['delete'] )->delete();
+			return view( 'tables.commission_rates_insert',$OrdersVariables );
 		
-		}else if( ( isset( $_POST['delete'] ) && $_POST['delete_id'] == 'addons') ) { 
+		}else if( ( isset( $_POST['insert'] ) && $_POST['insert'] == 'addons') ) { 
 		
-			DB::table('addons')->where('id', $_POST['delete'] )->delete();
+			return view( 'tables.addons_insert',$OrdersVariables );
 		
-		}else if( ( isset( $_POST['delete'] ) && $_POST['delete_id'] == 'calculator_fabric') ) { 
+		}else if( ( isset( $_POST['insert'] ) && $_POST['insert'] == 'calculator_fabric') ) { 
 		
-			DB::table('calculator_fabric')->where('id', $_POST['delete'] )->delete();
+			return view( 'tables.calculator_fabric_insert',$OrdersVariables );
 		
 		}
 		

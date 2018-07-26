@@ -18,8 +18,10 @@
 		<tbody>
 			<tr>
 				<td>ID</td>
-				<td><input type="text"  name="id" value=""></td>
-					<td><input type="hidden"  name="table_name" value="calculator_fabric"></td>
+				<td>
+					<input type="text" name="id" value="">
+					<input name="insert_table" type="hidden" id="id" value="calculator_fabric">
+				</td>
 			</tr>
 			<tr>
 				<td>front</td>

@@ -19,8 +19,10 @@
 		<tbody>
 			<tr>
 				<td>ID</td>
-				<td><input type="text" name="id" value=""></td>
-					<td><input type="hidden"  name="table_name" value="addons"></td>
+				<td>
+					<input type="text" name="id" value="">
+					<input name="insert_table" type="hidden" id="id" value="addons">
+				</td>
 			</tr>
 			<tr>
 				<td>Add on</td>

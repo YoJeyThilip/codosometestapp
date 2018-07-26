@@ -20,8 +20,10 @@
 		<tbody>
 			<tr>
 				<td>ID</td>
-				<td><input type="text"  name="id" value=""></td>
-				<td><input type="hidden"  name="table_name" value="common_items"></td>
+				<td>
+					<input type="text" name="id" value="">
+					<input name="insert_table" type="hidden" id="id" value="common_items">
+				</td>
 			</tr>
 			<tr>
 				<td>Brand</td>

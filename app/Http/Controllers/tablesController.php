@@ -109,8 +109,6 @@ class tablesController extends Controller
 			
 			DB::table('commission_rates')->where('id', $_POST['delete'] )->delete();
 			
-			return view( 'tables.common_items',$OrdersVariables );
-			
 		}
 		
 		// delete data --> end

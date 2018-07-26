@@ -59,7 +59,7 @@
 <script src="{{ secure_asset('js/datatables/dataTables.colVis.min.js') }}"></script>
 <script src="{{ secure_asset('js/datatables/dataTables.tableTools.min.js') }}"></script>
 <script src="{{ secure_asset( 'js/datatables/dataTables.bootstrap.min.js') }}"></script>
-<script src="{{ secure_asset( 'js/datatables/datatables.responsive.min.js') }}"></script>
+<script src="{{ secure_asset( 'js/datatables/datatables.responsive.min.js') }}"></script> 
 <script>
 $(document).ready(function() {
 	var responsiveHelper_dt_basic = undefined;

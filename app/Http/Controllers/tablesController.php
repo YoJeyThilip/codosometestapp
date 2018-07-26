@@ -71,7 +71,6 @@ class tablesController extends Controller
 		);
 		
 		//update data --> start
-		
 		if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'common_items' ) { 
 		
 			DB::update('update common_items SET brand = :brand,product =  :product,cost = :cost,non_online_store = :non_online_store,online_store = :online_store WHERE ( id = :id )',['id' => $_POST['id'] , 'brand' =>  $_POST['brand'], 'product' =>  $_POST['product'] , 'cost' =>  $_POST['cost'], 'non_online_store' =>  $_POST['non_online_store'], 'online_store' =>  $_POST['online_store']  ]);
@@ -104,7 +103,6 @@ class tablesController extends Controller
 		
 		
 		// delete date --> start
-		
 		if( ( isset( $_POST['delete'] ) && $_POST['delete_id'] == 'commission_rates') ){
 			
 			DB::table('commission_rates')->where('id', $_POST['delete'] )->delete();
@@ -122,11 +120,9 @@ class tablesController extends Controller
 			DB::table('calculator_fabric')->where('id', $_POST['delete'] )->delete();
 		
 		}
-		
 		// delete data --> end
 		
 		// data insert --> start
-		
 		if( ( isset($_GET['insert'])  && $_GET['insert'] == 'common_items') ){
 		
 			$OrdersVariables['common_items_insert_id'] = $_GET['id'];
@@ -152,12 +148,10 @@ class tablesController extends Controller
 			return view( 'tables.calculator_fabric_insert',$OrdersVariables );
 		
 		}
-		
 		// data insert --> end
 		
 		
 		// Edit page --> start
-		
 		if( !isset($_GET['tab']) && !isset($_GET['edit']) || ( isset($_GET['tab'])  && $_GET['tab'] == 'common_items') ){
 			
 			$OrdersVariables['common_items'] = DB::select("SELECT * FROM common_items" );

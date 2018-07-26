@@ -12,7 +12,7 @@
 	</h2>  
 </div>
 <div class="calculator_fabric_table edit_tables">
-<form action="" method="post">
+<form action="{{ route('tables') }}?tab=calculator_fabric" method="post">
 	@csrf
 	<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 		<tbody>

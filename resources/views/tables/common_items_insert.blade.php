@@ -19,7 +19,7 @@
 		</thead>
 		<tbody>
 				@foreach( $common_items as $common_item )	
-					@if( $common_items_edit_id == $common_item->id )
+					@if( $common_items_insert_id == $common_item->id )
 						<tr>
 							<td>ID</td>
 							<td><input type="text"  name="id" value=""></td>

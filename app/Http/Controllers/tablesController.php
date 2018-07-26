@@ -128,18 +128,26 @@ class tablesController extends Controller
 		// data insert --> start
 		
 		if( ( isset($_GET['insert'])  && $_GET['insert'] == 'common_items') ){
+		
+			$OrdersVariables['common_items_insert_id'] = $_GET['id'];
 			
 			return view( 'tables.common_items_insert',$OrdersVariables );
 			
 		}else if( ( isset( $_POST['insert'] ) && $_POST['insert'] == 'commission_rates') ) { 
 		
+			$OrdersVariables['common_items_insert_id'] = $_GET['id'];
+		
 			return view( 'tables.commission_rates_insert',$OrdersVariables );
 		
 		}else if( ( isset( $_POST['insert'] ) && $_POST['insert'] == 'addons') ) { 
 		
+			$OrdersVariables['common_items_insert_id'] = $_GET['id'];
+		
 			return view( 'tables.addons_insert',$OrdersVariables );
 		
 		}else if( ( isset( $_POST['insert'] ) && $_POST['insert'] == 'calculator_fabric') ) { 
+		
+			$OrdersVariables['common_items_insert_id'] = $_GET['id'];
 		
 			return view( 'tables.calculator_fabric_insert',$OrdersVariables );
 		

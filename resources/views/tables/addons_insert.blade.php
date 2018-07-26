@@ -18,7 +18,7 @@
 		
 		<tbody>
 			@foreach( $addons as $addon )	
-				@if( $addons_edit_id == $addon->id )
+				@if( $addons_insert_id == $addon->id )
 					<tr>
 						<td>ID</td>
 						<td><input type="text" name="id" value=""></td>

@@ -84,7 +84,7 @@ $(document).ready(function() {
 				});
 				
 				// custom toolbar
-				$("div.dt-toolbar .create-button-colors-style").html('<a href="{{ route("tables") }}?insert=common_items" class="button button-primary">Create new</a>'); 
+				$("div.dt-toolbar .create-button-colors-style").html('<a href="{{ route("tables") }}?insert=common_items&id={{$common_item->id}} class="button button-primary">Create new</a>'); 
 	
 });
 </script>

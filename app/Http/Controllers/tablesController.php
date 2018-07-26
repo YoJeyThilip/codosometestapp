@@ -125,6 +125,28 @@ class tablesController extends Controller
 		
 		// delete data --> end
 		
+		// data insert --> start
+		
+		if( ( isset( $_POST['delete'] ) && $_POST['delete_id'] == 'commission_rates') ){
+			
+			DB::table('commission_rates')->where('id', $_POST['delete'] )->delete();
+			
+		}else if( ( isset( $_POST['delete'] ) && $_POST['delete_id'] == 'common_items') ) { 
+		
+			DB::table('common_items')->where('id', $_POST['delete'] )->delete();
+		
+		}else if( ( isset( $_POST['delete'] ) && $_POST['delete_id'] == 'addons') ) { 
+		
+			DB::table('addons')->where('id', $_POST['delete'] )->delete();
+		
+		}else if( ( isset( $_POST['delete'] ) && $_POST['delete_id'] == 'calculator_fabric') ) { 
+		
+			DB::table('calculator_fabric')->where('id', $_POST['delete'] )->delete();
+		
+		}
+		
+		// data insert --> end
+		
 		
 		// Edit page --> start
 		

@@ -77,7 +77,7 @@ class tablesController extends Controller
 		
 		}else if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'addons' ) { 
 		
-			DB::update('update addons SET addon = :addon,prize =  :prize WHERE ( id = :id )',['id' => $_POST['id'] , 'addon' =>  $_POST['addon'], 'prize' =>  $_POST['prize'] ] );
+			DB::update('update addons SET add_on = :add_on,prize =  :prize WHERE ( id = :id )',['id' => $_POST['id'] , 'add_on' =>  $_POST['add_on'], 'prize' =>  $_POST['prize'] ] );
 		
 		}else if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'calculator_fabric' ) { 
 		

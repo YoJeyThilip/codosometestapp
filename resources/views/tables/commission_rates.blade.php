@@ -30,6 +30,7 @@
 					<a class="fa fa-pencil" href="?edit=commission_rates&id={{$rate->id}}"></a>
 					
 					<form method="post" style="display: inline-block;">
+					@csrf
 						<input name="delete" type="hidden" id="id" value="{{$rate->id}}">
 						<input name="delete_id" type="hidden" id="id" value="commission_rates">
 						<button class="fa fa-trash-o" type="submit" style="background-color: transparent;border: 0;color: blue;"></button>

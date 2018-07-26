@@ -12,7 +12,7 @@
 	</h2>  
 </div>
 <div class="calculator_fabric_table edit_tables">
-<form action="/?tab=calculator_fabric" method="post">
+<form action="" method="post">
 	@csrf
 	<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 		<tbody>
@@ -27,7 +27,7 @@
 						<td>front</td>
 						<td><input type="text" name="front"  value="{{$fabric->front}}"></td>
 					</tr>
-					<tr>
+					<tr> 
 						<td>Light Fabric Non Online 25</td>
 						<td><input type="text" name="light_fabric_non_online_25"  value="{{$fabric->light_fabric_non_online_25}}"></td>
 					</tr>

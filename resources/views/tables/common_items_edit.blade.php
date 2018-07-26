@@ -12,7 +12,7 @@
 	</h2>  
 </div>
 <div class="common_items_table edit_tables">
-<form action="/?tab=common_items" method="post">
+<form action="" method="post">
 	@csrf
 	<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
 		<thead>

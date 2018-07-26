@@ -138,7 +138,7 @@ class tablesController extends Controller
 			
 		}else if( isset( $_POST['insert_table'] ) && $_POST['insert_table'] == 'calculator_fabric' ) { 
 		
-			*DB::table('calculator_fabric')->insert(['id' => $_POST['id'] , 'front' =>  $_POST['front'], 'light_fabric_non_online_25' =>  $_POST['light_fabric_non_online_25'], 
+			DB::table('calculator_fabric')->insert(['id' => $_POST['id'] , 'front' =>  $_POST['front'], 'light_fabric_non_online_25' =>  $_POST['light_fabric_non_online_25'], 
 														'light_fabric_non_online_50' =>  $_POST['light_fabric_non_online_50'], 'light_fabric_non_online_100' =>  $_POST['light_fabric_non_online_100'] , 
 														'light_fabric_non_online_150' =>  $_POST['light_fabric_non_online_150'], 'dark_fabric_non_online_25' =>  $_POST['dark_fabric_non_online_25'],
 														'dark_fabric_non_online_50' =>  $_POST['dark_fabric_non_online_50'] , 'dark_fabric_non_online_100' =>  $_POST['dark_fabric_non_online_100'] , 

@@ -127,15 +127,15 @@ class tablesController extends Controller
 			
 			DB::table('common_items')->insert( ['id' => $_POST['id'] , 'brand' =>  $_POST['brand'], 'product' =>  $_POST['product'] , 'cost' =>  $_POST['cost'], 'non_online_store' =>  $_POST['non_online_store'], 'online_store' =>  $_POST['online_store']  ] );
 			
-		}else if( ( isset($_GET['insert']) && $_GET['insert'] == 'commission_rates') ) { 
+		}else if( ( isset($_GET['insert']) && $_GET['insert'] == 'commission_rates' && isset( $_POST )) )  ) { 
 		
 			DB::table('commission_rates')->insert(['id' => $_POST['id'] , 'shirts' =>  $_POST['shirts'], 'rate' =>  $_POST['rate'] ]);
 			
-		}else if( ( isset($_GET['insert']) && $_GET['insert'] == 'addons') ) { 
+		}else if( ( isset($_GET['insert']) && $_GET['insert'] == 'addons' && isset( $_POST )) ) ) { 
 		
 			DB::table('addons')->insert(['id' => $_POST['id'] , 'add_on' =>  $_POST['add_on'], 'prize' =>  $_POST['prize'] ]);
 			
-		}else if( ( isset($_GET['insert']) && $_GET['insert'] == 'calculator_fabric') ) { 
+		}else if( ( isset($_GET['insert']) && $_GET['insert'] == 'calculator_fabric' && isset( $_POST )) ) { 
 		
 			DB::table('calculator_fabric')->insert(['id' => $_POST['id'] , 'front' =>  $_POST['front'], 'light_fabric_non_online_25' =>  $_POST['light_fabric_non_online_25'], 
 														'light_fabric_non_online_50' =>  $_POST['light_fabric_non_online_50'], 'light_fabric_non_online_100' =>  $_POST['light_fabric_non_online_100'] , 

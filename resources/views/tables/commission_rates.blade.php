@@ -76,6 +76,9 @@ $(document).ready(function() {
 						responsiveHelper_dt_basic.respond();
 					}
 				});
+				
+				// custom toolbar
+				$("div.dt-toolbar .create-button-colors-style").html('<a href="{{ route("tables") }}?page=commission_rates" class="button button-primary">Create new</a>'); 
 	
 });
 </script>

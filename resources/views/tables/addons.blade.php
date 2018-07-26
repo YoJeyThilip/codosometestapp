@@ -84,7 +84,7 @@ $(document).ready(function() {
 	
 		    
 	// custom toolbar
-	$("div.dt-toolbar .create-button-colors-style").html('<form action="{{ route("tables") }}?insert=common_items" method="post">@csrf<input type="hidden" name="insert_table" value="common_items"><input type="submit" value="Insert"></form>'); 
+	$("div.dt-toolbar .create-button-colors-style").html('<form action="{{ route("tables") }}?insert=common_items" method="post">@csrf<input type="hidden" name="insert_page" value="common_items"><input type="submit" value="Insert"></form>'); 
 });
 </script>
 

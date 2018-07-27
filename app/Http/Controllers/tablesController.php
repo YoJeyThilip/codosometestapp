@@ -81,11 +81,11 @@ class tablesController extends Controller
 		
 		}else if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'calculator_fabric' ) { 
 		
-			DB::update('update addons SET front = :front,light_fabric_non_online_25 =  :light_fabric_non_online_25,light_fabric_non_online_50 =  :light_fabric_non_online_50,light_fabric_non_online_100 =  :light_fabric_non_online_100,light_fabric_non_online_150 =  :light_fabric_non_online_150,dark_fabric_non_online_25 =  :dark_fabric_non_online_25,dark_fabric_non_online_50 =  :dark_fabric_non_online_50,dark_fabric_non_online_100 =  :dark_fabric_non_online_100,dark_fabric_non_online_150 = 
+			DB::update('update addons SET front = :front,back = :back,light_fabric_non_online_25 =  :light_fabric_non_online_25,light_fabric_non_online_50 =  :light_fabric_non_online_50,light_fabric_non_online_100 =  :light_fabric_non_online_100,light_fabric_non_online_150 =  :light_fabric_non_online_150,dark_fabric_non_online_25 =  :dark_fabric_non_online_25,dark_fabric_non_online_50 =  :dark_fabric_non_online_50,dark_fabric_non_online_100 =  :dark_fabric_non_online_100,dark_fabric_non_online_150 = 
 			:dark_fabric_non_online_150,light_fabric_online_25 =  :light_fabric_online_25,light_fabric_online_50 =  :light_fabric_online_50,light_fabric_online_100 = 
 			:light_fabric_online_100,light_fabric_online_150 =  :light_fabric_online_150,dark_fabric_online_25 =  :dark_fabric_online_25,dark_fabric_online_50 =  
 			:dark_fabric_online_50,dark_fabric_online_100 =  :dark_fabric_online_100,dark_fabric_online_150 =  :dark_fabric_non_online_150 
-			WHERE ( id = :id )',['id' => $_POST['id'] , 'front' =>  $_POST['front'], 'light_fabric_non_online_25' =>  $_POST['light_fabric_non_online_25'], 
+			WHERE ( id = :id )',['id' => $_POST['id'] , 'front' =>  $_POST['front'],  'back' =>  $_POST['back'],'light_fabric_non_online_25' =>  $_POST['light_fabric_non_online_25'], 
 			'light_fabric_non_online_50' =>  $_POST['light_fabric_non_online_50'], 'light_fabric_non_online_100' =>  $_POST['light_fabric_non_online_100'] , 
 			'light_fabric_non_online_150' =>  $_POST['light_fabric_non_online_150'], 'dark_fabric_non_online_25' =>  $_POST['dark_fabric_non_online_25'],
 			'dark_fabric_non_online_50' =>  $_POST['dark_fabric_non_online_50'] , 'dark_fabric_non_online_100' =>  $_POST['dark_fabric_non_online_100'] , 
@@ -138,7 +138,7 @@ class tablesController extends Controller
 			
 		}else if( isset( $_POST['insert_table'] ) && $_POST['insert_table'] == 'calculator_fabric' ) { 
 		
-			DB::table('calculator_fabric')->insert([ 'front' =>  $_POST['front'], 'light_fabric_non_online_25' =>  $_POST['light_fabric_non_online_25'], 
+			DB::table('calculator_fabric')->insert([ 'front' =>  $_POST['front'],'back' =>  $_POST['back'], 'light_fabric_non_online_25' =>  $_POST['light_fabric_non_online_25'], 
 														'light_fabric_non_online_50' =>  $_POST['light_fabric_non_online_50'], 'light_fabric_non_online_100' =>  $_POST['light_fabric_non_online_100'] , 
 														'light_fabric_non_online_150' =>  $_POST['light_fabric_non_online_150'], 'dark_fabric_non_online_25' =>  $_POST['dark_fabric_non_online_25'],
 														'dark_fabric_non_online_50' =>  $_POST['dark_fabric_non_online_50'] , 'dark_fabric_non_online_100' =>  $_POST['dark_fabric_non_online_100'] , 

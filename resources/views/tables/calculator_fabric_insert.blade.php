@@ -84,7 +84,7 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" name="update"></td>
+				<td><input type="submit" class="Save" name="Save" value="Save"></td>
 			</tr>
 		
 		</tbody>

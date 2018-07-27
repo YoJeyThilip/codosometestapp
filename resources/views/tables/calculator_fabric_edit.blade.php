@@ -84,7 +84,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="submit" name="update"></td>
+						<td><input type="submit" class="update" name="update" value="Update"></td>
 					</tr>
 				@endif
 			@endforeach

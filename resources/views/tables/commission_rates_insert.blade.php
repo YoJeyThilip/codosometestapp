@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="submit" name="update" required></td>
+			<td><input type="submit"  class="Save" name="Save" value="Save"></td>
 		</tr>
 	</table>
 </form>

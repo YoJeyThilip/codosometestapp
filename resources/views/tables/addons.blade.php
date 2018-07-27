@@ -5,10 +5,10 @@
 	<h1 class="product_calculator_header">Product Calculator Settings</h1>
 
 	<h2 class="nav-tab-wrapper product_calculator_tables">
-		<a href="?tab=common_items" class="nav-tab @if( $current_page == 'common_items' ) nav-tab-active @endif">Common Items</a>  
-		<a href="?tab=commission_rates" class="nav-tab @if( $current_page == 'commission_rates' ) nav-tab-active @endif">Commission rates</a>
-		<a href="?tab=addons" class="nav-tab @if( $current_page == 'addons' ) nav-tab-active @endif">Addons</a>
-		<a href="?tab=calculator_fabric" class="nav-tab @if( $current_page == 'calculator_fabric' ) nav-tab-active @endif">Calculator fabric</a>
+		<a href="?tab=common_items" class="nav-tab @if( isset( $current_page ) and  $current_page == 'common_items' ) nav-tab-active @endif">Common Items</a>  
+		<a href="?tab=commission_rates" class="nav-tab @if( isset( $current_page ) and  $current_page == 'commission_rates' ) nav-tab-active @endif">Commission rates</a>
+		<a href="?tab=addons" class="nav-tab @if( isset( $current_page ) and  $current_page == 'addons' ) nav-tab-active @endif">Addons</a>
+		<a href="?tab=calculator_fabric" class="nav-tab @if( isset( $current_page ) and  $current_page == 'calculator_fabric' ) nav-tab-active @endif">Calculator fabric</a>
 	</h2>  
 </div>
 

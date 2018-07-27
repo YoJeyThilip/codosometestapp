@@ -67,8 +67,8 @@ class tablesController extends Controller
 			'avatar_url_small' => $avatar_url_small,
 			'avatar_initials' => $avatar_initials ,
 			'notification' => '',
-			'user_role'	=> (int)($users_role[0]->role),
-			'current_page'	=> $_GET['tab']
+			'user_role'	=> (int)($users_role[0]->role)
+			
 		);
 		
 		//update data --> start
@@ -151,6 +151,9 @@ class tablesController extends Controller
 		}
 		// data insert --> end
 		
+		print_r( $_GET['tab'] );
+		
+		$OrdersVariables['current_page'] = $_GET['tab'];
 		
 		// Edit page --> start
 		if( !isset($_GET['tab']) && !isset($_GET['edit']) && !isset($_GET['insert']) || ( isset($_GET['tab'])  && $_GET['tab'] == 'common_items') ){

@@ -74,11 +74,11 @@ class tablesController extends Controller
 		//update data --> start
 		if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'common_items' ) { 
 		
-			DB::update('update common_items SET brand = :brand,product =  :product,cost = :cost,non_online_store = :non_online_store,online_store = :online_store WHERE ( id = :id )',['id' => $_POST['id'] , 'brand' =>  $_POST['brand'], 'product' =>  $_POST['product'] , 'cost' =>  $_POST['cost'], 'non_online_store' =>  $_POST['non_online_store'], 'online_store' =>  $_POST['online_store']  ]);
+			DB::update('update common_items SET brand = :brand,product =  :product,cost = :cost,non_online_store = :non_online_store,online_store = :online_store WHERE ( id = :id )',[ 'brand' =>  $_POST['brand'], 'product' =>  $_POST['product'] , 'cost' =>  $_POST['cost'], 'non_online_store' =>  $_POST['non_online_store'], 'online_store' =>  $_POST['online_store']  ]);
 		
 		}else if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'addons' ) { 
 		
-			DB::update('update addons SET add_on = :add_on,prize =  :prize WHERE ( id = :id )',['id' => $_POST['id'] , 'add_on' =>  $_POST['add_on'], 'prize' =>  $_POST['prize'] ] );
+			DB::update('update addons SET add_on = :add_on,prize =  :prize WHERE ( id = :id )',[ 'add_on' =>  $_POST['add_on'], 'prize' =>  $_POST['prize'] ] );
 		
 		}else if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'calculator_fabric' ) { 
 		
@@ -86,7 +86,7 @@ class tablesController extends Controller
 			:dark_fabric_non_online_150,light_fabric_online_25 =  :light_fabric_online_25,light_fabric_online_50 =  :light_fabric_online_50,light_fabric_online_100 = 
 			:light_fabric_online_100,light_fabric_online_150 =  :light_fabric_online_150,dark_fabric_online_25 =  :dark_fabric_online_25,dark_fabric_online_50 =  
 			:dark_fabric_online_50,dark_fabric_online_100 =  :dark_fabric_online_100,dark_fabric_online_150 =  :dark_fabric_non_online_150 
-			WHERE ( id = :id )',['id' => $_POST['id'] , 'front' =>  $_POST['front'],  'back' =>  $_POST['back'],'light_fabric_non_online_25' =>  $_POST['light_fabric_non_online_25'], 
+			WHERE ( id = :id )',[ 'front' =>  $_POST['front'],  'back' =>  $_POST['back'],'light_fabric_non_online_25' =>  $_POST['light_fabric_non_online_25'], 
 			'light_fabric_non_online_50' =>  $_POST['light_fabric_non_online_50'], 'light_fabric_non_online_100' =>  $_POST['light_fabric_non_online_100'] , 
 			'light_fabric_non_online_150' =>  $_POST['light_fabric_non_online_150'], 'dark_fabric_non_online_25' =>  $_POST['dark_fabric_non_online_25'],
 			'dark_fabric_non_online_50' =>  $_POST['dark_fabric_non_online_50'] , 'dark_fabric_non_online_100' =>  $_POST['dark_fabric_non_online_100'] , 
@@ -97,7 +97,7 @@ class tablesController extends Controller
 		
 		}else if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'commission_rates' ) { 
 		
-			DB::update('update commission_rates SET shirts = :shirts,rate =  :rate WHERE ( id = :id )',['id' => $_POST['id'] , 'shirts' =>  $_POST['shirts'], 'rate' =>  $_POST['rate'] ] );
+			DB::update('update commission_rates SET shirts = :shirts,rate =  :rate WHERE ( id = :id )',[ 'shirts' =>  $_POST['shirts'], 'rate' =>  $_POST['rate'] ] );
 		
 		}
 		//update data --> end

@@ -526,6 +526,12 @@ table#dt_basic td {
 	padding: 15px 17px;
 }
 
+.edit_tables table#dt_basic td {
+	border: inherit; 
+    font-size: 14px;
+    font-weight: 600;
+}
+
 table#dt_basic {
 	overflow-x: scroll;
     width: 100%;
@@ -594,9 +600,6 @@ div#dt_basic_wrapper {
     height: auto;
 }
 
-.edit_tables table td {
-	border: inherit;
-}
 
 h2.nav-tab-wrapper {
 	margin: 0;

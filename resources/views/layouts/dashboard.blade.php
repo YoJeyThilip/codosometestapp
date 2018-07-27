@@ -11,6 +11,9 @@
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/campus_ink.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/selectize.default.css') }}">
 		
+		<link rel="stylesheet" media="all" href="{{ secure_asset('css/product_calculator-admin.css') }}">
+		<link rel="stylesheet" media="all" href="{{ secure_asset('css/smartadmin-production-plugins.min.css') }}">
+		
 		<link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 		<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

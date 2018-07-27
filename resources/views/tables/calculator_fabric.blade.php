@@ -108,7 +108,7 @@ $(document).ready(function() {
 					}
 				});
 				// custom toolbar
-				$("div.dt-toolbar .create-button-colors-style").html('<form action="{{ route("tables") }}?insert=calculator_fabric" method="post">@csrf<input type="hidden" name="insert_page" value="calculator_fabric"><input type="submit" class="insert_form" value="Insert"></form>');  
+				$("div.dt-toolbar .create-button-colors-style").html('<form action="{{ route("tables") }}?insert=calculator_fabric" method="post">@csrf<input type="hidden" name="insert_page" value="calculator_fabric"><input type="submit" class="insert_form" value="Create New"></form>');  
 	
 });
 </script>

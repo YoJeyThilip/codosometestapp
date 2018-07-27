@@ -809,7 +809,6 @@ html .dataTables_wrapper  {
   background-color: #fff;
 }
 .dataTables_wrapper button, .dataTables_wrapper input, .dataTables_wrapper select, .dataTables_wrapper textarea {
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }

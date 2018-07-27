@@ -529,7 +529,6 @@ table#dt_basic td {
 table#dt_basic {
 	overflow-x: scroll;
     width: 100%;
-    border: 1px solid #ddd;
 }
 
 .edit_tables {
@@ -590,7 +589,7 @@ h2.product_calculator_tables a:focus, h2.product_calculator_tables a:hover {
 }
 
 div#dt_basic_wrapper {
-    padding: 20px;
+    padding: 0 !important;
     border: 1px solid #ddd;
     margin: 34px 12px;
 }

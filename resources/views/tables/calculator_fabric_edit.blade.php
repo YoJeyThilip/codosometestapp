@@ -3,6 +3,9 @@
 @section('dashboard-content')
 
 <div class="calculator_fabric_table edit_tables">
+
+<h1 class="product_calculator_header">Calculator Fabric Table Item</h1>
+
 <form action="{{ route('tables') }}?tab=calculator_fabric" method="post">
 	@csrf
 	<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">

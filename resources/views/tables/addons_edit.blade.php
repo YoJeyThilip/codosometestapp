@@ -12,7 +12,7 @@
 				@if( $addons_edit_id == $addon->id )
 					<tr>
 						<td>ID</td>
-						<td><input type="text" name="id" value="{{$addon->id}}"></td>
+						<td><input type="text" name="id" value="{{$addon->id}}" disabled></td>
 							<td><input type="hidden"  name="table_name" value="addons"></td>
 					</tr>
 					<tr>

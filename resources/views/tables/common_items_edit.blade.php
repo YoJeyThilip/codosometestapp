@@ -13,7 +13,7 @@
 					@if( $common_items_edit_id == $common_item->id )
 						<tr>
 							<td>ID</td>
-							<td><input type="text"  name="id" value="{{$common_item->id}}"></td>
+							<td><input type="text"  name="id" value="{{$common_item->id}}" disabled></td>
 							<td><input type="hidden"  name="table_name" value="common_items"></td>
 						</tr>
 						<tr>

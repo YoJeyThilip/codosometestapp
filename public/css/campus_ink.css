@@ -649,3 +649,7 @@ h2.product_calculator_tables a:focus, h2.product_calculator_tables a:hover {
     padding-left: 24rem;
     margin: 10px 30px;
 }
+
+h1.product_calculator_header {
+    margin: 30px 0;
+}

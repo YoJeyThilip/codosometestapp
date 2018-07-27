@@ -523,8 +523,7 @@ tr.splitscreen_order>td:first-child:before {
 /* Tables */
 
 table#dt_basic td {
-	border:none;
-	padding: 15px 10px;
+	padding: 15px 17px;
 }
 
 table#dt_basic {
@@ -575,4 +574,15 @@ h2.product_calculator_tables a:focus, h2.product_calculator_tables a:hover {
     color: #fff;
     text-decoration: none;
     text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;	
+}
+.dataTables_wrapper .dt-toolbar {
+    padding: 12px 0;
+}
+
+.dt-toolbar-footer {
+    border-top: inherit;
+}
+
+.dt-toolbar {
+    border-bottom: inherit;
 }

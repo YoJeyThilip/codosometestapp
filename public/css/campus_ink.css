@@ -632,3 +632,9 @@ h2.product_calculator_tables a:focus, h2.product_calculator_tables a:hover {
     font-size: 14px;
     font-weight: bold;
 }
+
+.nav-tab-active, .nav-tab-active:focus, .nav-tab-active:focus:active, .nav-tab-active:hover {
+    border-bottom: 1px solid #f1f1f1;
+    background: #f1f1f1;
+    color: #000;
+}

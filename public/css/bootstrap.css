@@ -798,11 +798,11 @@ html .dataTables_wrapper  {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.dataTables_wrapper html {
+ html .dataTables_wrapper {
   font-size: 10px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-.dataTables_wrapper body {
+ body .dataTables_wrapper {
   font-family: "Open Sans", Arial, Helvetica, Sans-Serif;
   font-size: 13px;
   line-height: 1.42857;

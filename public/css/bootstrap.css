@@ -1889,9 +1889,6 @@ html .dataTables_wrapper  {
 .dataTables_wrapper .table-striped > tbody > tr:nth-child(odd) {
   background-color: #f9f9f9;
 }
-.dataTables_wrapper .table-hover > tbody > tr:hover {
-  background-color: #ecf3f8;
-}
 .dataTables_wrapper table col[class*=col-] {
   position: static;
   float: none;

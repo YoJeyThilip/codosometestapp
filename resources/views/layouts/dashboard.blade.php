@@ -11,6 +11,7 @@
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/campus_ink.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/selectize.default.css') }}">
 		
+		<link rel="stylesheet" media="all" href="{{ secure_asset('css/bootstrap.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/product_calculator-admin.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/smartadmin-production-plugins.min.css') }}">
 		

@@ -18,6 +18,10 @@
 						<td>front</td>
 						<td><input type="text" name="front"  value="{{$fabric->front}}"></td>
 					</tr>
+					<tr>
+						<td>Back</td>
+						<td><input type="text" name="back"  value="{{$fabric->back}}"></td>
+					</tr>
 					<tr> 
 						<td>Light Fabric Non Online 25</td>
 						<td><input type="text" name="light_fabric_non_online_25"  value="{{$fabric->light_fabric_non_online_25}}"></td>

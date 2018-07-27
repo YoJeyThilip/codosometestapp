@@ -13,6 +13,11 @@
 				<td><input type="text" name="front"  value="" required>
 					<input name="insert_table" type="hidden" id="id" value="calculator_fabric"></td>
 			</tr>
+			<tr>
+				<td>front</td>
+				<td><input type="text" name="back"  value="" required>
+					</td>
+			</tr>
 			<tr> 
 				<td>Light Fabric Non Online 25</td>
 				<td><input type="number" name="light_fabric_non_online_25"  value="" required></td>

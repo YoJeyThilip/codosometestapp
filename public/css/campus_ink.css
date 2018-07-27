@@ -626,7 +626,7 @@ h2.product_calculator_tables a:focus, h2.product_calculator_tables a:hover {
 	color: #444;
 }
 
-.product_calculator_details h1 {
+.product_calculator_title{
 	padding-top: 20px;
     padding-left: 20px;
     padding-bottom: 20px;

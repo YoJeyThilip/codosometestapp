@@ -2,7 +2,7 @@
 
 @section('dashboard-content')
 <div class="wrap product_calculator_details">
-	<h1 class="product_calculator_header">Product Calculator Settings</h1>
+	<h1 class="product_calculator_title">Product Calculator Settings</h1>
 
 	<h2 class="nav-tab-wrapper product_calculator_tables">
 		<a href="?tab=common_items" class="nav-tab @if( isset( $current_page ) and  $current_page == 'common_items' ) nav-tab-active @endif">Common Items</a>  

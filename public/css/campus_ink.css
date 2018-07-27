@@ -528,6 +528,8 @@ table#dt_basic td {
 
 table#dt_basic {
 	overflow-x: scroll;
+    width: 100%;
+    border: 1px solid #ddd;
 }
 
 .edit_tables {
@@ -580,9 +582,20 @@ h2.product_calculator_tables a:focus, h2.product_calculator_tables a:hover {
 }
 
 .dt-toolbar-footer {
-    border-top: inherit;
+    border-top: inherit !important;
 }
 
-.dt-toolbar {
+.dataTables_wrapper .dt-toolbar {
     border-bottom: inherit;
+	padding-bottom: 10px;
+}
+
+div#dt_basic_wrapper {
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 34px 12px;
+}
+
+.dt-toolbar-footer .pagination {
+    padding: 3px 6px 5px 20px;
 }

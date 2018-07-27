@@ -67,7 +67,8 @@ class tablesController extends Controller
 			'avatar_url_small' => $avatar_url_small,
 			'avatar_initials' => $avatar_initials ,
 			'notification' => '',
-			'user_role'	=> (int)($users_role[0]->role)
+			'user_role'	=> (int)($users_role[0]->role),
+			'current_page'	=> $_GET['tab']
 		);
 		
 		//update data --> start

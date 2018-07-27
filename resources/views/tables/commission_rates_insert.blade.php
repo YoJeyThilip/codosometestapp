@@ -6,16 +6,11 @@
 <form action="{{ route('tables') }}?tab=commission_rates" method="post">
 	@csrf
 	<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
-		<tr>
-			<td>ID</td>
-			<td>
-				<input type="text" name="id" value="" required>
-				<input name="insert_table" type="hidden" id="id" value="commission_rates">
-			</td>
-		</tr>
+		
 		<tr>
 			<td>Shirts</td>
-			<td><input type="text"  name="shirts" value="" required></td>
+			<td><input type="text"  name="shirts" value="" required>
+				<input name="insert_table" type="hidden" id="id" value="commission_rates"></td>
 		</tr>
 		<tr>
 			<td>Fabric</td>

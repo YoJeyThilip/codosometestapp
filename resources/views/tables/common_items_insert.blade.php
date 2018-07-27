@@ -10,15 +10,9 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>ID</td>
-				<td>
-					<input type="text" name="id" value="" required>
-					<input name="insert_table" type="hidden" id="id" value="common_items">
-				</td>
-			</tr>
-			<tr>
 				<td>Brand</td>
-				<td><input type="text"  name="brand" value="" required></td>
+				<td><input type="text"  name="brand" value="" required>
+					<input name="insert_table" type="hidden" id="id" value="common_items"></td>
 			</tr>
 			<tr>
 				<td>Product</td>

@@ -536,14 +536,6 @@ table#dt_basic {
     margin: 50px 0 0 20px;
 }
 
-h2.nav-tab-wrapper {
-	border-bottom: 1px solid #ccc;
-	margin: 0;
-	padding-top: 9px;
-	padding-bottom: 0;
-	line-height: inherit;
-}
-
 h2.product_calculator_tables a {
 	float: left;
 	border: 1px solid #ccc;
@@ -607,7 +599,6 @@ div#dt_basic_wrapper {
 }
 
 h2.nav-tab-wrapper {
-	border-bottom: 1px solid #ccc;
 	margin: 0;
 	padding-top: 9px;
 	padding-bottom: 0;

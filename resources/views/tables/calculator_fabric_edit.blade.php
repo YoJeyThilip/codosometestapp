@@ -15,7 +15,7 @@
 					<tr>
 						<td>ID</td>
 						
-						<td><span>{{$fabric->id}}</span><input type="hidden"  name="id" value="{{$fabric->id}}" disabled>
+						<td><span>{{$fabric->id}}</span><input type="hidden"  name="id" value="{{$fabric->id}}">
 						<input type="hidden"  name="table_name" value="calculator_fabric"></td>
 					</tr>
 					<tr>

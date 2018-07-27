@@ -14,8 +14,9 @@
 				@if( $calculator_fabric_edit_id == $fabric->id )
 					<tr>
 						<td>ID</td>
-						<td><input type="text"  name="id" value="{{$fabric->id}}" disabled></td>
-							<td><input type="hidden"  name="table_name" value="calculator_fabric"></td>
+						
+						<td><span>{{$fabric->id}}</span><input type="hidden"  name="id" value="{{$fabric->id}}" disabled>
+						<input type="hidden"  name="table_name" value="calculator_fabric"></td>
 					</tr>
 					<tr>
 						<td>front</td>

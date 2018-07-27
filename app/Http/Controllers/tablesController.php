@@ -82,7 +82,7 @@ class tablesController extends Controller
 		
 		}else if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'calculator_fabric' ) { 
 		
-			DB::update('update addons SET front = :front,back = :back,light_fabric_non_online_25 =  :light_fabric_non_online_25,light_fabric_non_online_50 =  :light_fabric_non_online_50,light_fabric_non_online_100 =  :light_fabric_non_online_100,light_fabric_non_online_150 =  :light_fabric_non_online_150,dark_fabric_non_online_25 =  :dark_fabric_non_online_25,dark_fabric_non_online_50 =  :dark_fabric_non_online_50,dark_fabric_non_online_100 =  :dark_fabric_non_online_100,dark_fabric_non_online_150 = 
+			DB::update('update calculator_fabric SET front = :front,back = :back,light_fabric_non_online_25 =  :light_fabric_non_online_25,light_fabric_non_online_50 =  :light_fabric_non_online_50,light_fabric_non_online_100 =  :light_fabric_non_online_100,light_fabric_non_online_150 =  :light_fabric_non_online_150,dark_fabric_non_online_25 =  :dark_fabric_non_online_25,dark_fabric_non_online_50 =  :dark_fabric_non_online_50,dark_fabric_non_online_100 =  :dark_fabric_non_online_100,dark_fabric_non_online_150 = 
 			:dark_fabric_non_online_150,light_fabric_online_25 =  :light_fabric_online_25,light_fabric_online_50 =  :light_fabric_online_50,light_fabric_online_100 = 
 			:light_fabric_online_100,light_fabric_online_150 =  :light_fabric_online_150,dark_fabric_online_25 =  :dark_fabric_online_25,dark_fabric_online_50 =  
 			:dark_fabric_online_50,dark_fabric_online_100 =  :dark_fabric_online_100,dark_fabric_online_150 =  :dark_fabric_non_online_150 

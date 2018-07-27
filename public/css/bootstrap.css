@@ -73,7 +73,6 @@ html .dataTables_wrapper  {
 }
 .dataTables_wrapper button, .dataTables_wrapper input, .dataTables_wrapper optgroup, .dataTables_wrapper select, .dataTables_wrapper textarea {
   color: inherit;
-  font: inherit;
   margin: 0;
 }
 .dataTables_wrapper button {
@@ -2016,7 +2015,7 @@ html .dataTables_wrapper  {
   line-height: 1.42857;
   color: #555;
 }
-.dataTables_wrapper .form-control {
+.dataTables_wrapper .dataTables_filter .form-control {
   display: block;
   width: 100%;
   height: 32px;

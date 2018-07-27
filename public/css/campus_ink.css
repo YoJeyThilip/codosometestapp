@@ -567,15 +567,6 @@ h2.product_calculator_tables a:focus, h2.product_calculator_tables a:hover {
 	padding-left: 20px;
 }
 
-.dataTables_wrapper .dt-toolbar form input.insert_form {
-	background: #0085ba;
-    border-color: #0073aa #006799 #006799;
-    -webkit-box-shadow: 0 1px 0 #006799;
-    box-shadow: 0 1px 0 #006799;
-    color: #fff;
-    text-decoration: none;
-    text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;	
-}
 .dataTables_wrapper .dt-toolbar {
     padding: 12px 20px;
     border-bottom: inherit;
@@ -583,9 +574,6 @@ h2.product_calculator_tables a:focus, h2.product_calculator_tables a:hover {
 
 .dt-toolbar-footer {
     border-top: inherit !important;
-}
-
-.dataTables_wrapper .dt-toolbar {
 }
 
 div#dt_basic_wrapper {
@@ -602,7 +590,7 @@ div#dt_basic_wrapper {
     padding-top: 18px;
 }
 
-.edit_tables .save,.edit_tables .update {
+.edit_tables .save,.edit_tables .update,.dataTables_wrapper .dt-toolbar form input.insert_form {
 	background: #0085ba;
     border-color: #0073aa #006799 #006799;
     -webkit-box-shadow: 0 1px 0 #006799;
@@ -610,6 +598,8 @@ div#dt_basic_wrapper {
     color: #fff;
     text-decoration: none;
     text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;
+	padding: 6px;
+    height: auto;
 }
 
 .edit_tables table td {

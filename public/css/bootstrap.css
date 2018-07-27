@@ -10,7 +10,7 @@ html .dataTables_wrapper  {
 	margin: 34px 12px;
 }
  body .dataTables_wrapper {
-  margin: 0;
+  margin: 34px 10;
   border: 1px solid #ddd;
 }
 .dataTables_wrapper article, .dataTables_wrapper aside, .dataTables_wrapper details, .dataTables_wrapper figcaption, .dataTables_wrapper figure, .dataTables_wrapper footer, .dataTables_wrapper header, .dataTables_wrapper hgroup, .dataTables_wrapper main, .dataTables_wrapper menu, .dataTables_wrapper nav, .dataTables_wrapper section, .dataTables_wrapper summary {
@@ -3633,9 +3633,9 @@ html .dataTables_wrapper  {
 }
 .dataTables_wrapper .pagination {
   display: inline-block;
-  padding-left: 0;
-  margin: 18px 0;
-  border-radius: 2px;
+    padding-left: 0;
+    padding: 14px 0;
+    border-radius: 2px;
 }
 .dataTables_wrapper .pagination > li {
   display: inline;

@@ -150,10 +150,11 @@ class tablesController extends Controller
 			
 		}
 		// data insert --> end
+		if( isset($_GET['tab']) ){ 
 		
-		print_r( $_GET['tab'] );
-		
-		$OrdersVariables['current_page'] = $_GET['tab'];
+			$OrdersVariables['current_page'] = $_GET['tab'];
+			
+		}
 		
 		// Edit page --> start
 		if( !isset($_GET['tab']) && !isset($_GET['edit']) && !isset($_GET['insert']) || ( isset($_GET['tab'])  && $_GET['tab'] == 'common_items') ){

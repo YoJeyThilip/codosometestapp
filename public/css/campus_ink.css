@@ -628,7 +628,10 @@ h2.product_calculator_tables a:focus, h2.product_calculator_tables a:hover {
 
 .product_calculator_details h1 {
 	padding-top: 20px;
-	padding-left: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    font-weight: 600;
+    font-size: 30px;
 }
 
 #dt_basic th {

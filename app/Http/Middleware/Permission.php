@@ -2,7 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Controllers\UserMetaController;
+
 use Auth;
+
 use Closure;
 
 class Permission
@@ -16,15 +19,11 @@ class Permission
      */
     public function handle($request, Closure $next, $role)
     {
-        // Not Logged
-        if (!Auth::check()) {
-            return redirect('/login');
-        }
+      
+		$printavo_status = UserMetaController::get_user_meta( $user_id, "printavo-status" , "disconnected" );
 		
-        // Not allowed
-        if ($request->user()->role < $role) {
-            return redirect('/settings');
-        }
+		print_r($printavo_status);
+		
         return $next($request);
     }
 }

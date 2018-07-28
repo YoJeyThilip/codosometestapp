@@ -93,91 +93,64 @@
 		   </div>
 		 </div>
 		</div>
-		<div class="Polaris-Layout__AnnotatedSection">
-		   <div class="Polaris-Layout__AnnotationWrapper">
-			  <div class="Polaris-Layout__Annotation">
-				 <div class="Polaris-TextContainer">
-					<h2 class="Polaris-Heading">Printavo API</h2>
-					<p>This API is used to access information in your Printavo account.</p>
-				 </div>
-			  </div>
-			  <div class="Polaris-Layout__AnnotationContent">	
-				<form action="{{ route('settings') }}" accept-charset="UTF-8" method="post">
-					@csrf
-					 @if( intval($user_role) > 3 )
-						 <div class="Polaris-Card">
-							<div class="Polaris-Card__Section">
-								<div class="Polaris-Labelled__LabelWrapper">
-									<div class="Polaris-Label">
-										<label for="add_campus" class="next-label">Add Campus</label>
-									</div>
-								</div>
-								<div class="Polaris-SettingAction">
-								  <div class="Polaris-SettingAction__Setting">
-									 <div class="Polaris-Stack">
-									   <div class="Polaris-Stack__Item Polaris-Stack__Item--fill">
-										  <input class="next-input js-no-dirty" placeholder="Vintage, cotton, summer" id="add_campus" size="30" type="text" >
-									   </div>
-									 </div>
-								  </div>
-								  <div class="Polaris-SettingAction__Action">
-									<button id="add_campus_btn" class="Polaris-Button">Add option</button>
-								  </div>
-								</div>
-								<ul class="js-tag-list next-token-list st" id="campus_list">
-									@foreach( $campus_list as $campus_name )
-										<li class="next-token">
-										   <span class="next-token__label">{{ $campus_name }}</span>
-										   <a class="next-token__remove">
-											  <input type="hidden" name="campus_list[]" value="{{ $campus_name }}">
-											  <span class="next-token__remove__icon">
-												 <svg class="next-icon next-icon--size-10 next-icon--no-nudge">
-													<use xlink:href="#next-remove"></use>
-												 </svg>
-											  </span>
-										   </a>
-										</li>
-									@endforeach
-								</ul>
-							</div>
-						 </div>
-					 @endif
-					 
-					 <div class="Polaris-Card">
-                        <div class="Polaris-Card__Section">
-							<div class="Polaris-Labelled__LabelWrapper">
-								<div class="Polaris-Label">
-									<label for="campus" class="next-label">Select Campus</label>
-								</div>
-							</div>
-                            <div class="Polaris-SettingAction">
-							  <div class="Polaris-SettingAction__Setting">
-								 <div class="Polaris-Stack">
-								   <div class="Polaris-Stack__Item Polaris-Stack__Item--fill campus_select_item">
-										<div class="Polaris-Select">
-											<select id="Select2" name="campus" class="Polaris-Select__Input" aria-invalid="false">
-												@foreach( $campus_list as $campus_name )
-													<option value="{{ $campus_name }}" @if( $campus == $campus_name ) selected @endif >{{ $campus_name }}</option>
-												@endforeach
-											</select>
-											<div class="Polaris-Select__Icon"><span class="Polaris-Icon"><svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true"><path d="M13 8l-3-3-3 3h6zm-.1 4L10 14.9 7.1 12h5.8z" fill-rule="evenodd"></path></svg></span></div>
-											<div class="Polaris-Select__Backdrop"></div>
-										</div>
-								   </div>
-								 </div>
-							  </div>
+			@if( intval($user_role) > 3 )
+				<div class="Polaris-Layout__AnnotatedSection">
+					<div class="Polaris-Layout__AnnotationWrapper">
+						<div class="Polaris-Layout__Annotation">
+							<div class="Polaris-TextContainer">
+								<h2 class="Polaris-Heading">Printavo API</h2>
+								<p>This API is used to access information in your Printavo account.</p>
 							</div>
 						</div>
-					 </div>
-					 
-					 <div class="Polaris-SettingAction__Action setting_save_btn">
-						<input type="submit" name="setting-form" class="Polaris-Button Polaris-Button--primary" value="save">
-					 </div>
-					 
-				</form>
-			   </div>
-             </div>
-            </div>
+						<div class="Polaris-Layout__AnnotationContent">	
+							<form action="{{ route('settings') }}" accept-charset="UTF-8" method="post">
+								@csrf
+								<div class="Polaris-Card">
+									<div class="Polaris-Card__Section">
+										<div class="Polaris-Labelled__LabelWrapper">
+											<div class="Polaris-Label">
+												<label for="add_campus" class="next-label">Add Campus</label>
+											</div>
+										</div>
+										<div class="Polaris-SettingAction">
+											<div class="Polaris-SettingAction__Setting">
+												<div class="Polaris-Stack">
+													<div class="Polaris-Stack__Item Polaris-Stack__Item--fill">
+														<input class="next-input js-no-dirty" placeholder="Vintage, cotton, summer" id="add_campus" size="30" type="text" >
+													</div>
+												</div>
+											</div>
+											<div class="Polaris-SettingAction__Action">
+												<button id="add_campus_btn" class="Polaris-Button">Add option</button>
+											</div>
+										</div>
+										<ul class="js-tag-list next-token-list st" id="campus_list">
+											@foreach( $campus_list as $campus_name )
+												<li class="next-token">
+													<span class="next-token__label">{{ $campus_name }}</span>
+													<a class="next-token__remove">
+														<input type="hidden" name="campus_list[]" value="{{ $campus_name }}">
+														<span class="next-token__remove__icon">
+															<svg class="next-icon next-icon--size-10 next-icon--no-nudge">
+																<use xlink:href="#next-remove"></use>
+															</svg>
+														</span>
+													</a>
+												</li>
+											@endforeach
+										</ul>
+									</div>
+								</div>
+
+								<div class="Polaris-SettingAction__Action setting_save_btn">
+								<input type="submit" name="setting-form" class="Polaris-Button Polaris-Button--primary" value="save">
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			@endif
 		</div>
 	</div>
 </div>

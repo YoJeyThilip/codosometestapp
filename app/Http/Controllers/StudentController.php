@@ -165,9 +165,105 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($student_id)
     {
-        //
+		$user_id = Auth::id();
+		
+		$email = UserMetaController::get_user_meta( $user_id, "printavo-email" );
+		
+		$api_token = UserMetaController::get_user_meta( $user_id, "printavo-api-token" );
+		
+		$printavo_status = UserMetaController::get_user_meta( $user_id, "printavo-status" , "disconnected" );
+		 
+		$avatar_initials = UserMetaController::get_user_meta( $user_id, "printavo-avatar_initials" );
+		
+		$avatar_url_small = UserMetaController::get_user_meta( $user_id, "printavo-avatar_url_small");
+		
+		$avatar_name = UserMetaController::get_user_meta( $user_id, "printavo-name" , Auth::user()->name );
+		
+		$avatar_background_color = UserMetaController::get_user_meta( $user_id, "printavo-avatar_background_color" , "7951B9" );
+				
+		$users_role = DB::select( "SELECT role FROM users WHERE id=" . $user_id );
+			
+		if( $avatar_initials == ""){
+			$acronym = "";
+			$words = explode(" ", $avatar_name);
+			foreach ($words as $w) {
+				$acronym .= $w[0];
+			}
+			$avatar_initials = $acronym;
+		}
+		
+		$StudentsVariables = array(
+			'printavo_email' => $email,
+			'printavo_status' => $printavo_status,
+			'avatar_name' => $avatar_name,
+			'avatar_background_color' => '#' . $avatar_background_color,
+			'avatar_url_small' => $avatar_url_small,
+			'avatar_initials' => $avatar_initials ,
+			'notification' => '',
+			'user_role'	=> (int)($users_role[0]->role),
+		);
+		
+		if( $printavo_status == "connected"){
+			
+			
+			$students = DB::select("SELECT * FROM students WHERE student_id =" . $student_id )[0];
+			
+			
+			$acronym = "";
+			$words = explode(" ", $students->student_name );
+			foreach ($words as $w) {
+				$acronym .= $w[0];
+			}
+			$students->avatar_initials = $acronym;
+				
+			$related_orders_array = DB::select( "SELECT order_id FROM orders_meta WHERE meta_name='other_user_id' and meta_value=".$student_id );
+			$related_orders = "";
+			
+			foreach( $related_orders_array as $order ){
+				if( $related_orders != '' ){
+					$related_orders .= ',';
+				}
+				$related_orders .= "'".$order->order_id."'";
+			}
+			
+			if( $related_orders != '' ){
+				$students_condition = "student_id=".$student_id." OR order_id in (".$related_orders.")";
+			}
+			else{
+				$students_condition = "student_id=".$student_id ;
+			}
+			
+			$orders = DB::select("SELECT order_total,commision FROM orders WHERE ".$students_condition );
+			
+			$total_sales = 0;
+			$total_commision = 0;
+			$total_order = 0;
+			
+			foreach( $orders as $order){
+				$total_sales += $order->order_total;
+				$splitsheet_value = OrdersMetaController::get_order_meta( $student_id ,"splitsheet_value",'no');
+				if( $splitsheet_value == 'no' ){
+					$total_commision += ( $order->commision * $order->order_total )/100;
+				}
+				else{
+					$total_commision += ( $order->commision * $order->order_total )/200;
+				}
+				$total_order ++;
+			}
+			
+			$students->total_sales = number_format((float)$total_sales, 2, '.', ',');
+			$students->total_commision = number_format((float)$total_commision, 2, '.', ',');
+			$students->total_order = $total_order;
+			
+				
+			$StudentsVariables['students'] = $students;
+			$StudentsVariables['campus_list'] = json_decode(GeneralSettingsController::get_option( 'campus_list', '[]' ));
+			
+		}
+		
+		return view( 'Student.Single' , $StudentsVariables );
     }
 
     /**
@@ -188,9 +284,12 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $student_id)
     {
-        //
+		
+		DB::update( "UPDATE students SET campus = '" . $_POST['campus'] . "' WHERE student_id = " . $student_id  );
+		
+		return $this->show($student_id);
     }
 
     /**

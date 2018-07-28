@@ -16,14 +16,23 @@
 Route::any('/logout', 'DashboardController@logout')->name('logout');
 
 
-Auth::routes();
+	// Authentication Routes...
+	Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+	Route::post('login', 'Auth\LoginController@login');
+	Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::any('/calculator', 'CalculatorController@index')->name('calculator');
+
+	// Registration Routes...
+	Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('register');
+	Route::post('signup', 'Auth\RegisterController@register');
+
+	// Password Reset Routes...
+	Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+	Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+	Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+	Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::resource('/orders', 'OrderController');
-
-Route::any('/tables', 'tablesController@index')->name('tables');
-
 
 /*
 |------------------------------------------------------------------------------------
@@ -37,20 +46,18 @@ Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
 	Route::resource('/students', 'StudentController');
 
 	Route::any('/reports', 'ReportsController@index')->name('reports');
-	
-	Route::any('/analytics', 'AnalyticsController@index')->name('analytics');
 
 	Route::any('/all_reports', 'ReportsController@all_reports')->name('all_reports');
 
 	Route::any('/resources/edit', 'ResourcesController@edit')->name('resources.edit');
+
+	Route::any('/calculator-tables', 'CalculatorTablesController@index')->name('calculator-tables');
 	
 });
 
-Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
+Route::any('/calculator', 'CalculatorController@index')->name('calculator');
 	
-	Route::any('/settings', 'SettingsController@index')->name('settings');	
-	
-});
+Route::any('/analytics', 'AnalyticsController@index')->name('analytics');
 
 Route::any('/settings', 'SettingsController@index')->name('settings');
 

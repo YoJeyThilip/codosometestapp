@@ -139,6 +139,8 @@
 																		<th></th>
 																		<th>Invoice</th>
 																		<th>Customer due date</th>
+																		<th>Order status</th>
+																		<th>Payment status</th>
 																		<th>Quantity</th>
 																		<th>Commission</th>
 																		<th>Bonus</th>
@@ -160,6 +162,18 @@
 																				<span title="{{ date( 'j/n/Y', strtotime( $order->due_date ) ) }}">{{ date("j/n/Y", strtotime($order->due_date)) }}</span>
 																			</td>
 																			
+																			<td class="no-wrap">
+																				<span class="badge" style="background-color:{{ $order->order_status_color }}; color:@if( $order->order_status_color == '#000000' ) #ffffff @else #000000 @endif ">
+																					{{ $order->order_status }}
+																				</span>
+																			</td>
+
+																			<td class="no-wrap">
+																				<span class="badge @if( $order->payment_status == 'Paid' ) badge--status-success @elseif( $order->payment_status == 'Unpaid' ) badge--status-attention @endif ">
+																					{{ $order->payment_status }}
+																				</span>
+																			</td>
+																																						
 																			<td>
 																				<span>{{ $order->total_quantity }}</span>
 																			</td>
@@ -393,6 +407,8 @@
 															'<th></th>'+
 															'<th>Invoice</th>'+
 															'<th>Customer due date</th>'+
+															'<th>Order status</th>'+
+															'<th>Payment status</th>'+
 															'<th>Quantity</th>'+
 															'<th>Commission</th>'+
 															'<th>Bonus</th>'+
@@ -412,6 +428,18 @@
 																
 																'<td>'+
 																	'<span title="'+ order.due_date +'">'+ order.due_date +'</span>'+
+																'</td>'+
+																
+																'<td class="no-wrap">'+
+																	'<span class="badge" style="background-color:' + order.order_status_color +'; color:' + ( ( order.order_status_color == '#000000' ) ? '#ffffff' : '#000000' ) + '">'+
+																		order.order_status +
+																	'</span>'+
+																'</td>'+
+
+																'<td class="no-wrap">'+
+																	'<span class="badge ' + ( ( order.payment_status == 'Paid' ) ? 'badge--status-success' : '' ) + ( ( order.payment_status == 'Unpaid' ) ? 'badge--status-attention' : '' ) + '">'+
+																		order.payment_status +
+																	'</span>'+
 																'</td>'+
 																
 																'<td>'+

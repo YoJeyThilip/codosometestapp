@@ -144,7 +144,7 @@
 				  
 <div class="all_reports_commison_footer">
 	<div class="reports_payment_footer_action_btn">
-		<button>Download PDF</button>
+		<button>Download bundle report</button>
 	</div>
 </div>
 @endsection

@@ -520,7 +520,30 @@ tr.splitscreen_order>td:first-child:before {
     padding: 2px;
 }
 
-/* Tables */
+.analytics_download_footer_action{
+	padding: 30px;
+}
+
+.students_single_content.order_single_content .takeover_meta_table{
+    margin: 0 2rem;
+    padding: 0;
+	border-top: 0;
+}
+
+.students_single_content .printavo_settings_user-avatar {
+    width: 60px;
+    height: 60px;
+}
+
+@media screen and (min-width: 568px){
+	.students_single_content .ui-card__section{
+		padding: 1rem 2rem;
+	}
+}
+
+
+
+/* Calculator Tables */
 
 table#dt_basic td {
 	padding: 15px 17px;

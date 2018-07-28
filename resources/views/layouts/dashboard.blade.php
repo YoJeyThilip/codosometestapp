@@ -10,23 +10,21 @@
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/shopify-dashboard.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/campus_ink.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/selectize.default.css') }}">
+		<link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 		
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/bootstrap.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/product_calculator-admin.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/smartadmin-production-plugins.min.css') }}">
 		
-		<link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 		<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script src="{{ secure_asset('js/selectize.min.js') }}"></script>
 		
-		<script src="{{ secure_asset('js/jquery-ui.min.js') }}"></script>
 		<script src="{{ secure_asset('js/datatables/jquery.dataTables.min.js') }}"></script>
 		<script src="{{ secure_asset('js/datatables/dataTables.colVis.min.js') }}"></script>
 		<script src="{{ secure_asset('js/datatables/dataTables.tableTools.min.js') }}"></script>
 		<script src="{{ secure_asset( 'js/datatables/dataTables.bootstrap.min.js') }}"></script>
 		<script src="{{ secure_asset( 'js/datatables/datatables.responsive.min.js') }}"></script> 
-		
    </head>
    <body class="page-home-index fresh-ui" id="body-content">
       <div class="ui-app-frame" data-tg-refresh="ui-app-frame" id="ui-app-frame">
@@ -369,14 +367,19 @@
                                     </svg>
                                     <span class="ui-nav__label ui-nav__label--parent">Calculator</span>
                                  </a>
-                              </li>
-							   <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('tables') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
-                                 <a href="{{ route('tables') }}" class="ui-nav__link ui-nav__link--parent">
-									<svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
-                                       <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-calculator"></use>
-                                    </svg>
-                                    <span class="ui-nav__label ui-nav__label--parent">Tables</span>
-                                 </a>
+								@if( intval($user_role) > 3 )
+									 @if( ( url()->current() == route('calculator') ) || ( url()->current() == route('calculator-tables') ) )
+										<div class="ui-nav_submenu">
+											<ul>
+												<li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('calculator-tables') ) ui-nav__item--selected ui-rollup__item--force-show @endif">
+													<a href="{{ route('calculator-tables') }}" class="ui-nav__link ui-nav__link--parent">
+														<span class="ui-nav__label ui-nav__label--parent">Calculator Tables</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									@endif
+								@endif
                               </li>
 							  @if( intval($user_role) > 3 )
 								  <li class="ui-nav__item ui-nav__item--parent @if( url()->current() == route('resources.edit') ) ui-nav__item--selected ui-rollup__item--force-show @endif">

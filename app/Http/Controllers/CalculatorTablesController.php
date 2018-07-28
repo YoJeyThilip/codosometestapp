@@ -10,7 +10,7 @@ use Auth;
 
 use DB;
 
-class tablesController extends Controller
+class CalculatorTablesController extends Controller
 { 
 	/**
 	* Create a new controller instance.
@@ -82,18 +82,27 @@ class tablesController extends Controller
 		
 		}else if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'calculator_fabric' ) { 
 		
-			DB::update('update calculator_fabric SET front = :front,back = :back,light_fabric_non_online_25 =  :light_fabric_non_online_25,light_fabric_non_online_50 =  :light_fabric_non_online_50,light_fabric_non_online_100 =  :light_fabric_non_online_100,light_fabric_non_online_150 =  :light_fabric_non_online_150,dark_fabric_non_online_25 =  :dark_fabric_non_online_25,dark_fabric_non_online_50 =  :dark_fabric_non_online_50,dark_fabric_non_online_100 =  :dark_fabric_non_online_100,dark_fabric_non_online_150 = 
-			:dark_fabric_non_online_150,light_fabric_online_25 =  :light_fabric_online_25,light_fabric_online_50 =  :light_fabric_online_50,light_fabric_online_100 = 
-			:light_fabric_online_100,light_fabric_online_150 =  :light_fabric_online_150,dark_fabric_online_25 =  :dark_fabric_online_25,dark_fabric_online_50 =  
-			:dark_fabric_online_50,dark_fabric_online_100 =  :dark_fabric_online_100,dark_fabric_online_150 =  :dark_fabric_non_online_150 
-			WHERE ( id = :id )',['id' => $_POST['id'] , 'front' =>  $_POST['front'],  'back' =>  $_POST['back'],'light_fabric_non_online_25' =>  $_POST['light_fabric_non_online_25'], 
-			'light_fabric_non_online_50' =>  $_POST['light_fabric_non_online_50'], 'light_fabric_non_online_100' =>  $_POST['light_fabric_non_online_100'] , 
-			'light_fabric_non_online_150' =>  $_POST['light_fabric_non_online_150'], 'dark_fabric_non_online_25' =>  $_POST['dark_fabric_non_online_25'],
-			'dark_fabric_non_online_50' =>  $_POST['dark_fabric_non_online_50'] , 'dark_fabric_non_online_100' =>  $_POST['dark_fabric_non_online_100'] , 
-			'dark_fabric_non_online_150' =>  $_POST['dark_fabric_non_online_150']  , 'light_fabric_online_25' =>  $_POST['light_fabric_online_25']  ,
-			'light_fabric_online_50' =>  $_POST['light_fabric_online_50'],'light_fabric_online_100' =>  $_POST['light_fabric_online_100'],'light_fabric_online_150' =>  $_POST['light_fabric_online_150']
-			,'dark_fabric_online_25' =>  $_POST['dark_fabric_online_25'],'dark_fabric_online_50' =>  $_POST['dark_fabric_online_50'],'dark_fabric_online_100' =>  $_POST['dark_fabric_online_100'],'dark_fabric_online_150' =>  $_POST['dark_fabric_online_150']
-			] );
+			DB::update('update calculator_fabric SET '.
+						'front = "'.$_POST['front'].'",'.
+						'back = "'.$_POST['back'].'",'.
+						'light_fabric_non_online_25 =  "'.$_POST['light_fabric_non_online_25'].'",'.
+						'light_fabric_non_online_50 =  "'.$_POST['light_fabric_non_online_50'].'",'.
+						'light_fabric_non_online_100 =  "'.$_POST['light_fabric_non_online_100'].'",'.
+						'light_fabric_non_online_150 =  "'.$_POST['light_fabric_non_online_150'].'",'.
+						'dark_fabric_non_online_25 =  "'.$_POST['dark_fabric_non_online_25'].'",'.
+						'dark_fabric_non_online_50 =  "'.$_POST['dark_fabric_non_online_50'].'",'.
+						'dark_fabric_non_online_100 =  "'.$_POST['dark_fabric_non_online_100'].'",'.
+						'dark_fabric_non_online_150 = "'.$_POST['dark_fabric_non_online_150'].'",'.
+						'light_fabric_online_25 =  "'.$_POST['light_fabric_online_25'].'",'.
+						'light_fabric_online_50 =  "'.$_POST['light_fabric_online_50'].'",'.
+						'light_fabric_online_100 = "'.$_POST['light_fabric_online_100'].'",'.
+						'light_fabric_online_150 =  "'.$_POST['light_fabric_online_150'].'",'.
+						'dark_fabric_online_25 =  "'.$_POST['dark_fabric_online_25'].'",'.
+						'dark_fabric_online_50 =  "'.$_POST['dark_fabric_online_50'].'",'.
+						'dark_fabric_online_100 =  "'.$_POST['dark_fabric_online_100'].'",'.
+						'dark_fabric_online_150 =  "'.$_POST['dark_fabric_online_150'].'"'.		
+				'WHERE ( id = '. $_POST['id'] .' )'
+			);
 		
 		}else if( isset( $_POST['table_name'] ) && $_POST['table_name'] == 'commission_rates' ) { 
 		
@@ -151,9 +160,10 @@ class tablesController extends Controller
 		}
 		// data insert --> end
 		if( isset($_GET['tab']) ){ 
-		
 			$OrdersVariables['current_page'] = $_GET['tab'];
-			
+		}
+		else{
+			$OrdersVariables['current_page'] = 'common_items';
 		}
 		
 		// Edit page --> start
@@ -161,7 +171,7 @@ class tablesController extends Controller
 			
 			$OrdersVariables['common_items'] = DB::select("SELECT * FROM common_items" );
 			
-			return view( 'tables.common_items',$OrdersVariables );
+			return view( 'CalculatorTables.common_items',$OrdersVariables );
 			
 		}else if( isset($_GET['edit']) && $_GET['edit'] == 'common_items' ){ 
 			
@@ -169,13 +179,13 @@ class tablesController extends Controller
 		
 			$OrdersVariables['common_items_edit_id'] = $_GET['id'];
 		
-			return view( 'tables.common_items_edit',$OrdersVariables );
+			return view( 'CalculatorTables.common_items_edit',$OrdersVariables );
 			
 		}else if( isset($_GET['tab']) && $_GET['tab'] == 'commission_rates' ){ 
 		
 			$OrdersVariables['commission_rates'] = DB::select("SELECT * FROM commission_rates" );
 		
-			return view( 'tables.commission_rates',$OrdersVariables );
+			return view( 'CalculatorTables.commission_rates',$OrdersVariables );
 			
 		}else if( isset($_GET['edit']) && $_GET['edit'] == 'commission_rates' ){ 
 		
@@ -183,13 +193,13 @@ class tablesController extends Controller
 		
 			$OrdersVariables['commission_rates'] = DB::select("SELECT * FROM commission_rates" );
 		
-			return view( 'tables.commission_rates_edit',$OrdersVariables );
+			return view( 'CalculatorTables.commission_rates_edit',$OrdersVariables );
 			
 		}else if( isset($_GET['tab']) && $_GET['tab'] == 'addons' ){ 
 		
 			$OrdersVariables['addons'] = DB::select("SELECT * FROM addons" );
 		
-			return view( 'tables.addons',$OrdersVariables );
+			return view( 'CalculatorTables.addons',$OrdersVariables );
 			
 		}else if( isset($_GET['edit']) && $_GET['edit'] == 'addons' ){ 
 		
@@ -197,13 +207,13 @@ class tablesController extends Controller
 		
 			$OrdersVariables['addons'] = DB::select("SELECT * FROM addons" );
 		
-			return view( 'tables.addons_edit',$OrdersVariables );
+			return view( 'CalculatorTables.addons_edit',$OrdersVariables );
 			
 		}else if( isset($_GET['tab']) && $_GET['tab'] == 'calculator_fabric' ){ 
 		
 			$OrdersVariables['calculator_fabric'] = DB::select("SELECT * FROM calculator_fabric" );
 		
-			return view( 'tables.calculator_fabric',$OrdersVariables );
+			return view( 'CalculatorTables.calculator_fabric',$OrdersVariables );
 			
 		}else if( isset($_GET['edit']) && $_GET['edit'] == 'calculator_fabric' ){  
 		
@@ -211,29 +221,29 @@ class tablesController extends Controller
 		
 			$OrdersVariables['calculator_fabric'] = DB::select("SELECT * FROM calculator_fabric" );
 		
-			return view( 'tables.calculator_fabric_edit',$OrdersVariables );
+			return view( 'CalculatorTables.calculator_fabric_edit',$OrdersVariables );
 			
 			// Edit page --> end
 			
 		}else if( isset($_GET['insert']) && $_GET['insert'] == 'calculator_fabric' ){
 		
-			return view( 'tables.calculator_fabric_insert',$OrdersVariables );
+			return view( 'CalculatorTables.calculator_fabric_insert',$OrdersVariables );
 			
 		}else if( isset($_GET['insert']) && $_GET['insert'] == 'addons' ){  
 		
-			return view( 'tables.addons_insert',$OrdersVariables );
+			return view( 'CalculatorTables.addons_insert',$OrdersVariables );
 			
 		}else if( isset($_GET['insert']) && $_GET['insert'] == 'commission_rates' ){  
 		
-			return view( 'tables.commission_rates_insert',$OrdersVariables );
+			return view( 'CalculatorTables.commission_rates_insert',$OrdersVariables );
 			
 		}else if( isset($_GET['insert']) && $_GET['insert'] == 'common_items' ){  
 		
-			return view( 'tables.common_items_insert',$OrdersVariables );
+			return view( 'CalculatorTables.common_items_insert',$OrdersVariables );
 			
 		}else{		
 		
-			return view( 'tables.Archive',$OrdersVariables );
+			return view( 'CalculatorTables.Archive',$OrdersVariables );
 			
 		}
 		

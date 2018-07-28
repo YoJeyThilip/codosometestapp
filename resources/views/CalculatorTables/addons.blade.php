@@ -54,38 +54,38 @@
 
 @section('Script-content')
 
-<script>
-$(document).ready(function() {
-	var responsiveHelper_dt_basic = undefined;
-	
-	var breakpointDefinition = {
-		tablet : 1024,
-		phone : 480
-	};
-				
-	$('#dt_basic').dataTable({
-					"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-3'f><'col-xs-12 col-sm-3 create-button-colors-style'><'col-sm-6 col-xs-12 hidden-xs'l>r>"+
-						"t"+
-						"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
-					"autoWidth" : true,
-					"preDrawCallback" : function() {
-						// Initialize the responsive datatables helper once.
-						if (!responsiveHelper_dt_basic) {
-							responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
-						}
-					},
-					"rowCallback" : function(nRow) {
-						responsiveHelper_dt_basic.createExpandIcon(nRow);
-					},
-					"drawCallback" : function(oSettings) {
-						responsiveHelper_dt_basic.respond();
-					}
-				});
-	
-		    
-	// custom toolbar
-	$("div.dt-toolbar .create-button-colors-style").html('<form action="{{ route("tables") }}?insert=common_items" method="post">@csrf<input type="hidden" name="insert_page" value="common_items"><input type="submit" class="insert_form" value="Create New"></form>'); 
-});
-</script>
+	<script>
+		$(document).ready(function() {
+			var responsiveHelper_dt_basic = undefined;
+			
+			var breakpointDefinition = {
+				tablet : 1024,
+				phone : 480
+			};
+						
+			$('#dt_basic').dataTable({
+							"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-3'f><'col-xs-12 col-sm-3 create-button-colors-style'><'col-sm-6 col-xs-12 hidden-xs'l>r>"+
+								"t"+
+								"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+							"autoWidth" : true,
+							"preDrawCallback" : function() {
+								// Initialize the responsive datatables helper once.
+								if (!responsiveHelper_dt_basic) {
+									responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
+								}
+							},
+							"rowCallback" : function(nRow) {
+								responsiveHelper_dt_basic.createExpandIcon(nRow);
+							},
+							"drawCallback" : function(oSettings) {
+								responsiveHelper_dt_basic.respond();
+							}
+						});
+			
+					
+			// custom toolbar
+			$("div.dt-toolbar .create-button-colors-style").html('<form action="{{ route("calculator-tables") }}?insert=addons" method="post">@csrf<input type="hidden" name="insert_page" value="common_items"><input type="submit" class="insert_form" value="Create New"></form>'); 
+		});
+	</script>
 
 @endsection

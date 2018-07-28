@@ -131,7 +131,6 @@ class SettingsController extends Controller
 		);
 		
 		$SettingsVariables['campus_list'] = json_decode(GeneralSettingsController::get_option( 'campus_list', '[]' ));
-		$SettingsVariables['campus'] = DB::select( "SELECT campus FROM students WHERE student_id=" . $printavo_user_id )[0]->campus;
 		
 		return view( 'settings' , $SettingsVariables );
 	}

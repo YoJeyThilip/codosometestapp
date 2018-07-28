@@ -46,6 +46,12 @@ Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
 	
 });
 
+Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
+	
+	Route::any('/settings', 'SettingsController@index')->name('settings');	
+	
+});
+
 Route::any('/settings', 'SettingsController@index')->name('settings');
 
 Route::any('/ajax', 'ajaxController@ajax')->name('ajax');

@@ -152,7 +152,7 @@
 				</div>
 				
 				<div class="cron_control_manager_container">
-					<form action="" method="post">
+					<form action="{{ route('settings') }}" method="post">
 						<input type="hidden" name="run_command" value="yes">
 						<input type="submit" class="run_cron_button" value="Run Command">
 					</form>

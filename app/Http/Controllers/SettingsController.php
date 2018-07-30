@@ -138,6 +138,12 @@ class SettingsController extends Controller
 			$SettingsVariables['user_is_admin'] = 'yes';
 		}
 		
+		if( isset($_POST) && $_POST['run_command'] == "yes" ) {
+			Artisan::queue('email:send', [
+				'user' => 1, '--queue' => 'default'
+			]);
+		}
+		
 		$SettingsVariables['campus_list'] = json_decode(GeneralSettingsController::get_option( 'campus_list', '[]' ));
 		
 		return view( 'settings' , $SettingsVariables );

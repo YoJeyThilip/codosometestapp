@@ -13,9 +13,12 @@ class Permission
     
     public function handle($request, Closure $next, $role)
     {
-       $printavo_status = UserMetaController::get_user_meta( $user_id, "printavo-status" , "disconnected" );
+				
+		$user_id = Auth::id();
+	
+        $printavo_status = UserMetaController::get_user_meta( $user_id, "printavo-status" , "disconnected" );
 	   
-	   print_r($printavo_status);
+	    print_r($printavo_status);
 	   
     }
 	

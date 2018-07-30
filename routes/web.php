@@ -56,7 +56,7 @@ Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
 });
 
 
-Route::get('/', function () {
+Route::get('/test', function () {
 	
    Route::any('/settings', 'SettingsController@index')->name('settings');
    

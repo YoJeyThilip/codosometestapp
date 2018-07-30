@@ -150,12 +150,14 @@
 						</div>
 					</div>
 				</div>
-			@endif
-			
-			@if(Auth::User()->type=='admin')
-                    Hello Admin
-                @else
-                    Hello standard user
+				
+				<div class="cron_control_manager_container">
+					<form action="" method="post">
+						<input type="hidden" name="run_command">
+						<input type="submit" class="run_cron_button" value="Run Command">
+					</form>
+				</div>
+				
 			@endif
 			
 		</div>

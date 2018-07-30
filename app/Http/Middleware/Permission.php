@@ -25,7 +25,7 @@ class Permission
 		print_r($id);
 		
 		if( $printavo_status == "Disconnect" ) {  
-			//return redirect('/settings');
+			return redirect('/settings');
 		}
 	   
 	   

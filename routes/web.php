@@ -56,11 +56,11 @@ Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
 });
 
 
-Route::group([ 'middleware'=>['Permission', 'Role:4'] ], function() {
-
-	Route::any('/settings', 'SettingsController@index')->name('settings');
+Route::get('/', function () {
 	
-});
+   Route::any('/settings', 'SettingsController@index')->name('settings');
+   
+})->middleware('Permission');
 
 
 Route::any('/calculator', 'CalculatorController@index')->name('calculator');

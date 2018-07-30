@@ -43,9 +43,9 @@ Route::resource('/orders', 'OrderController');
 
 Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
 
-	Route::resource('/students', 'StudentController');
+	Route::resource('/students', 'StudentController')->middleware(Permission::class);
 
-	Route::any('/reports', 'ReportsController@index')->name('reports');
+	Route::any('/reports', 'ReportsController@index')->name('reports')->middleware(Permission::class);
 
 	Route::any('/all_reports', 'ReportsController@all_reports')->name('all_reports');
 

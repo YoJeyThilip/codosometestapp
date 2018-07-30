@@ -138,7 +138,7 @@ class SettingsController extends Controller
 			$SettingsVariables['user_is_admin'] = 'yes';
 		}
 		
-		if( isset($_POST) && $_POST['run_command'] == "yes" ) {
+		if( isset($_POST['run_command']) && $_POST['run_command'] == "yes" ) {
 			Artisan::queue('email:send', [
 				'user' => 1, '--queue' => 'default'
 			]);

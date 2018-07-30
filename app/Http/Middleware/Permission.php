@@ -11,7 +11,7 @@ use App\Http\Controllers\UserMetaController;
 class Permission
 {
     
-    public function handle($request, Closure $next, $role)
+    public function handle()
     {
 			die("test");
 				

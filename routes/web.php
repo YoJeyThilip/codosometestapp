@@ -55,6 +55,14 @@ Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
 	
 });
 
+
+Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
+
+	Route::any('/settings', 'SettingsController@index')->name('settings');
+	
+});
+
+
 Route::any('/calculator', 'CalculatorController@index')->name('calculator');
 	
 Route::any('/analytics', 'AnalyticsController@index')->name('analytics');

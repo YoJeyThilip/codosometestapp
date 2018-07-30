@@ -41,7 +41,7 @@ Route::resource('/orders', 'OrderController');
 */
 
 
-Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
+//Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
 
 	Route::resource('/students', 'StudentController');
 
@@ -53,7 +53,7 @@ Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
 
 	Route::any('/calculator-tables', 'CalculatorTablesController@index')->name('calculator-tables');
 	
-});
+//});
 
 
 

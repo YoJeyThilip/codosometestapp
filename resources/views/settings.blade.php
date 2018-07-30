@@ -152,12 +152,10 @@
 				</div>
 			@endif
 			
-			@if (auth()->check())
-                @if (auth()->user()->isAdministrator())
+			@if(Auth::User()->type=='admin')
                     Hello Admin
                 @else
                     Hello standard user
-                @endif
 			@endif
 			
 		</div>

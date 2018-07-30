@@ -151,6 +151,15 @@
 					</div>
 				</div>
 			@endif
+			
+			@if (auth()->check())
+                @if (auth()->user()->isAdministrator())
+                    Hello Admin
+                @else
+                    Hello standard user
+                @endif
+			@endif
+			
 		</div>
 	</div>
 </div>

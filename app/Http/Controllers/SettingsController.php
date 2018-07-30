@@ -130,6 +130,14 @@ class SettingsController extends Controller
 			'user_role'	=> (int)($users_role)
 		);
 		
+		//check user is admin or not
+		$user_id = Auth::id();
+        $printavo_status = UserMetaController::get_user_meta( $user_id, "printavo-status");
+		
+		if( $printavo_status == "connected" ) {  
+			$SettingsVariables['user_is_admin'] = 'yes';
+		}
+		
 		$SettingsVariables['campus_list'] = json_decode(GeneralSettingsController::get_option( 'campus_list', '[]' ));
 		
 		return view( 'settings' , $SettingsVariables );

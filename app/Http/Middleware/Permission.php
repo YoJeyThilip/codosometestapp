@@ -11,7 +11,7 @@ use App\Http\Controllers\UserMetaController;
 class Permission
 {
     
-    public function handle( $request, Closure $next, $role )
+    public function handle( $request, Closure $next )
     {
 				
 		$user_id = Auth::id();
@@ -19,7 +19,7 @@ class Permission
         $printavo_status = UserMetaController::get_user_meta( $user_id, "printavo-status" , "disconnected" );
 		
 		if( $printavo_status == "Disconnect" ) {
-			 return $next($request);
+			return $next($request);
 		}
 	   
 	   

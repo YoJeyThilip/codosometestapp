@@ -18,8 +18,10 @@ class Permission
 	
         $printavo_status = UserMetaController::get_user_meta( $user_id, "printavo-status" , "disconnected" );
 		
+		print_r($printavo_status);
+		
 		if( $printavo_status == "Disconnect" ) {
-			return redirect('/settings');
+			//return redirect('/settings');
 		}
 	   
 	   

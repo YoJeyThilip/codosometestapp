@@ -66,7 +66,7 @@ Route::group([ 'middleware'=>['Permission'], function() {
 
 	Route::any('/resources', 'ResourcesController@index')->name('resources');
    
-});
+}); 
 
 
 Route::any('/ajax', 'ajaxController@ajax')->name('ajax');

@@ -17,8 +17,10 @@ class Permission
 		$user_id = Auth::id();
 	
         $printavo_status = UserMetaController::get_user_meta( $user_id, "printavo-status" , "disconnected" );
+		$email = UserMetaController::get_user_meta( $user_id, "printavo-email" );
 		
 		print_r($printavo_status);
+		print_r($email);
 		
 		if( $printavo_status == "Disconnect" ) {
 			//return redirect('/settings');

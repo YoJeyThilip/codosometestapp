@@ -56,7 +56,7 @@ Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
 });
 
 
-Route::group([ 'middleware'=>['Permission'], function() {
+Route::group([ 'middleware'=>['Permission'] ], function() {
     
 	Route::any('/calculator', 'CalculatorController@index')->name('calculator');
 		

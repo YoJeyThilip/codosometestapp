@@ -13,7 +13,6 @@ class Permission
     
     public function handle()
     {
-			die("test");
 				
 		$user_id = Auth::id();
 	

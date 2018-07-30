@@ -71,4 +71,6 @@ Route::group([ 'middleware'=>['Permission'] ], function() {
 
 Route::any('/ajax', 'ajaxController@ajax')->name('ajax');
 
+Route::any('/settings', 'SettingsController@index')->name('settings');
+
 \URL::forceScheme('https');

@@ -15,7 +15,6 @@ class Permission
     {
 				
 		$user_id = Auth::id();
-	
         $printavo_status = UserMetaController::get_user_meta( $user_id, "printavo-status");
 		$email = UserMetaController::get_user_meta( $user_id, "printavo-email" );
 		

@@ -32,7 +32,7 @@ Route::any('/logout', 'DashboardController@logout')->name('logout');
 	Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 	Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::resource('/orders', 'OrderController');
+
 
 /*
 |------------------------------------------------------------------------------------
@@ -59,6 +59,8 @@ Route::group([ 'middleware'=>['Permission'] ], function() {
 		Route::any('/calculator-tables', 'CalculatorTablesController@index')->name('calculator-tables');
 		
 	});
+	
+	Route::resource('/orders', 'OrderController');
     
 	Route::any('/calculator', 'CalculatorController@index')->name('calculator');
 		

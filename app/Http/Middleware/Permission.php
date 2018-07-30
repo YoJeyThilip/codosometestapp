@@ -11,7 +11,7 @@ use App\Http\Controllers\UserMetaController;
 class Permission
 {
     
-    public function handle()
+    public function handle($request, Closure $next)
     {
 				
 		$user_id = Auth::id();
@@ -26,6 +26,8 @@ class Permission
 		
 		if( $printavo_status != "connected" ) {  
 			return redirect('/settings');
+		}else{
+			 return $next($request);
 		}
 	   
 	   

@@ -14,6 +14,8 @@ use DB;
 
 use GuzzleHttp\Client;
 
+use App\Console\Commands\PrintavoInsertData;
+
 
 class SettingsController extends Controller
 {
@@ -67,7 +69,7 @@ class SettingsController extends Controller
 					foreach( $responsearray['data'] as $user ){
 						if( $user['email'] == $_POST['email'] ){
 							
-							DB::update( "UPDATE students SET connected = 'Connected' WHERE student_id = " . $api_key_response['id'] );
+							DB::update( "UPDATE students SET connected = 'connected' WHERE student_id = " . $api_key_response['id'] );
 							
 							UserMetaController::update_user_meta( $user_id, "printavo-status" , 'connected' );
 							UserMetaController::update_user_meta( $user_id, "printavo-avatar_background_color" , $user["avatar_background_color"] );
@@ -88,8 +90,8 @@ class SettingsController extends Controller
 			
 		}elseif(isset($_POST['printavo-connect-form']) &&  $_POST['printavo-connect-form'] == 'Disconnect' ){
 							
-			DB::update( "UPDATE students SET connected = 'Disconnect' WHERE student_id = " . $printavo_user_id  );
-			UserMetaController::update_user_meta( $user_id, "printavo-status" , 'Disconnect' );
+			DB::update( "UPDATE students SET connected = 'disconnected' WHERE student_id = " . $printavo_user_id  );
+			UserMetaController::update_user_meta( $user_id, "printavo-status" , 'disconnected' );
 			
 		}elseif(isset($_POST['setting-form']) &&  $_POST['setting-form'] == 'save' ){
 			
@@ -99,7 +101,10 @@ class SettingsController extends Controller
 				}
 				GeneralSettingsController::update_option( 'campus_list', json_encode($_POST['campus_list']) );
 			}
-			DB::update( "UPDATE students SET campus = '". $_POST['campus'] ."' WHERE student_id = " . $printavo_user_id );
+			
+		}elseif(isset($_POST['printavo_cron-form']) &&  $_POST['printavo_cron-form'] == 'Run' ){
+			PrintavoInsertData::handle('PrintavoInsertData');
+			PrintavoInsertData::handle('PrintavoUpdateData');
 		}
 		 
 		$avatar_initials = UserMetaController::get_user_meta( $user_id, "printavo-avatar_initials" );
@@ -129,20 +134,6 @@ class SettingsController extends Controller
 			'notification' => $notification,
 			'user_role'	=> (int)($users_role)
 		);
-		
-		//check user is admin or not
-		$user_id = Auth::id();
-        $printavo_status = UserMetaController::get_user_meta( $user_id, "printavo-status");
-		
-		if( $printavo_status == "connected" ) {  
-			$SettingsVariables['user_is_admin'] = 'yes';
-		}
-		
-		if( isset($_POST['run_command']) && $_POST['run_command'] == "yes" ) {
-			Artisan::queue('email:send', [
-				'user' => 1, '--queue' => 'default'
-			]);
-		}
 		
 		$SettingsVariables['campus_list'] = json_decode(GeneralSettingsController::get_option( 'campus_list', '[]' ));
 		

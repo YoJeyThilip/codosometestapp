@@ -33,19 +33,15 @@ Route::any('/logout', 'DashboardController@logout')->name('logout');
 	Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 
-
-/*
-|------------------------------------------------------------------------------------
-| Admin
-|------------------------------------------------------------------------------------
-*/
-
-
-
-
-
-Route::group([ 'middleware'=>['Permission'] ], function() {
+Route::group([ 'middleware'=>['PrintavoConnected'] ], function() {
 	
+	/*
+	|------------------------------------------------------------------------------------
+	| Admin
+	|------------------------------------------------------------------------------------
+	*/
+
+
 	Route::group([ 'middleware'=>['auth', 'Role:4'] ], function() {
 
 		Route::resource('/students', 'StudentController');
@@ -59,22 +55,21 @@ Route::group([ 'middleware'=>['Permission'] ], function() {
 		Route::any('/calculator-tables', 'CalculatorTablesController@index')->name('calculator-tables');
 		
 	});
-	
+
 	Route::resource('/orders', 'OrderController');
-    
+
 	Route::any('/calculator', 'CalculatorController@index')->name('calculator');
 		
 	Route::any('/analytics', 'AnalyticsController@index')->name('analytics');
 
-	Route::any('/', 'DashboardController@index')->name('dashboard');
-
 	Route::any('/resources', 'ResourcesController@index')->name('resources');
-   
-}); 
 
-
-Route::any('/ajax', 'ajaxController@ajax')->name('ajax');
+	Route::any('/', 'DashboardController@index')->name('dashboard');
+	
+});
 
 Route::any('/settings', 'SettingsController@index')->name('settings');
+
+Route::any('/ajax', 'ajaxController@ajax')->name('ajax');
 
 \URL::forceScheme('https');

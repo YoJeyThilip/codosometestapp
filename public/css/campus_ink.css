@@ -524,6 +524,26 @@ tr.splitscreen_order>td:first-child:before {
 	padding: 30px;
 }
 
+.reports_payment_footer_action_btn.analytics_download_footer_action button{
+	display: inline-block;
+	margin: 20px 20px 20px 0;
+	position: relative;
+}
+
+.reports_payment_footer_action_btn.analytics_download_footer_action button.loading:after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(https://campusinkdashboard.herokuapp.com/images/spinner-white.gif);
+    background-position: center;
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .students_single_content.order_single_content .takeover_meta_table{
     margin: 0 2rem;
     padding: 0;
@@ -558,11 +578,6 @@ table#dt_basic td {
 table#dt_basic {
 	overflow-x: scroll;
     width: 100%;
-}
-
-.edit_tables {
-    width: 50%;
-    margin: 50px 0 0 20px;
 }
 
 h2.product_calculator_tables a {
@@ -668,15 +683,36 @@ h2.product_calculator_tables a:focus, h2.product_calculator_tables a:hover {
     color: #000;
 }
 
-#body-content #ui-app-frame .ui-app-frame__main {
-    padding-left: 24rem;
+#body-content #ui-app-frame .ui-app-frame__main .product_calculator_details_container {
     margin: 10px 30px;
 }
 
 h1.product_calculator_header {
-    margin: 30px 0;
+    margin-bottom: 30px;
 }
 
 .fresh-ui .table-hover tr:hover td {
     background-color: inherit !important;
+}
+
+/* student single page */
+
+.student_role_container {
+    margin: 20px 0;
+}
+
+.product_calculator_details_container .submit_button{
+	padding: 0px 5px;
+}
+
+.product_calculator_details_header {
+	padding-top: 20px;
+}
+
+.product_calculator_submit_button {
+	text-align: right;
+}
+
+.product_calculator_details_container .insert_data .Polaris-Page .Polaris-FormLayout .Polaris-TextField {
+	padding: inherit;
 }

@@ -1,45 +1,117 @@
+
 @extends('layouts.dashboard')
 
 @section('dashboard-content')
 
-	<div class="common_items_table edit_tables">
+<div class="product_calculator_details_container">
 
-		<h1 class="product_calculator_header">Common Items Table Item</h1>
-
-		<form action="{{ route('calculator-tables') }}?tab=common_items" method="post">
-			@csrf
-			<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
-				<thead>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Brand</td>
-						<td><input type="text"  name="brand" value="" required>
-							<input name="insert_table" type="hidden" id="id" value="common_items"></td>
-					</tr>
-					<tr>
-						<td>Product</td>
-						<td><input type="text"  name="product" value="" required></td>
-					</tr>
-					<tr>
-						<td>Cost</td>
-						<td><input type="text" name="cost"  value="" required></td>
-					</tr>
-					<tr>
-						<td>Non online Store</td>
-						<td><input type="text"  name="non_online_store" value="" required></td>
-					</tr>
-					<tr>
-						<td>Online Store</td>
-						<td><input type="text" name="online_store" value="" required></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="submit" class="Save" name="Save" value="Save"></td>
-					</tr>
-				</tbody>
-			</table>
-		</form>
+	<div class="common_items_table edit_tables insert_data">
+		
+		<div class="Polaris-Page">
+		
+			<div class="Polaris-Page__Header product_calculator_details_header">
+			
+			    <div class="Polaris-Page__Title">
+			  
+					<h1 class="product_calculator_header Polaris-DisplayText Polaris-DisplayText--sizeLarge">Common Items Table Item</h1>
+				 
+				</div>
+			  
+			</div>
+				
+			
+		
+			<div class="Polaris-Card">
+			
+				<div class="Polaris-Card__Section">
+				
+					<form action="{{ route('calculator-tables') }}?tab=common_items" method="post">
+						@csrf
+						<div class="Polaris-FormLayout">
+						  
+						  <div class="Polaris-FormLayout__Item"> 
+							<div class="">
+							  <div class="Polaris-Labelled__LabelWrapper">
+								<div class="Polaris-Label">
+									<label id="TextFieldBrandLabel" for="TextField_brand" class="Polaris-Label__Text">Brand</label>
+								</div>
+							  </div>
+							  <div class="Polaris-TextField">
+								<input type="text"  name="brand" value="" required>
+								<input name="insert_table" type="hidden" id="id" value="common_items">
+							  </div>
+							</div>
+						  </div>
+						  <div class="Polaris-FormLayout__Item">
+							<div class="">
+							  <div class="Polaris-Labelled__LabelWrapper">
+								<div class="Polaris-Label">
+									<label id="TextFieldProductLabel" for="TextField_Product" class="Polaris-Label__Text">Product</label>
+								</div>
+							  </div>
+							  <div class="Polaris-TextField">
+								<input type="text"  name="product" value="" required>
+							  </div>
+							</div>
+						  </div>
+						  <div class="Polaris-FormLayout__Item">
+							<div class="">
+							  <div class="Polaris-Labelled__LabelWrapper">
+								<div class="Polaris-Label">
+									<label id="TextFieldCostLabel" for="TextField_Cost" class="Polaris-Label__Text">Cost</label>
+								</div>
+							  </div>
+							  <div class="Polaris-TextField">
+								<input type="text" name="cost"  value="" required>
+							  </div>
+							</div>
+						  </div>
+						  
+						  <div class="Polaris-FormLayout__Item">
+							<div class="">
+							  <div class="Polaris-Labelled__LabelWrapper">
+								<div class="Polaris-Label">
+									<label id="TextFieldCostLabel" for="TextField_Cost" class="Polaris-Label__Text">Non online Store</label>
+								</div>
+							  </div>
+							  <div class="Polaris-TextField">
+								<input type="text"  name="non_online_store" value="" required>
+							  </div>
+							</div>
+						  </div>
+						  
+						  <div class="Polaris-FormLayout__Item">
+							<div class="">
+							  <div class="Polaris-Labelled__LabelWrapper">
+								<div class="Polaris-Label">
+									<label id="TextFieldCostLabel" for="TextField_Cost" class="Polaris-Label__Text">Online Store</label>
+								</div>
+							  </div>
+							  <div class="Polaris-TextField">
+								<input type="text"  name="online_store" value="" required>
+							  </div>
+							</div>
+						  </div>
+						  
+						  <div class="Polaris-FormLayout__Item product_calculator_submit_button">
+							<button type="submit" class="Polaris-Button Polaris-Button--primary submit_button">
+								<span class="Polaris-Button__Content">
+									<span>Save</span>
+								</span>
+							</button>
+						  </div>
+						</div>
+				
+					</form>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+			
 	</div>
+	
+</div>
 	
 @endsection

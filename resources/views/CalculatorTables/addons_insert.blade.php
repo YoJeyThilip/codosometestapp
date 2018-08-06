@@ -1,34 +1,79 @@
+
 @extends('layouts.dashboard')
 
 @section('dashboard-content')
 
-	<div class="addons_table edit_tables">
+<div class="product_calculator_details_container">
 
-		<h1 class="product_calculator_header">Addons Table Item</h1>
-
-		<form action="{{ route('calculator-tables') }}?tab=addons" method="post">
-			@csrf
-			<table id="dt_basic" class="table table-striped table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
+	<div class="addons_table edit_tables insert_data">
+		
+		<div class="Polaris-Page">
+		
+			<div class="Polaris-Page__Header product_calculator_details_header">
+			
+			    <div class="Polaris-Page__Title">
+			  
+					<h1 class="product_calculator_header Polaris-DisplayText Polaris-DisplayText--sizeLarge">Addons Table Item</h1>
+				 
+				</div>
+			  
+			</div>
 				
-				<tbody>
+			
+		
+			<div class="Polaris-Card">
+			
+				<div class="Polaris-Card__Section">
+				
+					<form action="{{ route('calculator-tables') }}?tab=addons" method="post">
+						@csrf
+						<div class="Polaris-FormLayout">
+						  
+						  <div class="Polaris-FormLayout__Item"> 
+							<div class="">
+							  <div class="Polaris-Labelled__LabelWrapper">
+								<div class="Polaris-Label">
+									<label id="TextFieldBrandLabel" for="TextField_brand" class="Polaris-Label__Text">Add on</label>
+								</div>
+							  </div>
+							  <div class="Polaris-TextField">
+								<input type="text"  name="add_on" value="" required>
+								<input name="insert_table" type="hidden" id="id" value="addons">
+							  </div>
+							</div>
+						  </div>
+						  <div class="Polaris-FormLayout__Item">
+							<div class="">
+							  <div class="Polaris-Labelled__LabelWrapper">
+								<div class="Polaris-Label">
+									<label id="TextFieldProductLabel" for="TextField_Product" class="Polaris-Label__Text">Prize</label>
+								</div>
+							  </div>
+							  <div class="Polaris-TextField">
+								<input type="number" name="prize" value="" required>
+							  </div>
+							</div>
+						  </div>
+						  
+						  <div class="Polaris-FormLayout__Item product_calculator_submit_button">
+							<button type="submit" class="Polaris-Button Polaris-Button--primary submit_button">
+								<span class="Polaris-Button__Content">
+									<span>Save</span>
+								</span>
+							</button>
+						  </div>
+						</div>
+				
+					</form>
 					
-					<tr>
-						<td>Add on</td>
-						<td><input type="text" name="add_on"  value="" required>
-							<input name="insert_table" type="hidden" id="id" value="addons"></td>
-					</tr>
-					<tr>
-						<td>Prize</td>
-						<td><input type="number" name="prize" value="" required></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="submit" class="Save" name="Save" value="Save"></td>
-					</tr>
+				</div>
 				
-				</tbody>
-			</table>
-		</form>
+			</div>
+			
+		</div>
+			
 	</div>
-				
+	
+</div>
+	
 @endsection

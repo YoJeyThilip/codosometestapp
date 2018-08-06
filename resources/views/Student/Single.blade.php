@@ -33,8 +33,8 @@
 								   <span class="user-avatar__initials">
 									{{ $students->avatar_initials }}
 								   </span>
-									@if( isset( $avatar_url_small ) )
-										<img alt="" class="gravatar gravatar--size-thumb" src="{{ $avatar_url_small }}">
+									@if( isset( $student_url_small ) && $student_url_small != '' )
+										<img alt="" class="gravatar gravatar--size-thumb" src="{{ $student_url_small }}">
 									@endif
 							   </span>
 							</div>
@@ -95,12 +95,39 @@
 										</select>
 										<div class="Polaris-Select__Icon"><span class="Polaris-Icon"><svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true"><path d="M13 8l-3-3-3 3h6zm-.1 4L10 14.9 7.1 12h5.8z" fill-rule="evenodd"></path></svg></span></div>
 										<div class="Polaris-Select__Backdrop"></div>
-									</div>
+									</div>									
 							   </div>
 							 </div>
 						  </div>
 						</div>
+						
+						@if( $student_connected_status == "Connected" )
+							<div class="student_role_container">
+								<div class="Polaris-Labelled__LabelWrapper">
+									<div class="Polaris-Label">
+										<label for="campus" class="next-label">Select Role</label>
+									</div>
+								</div>	
+								<div class="Polaris-SettingAction">
+								  <div class="Polaris-SettingAction__Setting">
+									 <div class="Polaris-Stack">
+									   <div class="Polaris-Stack__Item Polaris-Stack__Item--fill campus_select_item">
+											<div class="Polaris-Select">
+												<select id="Select_role" name="student_role" class="Polaris-Select__Input" aria-invalid="false">
+													<option value="admin" @if( $student_role_value == 'admin') selected @endif >Admin</option>
+													<option value="student" @if( $student_role_value == 'student') selected @endif >Student</option>
+												</select>
+												<div class="Polaris-Select__Icon"><span class="Polaris-Icon"><svg class="Polaris-Icon__Svg" viewBox="0 0 20 20" focusable="false" aria-hidden="true"><path d="M13 8l-3-3-3 3h6zm-.1 4L10 14.9 7.1 12h5.8z" fill-rule="evenodd"></path></svg></span></div>
+												<div class="Polaris-Select__Backdrop"></div>
+											</div>									
+									   </div>
+									 </div>
+								  </div>
+								</div>
+							</div>
+						@endif
 					</div>
+			
 				</div>
 				 
 				<div class="Polaris-SettingAction__Action setting_save_btn">
@@ -108,6 +135,7 @@
 					<input type="submit" name="setting-form" class="Polaris-Button Polaris-Button--primary" value="save">
 				</div> 
 			</form>
+			
 		  </div>
 	   </div>
    </div>

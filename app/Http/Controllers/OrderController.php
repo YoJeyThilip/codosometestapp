@@ -57,16 +57,16 @@ class OrderController extends Controller
 			$avatar_initials = $acronym;
 		}
 		
-		$OrdersVariables = array(
+		$OrdersVariables = array( 
 			'printavo_email' => $email,
 			'printavo_status' => $printavo_status,
 			'avatar_name' => $avatar_name,
-			'avatar_background_color' => '#' . $avatar_background_color,
-			'avatar_url_small' => $avatar_url_small,
-			'avatar_initials' => $avatar_initials ,
+			'avatar_background_color' => '#' . $avatar_background_color, 
+			'avatar_url_small' => $avatar_url_small, 
+			'avatar_initials' => $avatar_initials , 
 			'notification' => '',
 			'user_role'	=> (int)($users_role[0]->role)
-		);
+		); 
 		
 		if( $printavo_status == "connected"){
 			
@@ -81,11 +81,11 @@ class OrderController extends Controller
 				$query_offset = 0 ;
 			}
 			
-			if( isset($_GET['sortby']) ){
+			if( isset($_GET['sortby'])  ){
 				$sortby = $_GET['sortby'];
 			}
 			else{
-				$sortby = 'invoice_no';
+				$sortby = 'created_at';
 			}
 			
 			if( isset($_GET['sortway']) ){

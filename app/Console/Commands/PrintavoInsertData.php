@@ -12,21 +12,21 @@ use DB;
 
 use GuzzleHttp\Client;
 
-class console extends Command
+class PrintavoInsertData extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'cron_event';
+    protected $signature = 'PrintavoInsertData';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'schedules an event for every 4 hours';
+    protected $description = 'schedules Printavo insert data event for every hours';
 
     /**
      * Create a new command instance.
@@ -43,7 +43,7 @@ class console extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public static function handle()
     {
 		
         $users_id = DB::select("SELECT id FROM users WHERE role > 3");
@@ -238,5 +238,6 @@ class console extends Command
 				
 			}while ($current_users_page <= $total_users_pages);
 		}
+		
 	}
 }

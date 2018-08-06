@@ -6,15 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-		<link rel="stylesheet" media="all" href="https://sdks.shopifycdn.com/polaris/1.14.1/polaris.min.css" />
+		<link rel="stylesheet" media="all" href="//sdks.shopifycdn.com/polaris/1.14.1/polaris.min.css" />
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/shopify-dashboard.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/campus_ink.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/selectize.default.css') }}">
 		<link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+		<link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
 		
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/bootstrap.css') }}">
-		<link rel="stylesheet" media="all" href="{{ secure_asset('css/product_calculator-admin.css') }}">
 		<link rel="stylesheet" media="all" href="{{ secure_asset('css/smartadmin-production-plugins.min.css') }}">
+		<link rel="stylesheet" media="all" href="{{ secure_asset('css/MonthPicker.min.css') }}">
 		
 		<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -25,6 +26,7 @@
 		<script src="{{ secure_asset('js/datatables/dataTables.tableTools.min.js') }}"></script>
 		<script src="{{ secure_asset( 'js/datatables/dataTables.bootstrap.min.js') }}"></script>
 		<script src="{{ secure_asset( 'js/datatables/datatables.responsive.min.js') }}"></script> 
+		<script src="{{ secure_asset( 'js/MonthPicker.min.js') }}"></script> 
    </head>
    <body class="page-home-index fresh-ui" id="body-content">
       <div class="ui-app-frame" data-tg-refresh="ui-app-frame" id="ui-app-frame">

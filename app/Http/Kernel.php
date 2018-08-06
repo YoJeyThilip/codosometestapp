@@ -61,6 +61,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 		
         'Role' => \App\Http\Middleware\Role::class,
-		'Permission' => \App\Http\Middleware\Permission::class,
+        'PrintavoConnected' => \App\Http\Middleware\PrintavoConnected::class,
     ];
 }

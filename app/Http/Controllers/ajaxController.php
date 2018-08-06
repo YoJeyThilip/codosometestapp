@@ -35,7 +35,7 @@ class ajaxController extends Controller
 			
 		$user_id = Auth::id();
 		
-		$users_role = DB::select( "SELECT role FROM users WHERE id=" . $user_id );
+		$users_role = DB::select( "SELECT role FROM users WHERE id=" . $user_id )[0]->role;
 		
 		if( ( $_POST['action'] == 'orders_edit' ) &&  ( $users_role > 3 ) ) {
 			
@@ -266,6 +266,56 @@ class ajaxController extends Controller
 			);
 			
 			$response_json = '';
+		}
+		
+		if( $_POST['action'] == 'reports_admin' ) {
+			
+			if( $users_role > 3 ){
+				
+				$orders = DB::select("SELECT * FROM orders ORDER BY length( created_at ) DESC, created_at DESC");
+				
+				$orders_per_month = [];
+				
+				$Students_orders_per_month = [];
+				
+				$timestamp_start_month = strtotime( $_POST['selected_date']);
+				
+				$timestamp_end_month = strtotime('+1 month', strtotime( $_POST['selected_date']) );
+				
+				foreach( $orders as $order ){
+						
+					$timestamp = strtotime( $order->created_at );
+					
+					if( ( $timestamp_start_month < $timestamp ) && ( $timestamp < $timestamp_end_month ) ){
+						
+						array_push( $orders_per_month, $order );
+						
+						if( ! isset( $Students_orders_per_month[ $order->student_id ] ) ){
+							
+							$Students_orders_per_month[ $order->student_id ] = (object)[];
+							$Students_orders_per_month[ $order->student_id ]->student_name = $order->student_name;
+							$Students_orders_per_month[ $order->student_id ]->order_count = 0;
+							$Students_orders_per_month[ $order->student_id ]->order_total = 0;
+							$Students_orders_per_month[ $order->student_id ]->order_total_commision = 0;
+							
+						}
+						
+						$Students_orders_per_month[ $order->student_id ]->order_count++;
+						$Students_orders_per_month[ $order->student_id ]->order_total += $order->order_total;
+						$Students_orders_per_month[ $order->student_id ]->order_total_commision += ( $order->commision * $order->order_total / 100 );
+
+						
+					}
+					
+				}
+				
+				$AnalyticsVariables['orders_per_month'] = $orders_per_month;
+				
+				$AnalyticsVariables['Students_orders_per_month'] = $Students_orders_per_month;
+				
+				$response_json = json_encode($AnalyticsVariables);
+			
+			}
 		}
 		
 		return $response_json;

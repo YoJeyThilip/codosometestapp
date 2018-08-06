@@ -1,81 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
-		<link rel="stylesheet" media="screen" href="{{ secure_asset('css/app.css') }}">
-	</head>
-<body id="app-layout">
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+@extends('layouts.app')
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+@section('content')
+	<h1 class="dialog-heading">Campus Ink</h1>
+	<h2 class="dialog-subheading">{{ __('SignUp to join the store') }}</h2>
+	
+	<form method="POST" action="{{ route('register') }}">
+		@csrf
+		<div id="password-login">
+		   <div class="clearfix">
+				<div class="login-container">
+					<div id="sign-in-form" class="lform dialog-form ">
+						<div id="login">
+							<div class="input-group">
+								<div class="next-input-wrapper">
+									<label class="next-label helper--visually-hidden" for="Login">{{ __('Name') }}</label>
+									 <div class="next-input--stylized">
+										<span class="next-input__add-on next-input__add-on--before">
+										    <svg class="next-icon next-icon--size-20 next-icon--no-nudge" aria-hidden="true" focusable="false">
+											   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-customers"></use>
+											</svg>
+										</span>
+										<input id="name" type="text" class="next-input next-input--invisible form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Name" value="{{ old('name') }}" required autofocus>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+										@if ($errors->has('name'))
+											<span class="invalid-feedback">
+												<strong>{{ $errors->first('name') }}</strong>
+											</span>
+										@endif
+									</div>
+								</div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+								<div class="next-input-wrapper">
+									<label class="next-label helper--visually-hidden" for="Login">{{ __('E-Mail Address') }}</label>
+									 <div class="next-input--stylized">
+										<span class="next-input__add-on next-input__add-on--before">
+										   <svg class="next-icon next-icon--color-slate-lighter next-icon--size-20" aria-hidden="true" focusable="false">
+											  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-email"></use>
+										   </svg>
+										</span>
+										
 
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+										<input id="email" type="email" class="next-input next-input--invisible form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="E-Mail" value="{{ old('email') }}" required>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+										@if ($errors->has('email'))
+											<span class="invalid-feedback">
+												<strong>{{ $errors->first('email') }}</strong>
+											</span>
+										@endif
+										
+									</div>
+								</div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+								<div class="next-input-wrapper">
+								 <label class="next-label helper--visually-hidden" for="Password">{{ __('Password') }}</label>
+								 <div class="next-input--stylized">
+									<span class="next-input__add-on next-input__add-on--before">
+									   <svg class="next-icon next-icon--color-slate-lighter next-icon--size-20" aria-hidden="true" focusable="false">
+										  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-locked"></use>
+									   </svg>
+									</span>
+									
+									<input id="password" type="password" class="next-input next-input--invisible form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+									@if ($errors->has('password'))
+										<span class="invalid-feedback">
+											<strong>{{ $errors->first('password') }}</strong>
+										</span>
+									@endif
+											
+								 </div>
+								</div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+								<div class="next-input-wrapper">
+								 <label class="next-label helper--visually-hidden" for="Password">{{ __('Confirm Password') }}</label>
+								 <div class="next-input--stylized">
+									<span class="next-input__add-on next-input__add-on--before">
+									   <svg class="next-icon next-icon--color-slate-lighter next-icon--size-20" aria-hidden="true" focusable="false">
+										  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-locked"></use>
+									   </svg>
+									</span>
+									<input id="password-confirm" type="password" class="next-input next-input--invisible form-control" placeholder="Password confirmation"  name="password_confirmation" required>
+											
+								 </div>
+								</div>
+								
+								<button type="submit" class="ui-button ui-button--primary ui-button--full-width dialog-submit">
+									{{ __('SignUp') }}
+								</button>
+								<div id="remember-me" class="remember-me">
+									<a class="forgot-password inline" href="{{ route('login') }}">
+											{{ __('Login') }}
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</body>
+@endsection

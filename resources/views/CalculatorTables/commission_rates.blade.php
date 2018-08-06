@@ -2,6 +2,8 @@
 
 @section('dashboard-content')
 
+<div class="product_calculator_details_container">
+
 	<div class="wrap product_calculator_details">
 		<h1 class="product_calculator_title">Product Calculator Settings</h1>
 
@@ -47,6 +49,8 @@
 		
 		</tbody>
 	</table>
+	
+</div>
 	
 @endsection
 

@@ -253,13 +253,48 @@ class StudentController extends Controller
 				$total_order ++;
 			}
 			
+			
+			
+			$student_status = DB::select("SELECT connected,avatar_url_small FROM students WHERE student_id=".$student_id);
+			
+			if( sizeof($student_status) !=0 ) {
+				
+				$StudentsVariables['student_connected_status'] = $student_status[0]->connected;
+			
+				$StudentsVariables['student_url_small'] = $student_status[0]->avatar_url_small;
+				
+			}
+			
 			$students->total_sales = number_format((float)$total_sales, 2, '.', ',');
 			$students->total_commision = number_format((float)$total_commision, 2, '.', ',');
 			$students->total_order = $total_order;
-			
-				
 			$StudentsVariables['students'] = $students;
 			$StudentsVariables['campus_list'] = json_decode(GeneralSettingsController::get_option( 'campus_list', '[]' ));
+			
+			
+				
+			$student_identity = DB::select("SELECT user_id FROM users_meta WHERE meta_value=".$student_id);
+			
+			if( sizeof($student_identity) !=0 ) {
+				
+				$student_user_id = $student_identity[0]->user_id;	
+				
+				$student_role = DB::select("SELECT role FROM users WHERE id=".$student_user_id);
+				
+				$StudentsVariables['student_url_small'] = UserMetaController::get_user_meta( $student_user_id, "printavo-avatar_url_small");
+				
+				if($student_role) {
+					$student_role_value = $student_role[0]->role;
+				}
+				if( $student_role_value == 4 ) {
+					$StudentsVariables['student_role_value'] = 'admin';
+				}else if( $student_role_value == 1 ){
+					$StudentsVariables['student_role_value'] = 'student';
+				}
+			
+			}
+			
+			
 			
 		}
 		
@@ -288,6 +323,20 @@ class StudentController extends Controller
     {
 		
 		DB::update( "UPDATE students SET campus = '" . $_POST['campus'] . "' WHERE student_id = " . $student_id  );
+		
+		$student_identity = DB::select("SELECT user_id FROM users_meta WHERE meta_value=".$student_id);
+			
+		$student_user_id = $student_identity[0]->user_id;
+		
+		if( isset($_POST['student_role'] ) && $_POST['student_role'] == 'admin' ) {
+				
+			DB::update('update users SET role = :role WHERE ( id = :id )',['id' => $student_user_id , 'role' =>  4 ] );
+			
+		}else if( isset($_POST['student_role'] ) && $_POST['student_role'] == 'student' ) {
+			
+			DB::update('update users SET role = :role WHERE ( id = :id )',['id' => $student_user_id , 'role' =>  1 ] );
+
+		}
 		
 		return $this->show($student_id);
     }

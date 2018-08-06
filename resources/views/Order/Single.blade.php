@@ -424,7 +424,7 @@
 				<div class="next-input-wrapper">
 				   <label class="next-label next-label--switch" for="student_paid_or_not">Student Paid</label>
 				   <input name="student_paid_or_not" type="hidden" value="0">
-				   <input class="next-checkbox" type="checkbox" value="1"  @if( $order->payed == '1' ) checked="checked" @endif name="student_paid_or_not" id="student_paid_or_not">
+				   <input class="next-checkbox" type="checkbox" value="Yes"  @if( $order->payed == 'Yes' ) checked="checked" @endif name="student_paid_or_not" id="student_paid_or_not">
 				   <span class="next-checkbox--styled">
 					  <svg class="next-icon next-icon--size-10 checkmark" aria-hidden="true" focusable="false">
 						 <use xlink:href="#next-checkmark-thick"></use>
@@ -543,7 +543,7 @@
 						
 					$('#user_commision_btm_form').html('$'+total_commision_value.toFixed(2));
 					
-					if( student_paid == 1 ){
+					if( student_paid == 'Yes' ){
 
 						$('#student_paid_or_not').html('Yes');
 

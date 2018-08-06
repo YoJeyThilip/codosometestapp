@@ -98,8 +98,8 @@
 					<div class="Polaris-Layout__AnnotationWrapper">
 						<div class="Polaris-Layout__Annotation">
 							<div class="Polaris-TextContainer">
-								<h2 class="Polaris-Heading">Printavo API</h2>
-								<p>This API is used to access information in your Printavo account.</p>
+								<h2 class="Polaris-Heading">Add Campus</h2>
+								<p>Add campus here and assign them to students.</p>
 							</div>
 						</div>
 						<div class="Polaris-Layout__AnnotationContent">	
@@ -150,16 +150,27 @@
 						</div>
 					</div>
 				</div>
-				
-				<div class="cron_control_manager_container">
-					<form action="{{ route('settings') }}" method="post">
-						<input type="hidden" name="run_command" value="yes">
-						<input type="submit" class="run_cron_button" value="Run Command">
-					</form>
+				<div class="Polaris-Layout__AnnotatedSection">
+					<div class="Polaris-Layout__AnnotationWrapper">
+						<div class="Polaris-Layout__Annotation">
+							<div class="Polaris-TextContainer">
+								<h2 class="Polaris-Heading">Printavo Cron</h2>
+								<p>This Cron is used to Sync information from your Printavo account.</p>
+							</div>
+						</div>
+						<div class="Polaris-Layout__AnnotationContent">	
+							<form action="{{ route('settings') }}" accept-charset="UTF-8" method="post">
+								@csrf
+								<div class="Polaris-SettingAction__Action setting_save_btn">
+									<input type="hidden" name="printavo_cron" value="run">
+									<input type="submit" name="printavo_cron-form" class="Polaris-Button Polaris-Button--primary" value="Run">
+								</div>
+
+							</form>
+						</div>
+					</div>
 				</div>
-				
 			@endif
-			
 		</div>
 	</div>
 </div>

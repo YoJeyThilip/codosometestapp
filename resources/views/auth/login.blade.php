@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-				<h1 class="dialog-heading">Campus Ink</h1>
-				 <h2 class="dialog-subheading">Log in to manage your store</h2>
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-					<div id="password-login">
-					   <div class="clearfix">
-						  <div class="login-container">
-							 <div id="sign-in-form" class="lform dialog-form ">
-								<div id="login">
-								   <div class="input-group">
+	<h1 class="dialog-heading">Campus Ink</h1>
+	<h2 class="dialog-subheading">Log in to manage your store</h2>
+		<form method="POST" action="{{ route('login') }}">
+			@csrf
+			<div id="password-login">
+				<div class="clearfix">
+					<div class="login-container">
+						<div id="sign-in-form" class="lform dialog-form ">
+							<div id="login">
+								<div class="input-group">
 								    <div class="next-input-wrapper">
 										<label class="next-label helper--visually-hidden" for="Login">Login</label>
 										 <div class="next-input--stylized">
@@ -57,12 +57,12 @@
 									</a>
 								</div>
 								
-						</form>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
+	</form>
 
 @endsection

@@ -302,6 +302,10 @@ class OrderController extends Controller
 				}
 			}
 			
+			if( $sortby == 'created_at' ) {
+				$sortby = 'invoice_no';
+			}
+			
 			$OrdersVariables['orders'] = $orders;
 			$OrdersVariables['next_page'] = $next_page;
 			$OrdersVariables['prev_page'] = $prev_page;

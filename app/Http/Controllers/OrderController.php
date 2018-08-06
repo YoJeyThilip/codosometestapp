@@ -81,8 +81,13 @@ class OrderController extends Controller
 				$query_offset = 0 ;
 			}
 			
-			if( isset($_GET['sortby'])  ){
-				$sortby = $_GET['sortby'];
+			if( isset($_GET['sortby']) ){
+				if( $_GET['sortby'] == 'invoice_no' ) {
+					$sortby = 'invoice_no';
+				}
+				else {
+					$sortby = $_GET['sortby'];
+				}
 			}
 			else{
 				$sortby = 'created_at';

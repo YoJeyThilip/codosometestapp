@@ -80,8 +80,6 @@ class OrderController extends Controller
 				$prev_page = 0;
 				$query_offset = 0 ;
 			}
-			print_r( "1" );
-			print_r( $_GET['sortby'] );
 			
 			if( isset($_GET['sortby']) ){
 				if( $_GET['sortby'] == 'invoice_no' ) {

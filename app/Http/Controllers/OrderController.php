@@ -80,6 +80,8 @@ class OrderController extends Controller
 				$prev_page = 0;
 				$query_offset = 0 ;
 			}
+			print_r( "1" );
+			print_r( $_GET['sortby'] );
 			
 			if( isset($_GET['sortby']) ){
 				if( $_GET['sortby'] == 'invoice_no' ) {
@@ -92,6 +94,8 @@ class OrderController extends Controller
 			else{
 				$sortby = 'created_at';
 			}
+			print_r( "2" );
+			print_r( $sortby );
 			
 			if( isset($_GET['sortway']) ){
 				$sortway = $_GET['sortway'];

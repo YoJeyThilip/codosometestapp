@@ -92,8 +92,6 @@ class OrderController extends Controller
 			else{
 				$sortby = 'created_at';
 			}
-			print_r( "2" );
-			print_r( $sortby );
 			
 			if( isset($_GET['sortway']) ){
 				$sortway = $_GET['sortway'];
@@ -221,8 +219,6 @@ class OrderController extends Controller
 					else{
 						
 						$orders = DB::select("SELECT * FROM orders ORDER BY ". $sortby ." ". $sortway ." LIMIT 25 OFFSET ".$query_offset);
-						
-						print_r("SELECT * FROM orders ORDER BY ". $sortby ." ". $sortway ." LIMIT 25 OFFSET ".$query_offset."");
 						
 						$next_page_exist = DB::select("SELECT * FROM orders ORDER BY ". $sortby ." ". $sortway ." LIMIT 1 OFFSET ".( $query_offset + 25 ) );
 						

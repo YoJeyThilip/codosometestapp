@@ -227,6 +227,8 @@ class OrderController extends Controller
 						
 						$next_page_exist = DB::select("SELECT * FROM orders ORDER BY ". $sortby ." ". $sortway ." LIMIT 1 OFFSET ".( $query_offset + 25 ) );
 						
+						print_r($orders);
+						
 					}
 					
 				}

@@ -223,7 +223,7 @@ class OrderController extends Controller
 						print_r("3");
 						print_r($sortby);
 						
-						$orders = DB::select("SELECT * FROM orders ORDER BY ". $sortby ." ". $sortway);
+						$orders = DB::select("SELECT * FROM orders ORDER BY ". $sortby);
 						
 						$next_page_exist = DB::select("SELECT * FROM orders ORDER BY ". $sortby ." ". $sortway ." LIMIT 1 OFFSET ".( $query_offset + 25 ) );
 						

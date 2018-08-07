@@ -129,7 +129,7 @@ class OrderController extends Controller
 					}
 					else{
 						
-						$orders = DB::select("SELECT * FROM orders ORDER BY length(". $sortby .") ". $sortway .",". $sortby ." ". $sortway ." LIMIT 25 OFFSET ".$query_offset);
+						$orders = DB::select("SELECT * FROM orders ORDER BY length(". $sortby .") ". $sortway .",". $sortby ." ". $sortway ." LIMIT 25 OFFSET ");
 						
 						$next_page_exist = DB::select("SELECT * FROM orders ORDER BY length(". $sortby .") ". $sortway .",". $sortby ." ". $sortway ." LIMIT 1 OFFSET ".( $query_offset + 25 ) );
 						
